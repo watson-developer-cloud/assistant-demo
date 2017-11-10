@@ -1,5 +1,3 @@
-# Issue Template
-
 ### What area of development does this issue relate to?
 - [ ] Design
 - [ ] Back end development
