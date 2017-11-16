@@ -19,8 +19,12 @@ const express = require('express');
 const app = express();
 require('./config/express')(app);
 
+
 app.get('/', (req, res) => {
-  res.send('Hello world');
+  res.render('use', {
+    bluemixAnalytics: !!process.env.BLUEMIX_ANALYTICS,
+  });
+  res.sendFile('./public/index.html');
 });
 
 module.exports = app;
