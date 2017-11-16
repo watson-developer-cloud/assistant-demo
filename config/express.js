@@ -17,9 +17,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const expressBrowserify = require('express-browserify');
 const path = require('path');
 
 module.exports = (app) => {
+  // set view engine
+  //  app.set('view engine', 'html');
+
   // parse cookies
   app.use(cookieParser());
 
@@ -31,6 +35,21 @@ module.exports = (app) => {
   app.use(bodyParser.json({
     limit: '40mb',
   }));
+
+  // automatically bundle front end js on the fly
+  // note: this should be used before express.static since bundle.js is in the
+  // public folder
+  const isDev = (app.get('env') === 'development');
+  const browserifyier = expressBrowserify('./public/js/bundle.js', {
+    watch: isDev,
+    debug: isDev,
+    extension: ['jsx', 'js'],
+    transform: [['babelify', { presets: ['es2015', 'react'] }]],
+  });
+  if (!isDev) {
+    browserifyier.browersify.transform('uglifyify', { global: true });
+  }
+  app.get('/js/bundle.js', browserifyier);
 
   // serve static files from the public folder
   app.use(express.static(path.join(__dirname, '..', 'public')));
