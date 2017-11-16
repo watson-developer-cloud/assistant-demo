@@ -21,9 +21,6 @@ const expressBrowserify = require('express-browserify');
 const path = require('path');
 
 module.exports = (app) => {
-  // set view engine
-  //  app.set('view engine', 'html');
-
   // parse cookies
   app.use(cookieParser());
 
