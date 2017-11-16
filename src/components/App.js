@@ -1,7 +1,7 @@
 import React from 'react';
 
 const App = () => (
-  <div>
+  <div className="ibm">
     Hello world. This is a react test.
   </div>
 );
