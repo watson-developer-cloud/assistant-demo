@@ -1,0 +1,41 @@
+language: node_js
+sudo: required
+node_js: 6
+group: bluezone
+
+cache:
+  directories:
+    - node_modules
+
+env:
+  global:
+    - OCTOKIT_API_ENDPOINT=http://github.ibm.com/api/v3
+    - CXX=g++-4.8
+    - CC=gcc-4.8
+
+before_install:
+  - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq g++-4.8
+
+deploy:
+  - provider: script
+    script: ./travis.sh
+    skip_cleanup: true
+    on:
+      all_branches: true
+
+  - provider: script
+    script: npm run build-ibm-com
+    skip_cleanup: true
+    on:
+      tags: true
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    file:
+      - "replace with some file"
+    skip_cleanup: true
+    on:
+      tags: true
+notifications:
+  email: false
