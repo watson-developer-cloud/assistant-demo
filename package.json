@@ -6,10 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "test-unit": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/unit",
-    "test-integration": "casperjs test ./test/test.*.js",
-    "test-integration-runner": "NODE_ENV=test node casper-runner.js",
     "test-react": "./node_modules/jest/bin/jest.js",
-    "test": "npm run lint && npm run test-unit && npm run test-integration-runner && npm run test-react --bail --findRelatedTests",
+    "test": "npm run lint && npm run test-unit && npm run test-react --bail --findRelatedTests",
     "lint": "eslint .",
     "autofix": "eslint --fix .",
     "codecov": "npm run test && (codecov || true)",
@@ -67,7 +65,8 @@
     "mocha": "^3.5.0",
     "phantomjs-prebuilt": "^2.1.15",
     "precommit-hook": "^3.0.0",
-    "supertest": "^3.0.0"
+    "supertest": "^3.0.0",
+    "system": "^2.0.1"
   },
   "author": "IBM",
   "license": "MIT",
