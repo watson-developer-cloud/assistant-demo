@@ -1,5 +1,5 @@
 /**
- * Copyright 2015 IBM Corp. All Rights Reserved.
+ * Copyright 2017 IBM Corp. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,7 +44,7 @@ module.exports = (app) => {
     transform: [['babelify', { presets: ['es2015', 'react'] }]],
   });
   if (!isDev) {
-    browserifyier.browersify.transform('uglifyify', { global: true });
+    browserifyier.browserify.transform('uglifyify', { global: true });
   }
   app.get('/js/bundle.js', browserifyier);
 
