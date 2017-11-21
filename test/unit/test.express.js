@@ -8,7 +8,7 @@ describe('express', () => {
   });
   it('should respond with JSON when GET /api/message', (done) => {
     request(app)
-      .get('/api/message')
+      .post('/api/message')
       .set('Accept', 'application/json')
       .expect('Content-Type', /json/)
       .expect(200, done);
