@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
   res.sendFile('./public/index.html');
 });
 
-app.get('/api/message', (req, res) => {
+app.post('/api/message', (req, res) => {
   // check for workspace id and handle null workspace env variable
   const workspace = process.env.WORKSPACE_ID || '<workspace-id>';
   if (!workspace || workspace === '<workspace-id>') {
