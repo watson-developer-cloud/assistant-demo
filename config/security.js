@@ -28,8 +28,8 @@ module.exports = (app) => {
   }));
 
   // rate limit /api/ routes
-  app.use('/api', rateLimit({
-    windowMs: 30 * 1000, // 30 seconds
+  app.use('/api/', rateLimit({
+    windowMs: 60 * 1000, // 1 minute
     delayMs: 0,
     max: 10,
   }));
