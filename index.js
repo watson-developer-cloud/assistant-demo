@@ -18,13 +18,47 @@ const express = require('express');
 
 const app = express();
 require('./config/express')(app);
+const Conversation = require('watson-developer-cloud/conversation/v1');
 
+// declare Watson Conversation service
+const conversation = new Conversation({
+  username: process.env.CONVERSATION_USERNAME,
+  password: process.env.CONVERSATION_PASSWORD,
+  version_date: '2017-05-26',
+});
 
 app.get('/', (req, res) => {
   res.render('use', {
     bluemixAnalytics: !!process.env.BLUEMIX_ANALYTICS,
   });
   res.sendFile('./public/index.html');
+});
+
+app.get('/api/message', (req, res) => {
+  // check for workspace id and handle null workspace env variable
+  const workspace = process.env.WORKSPACE_ID || '<workspace-id>';
+  if (!workspace || workspace === '<workspace-id>') {
+    return res.json({
+      output: {
+        text: 'The app has not been configured with a WORKSPACE_ID environment variable.',
+      },
+    });
+  }
+
+  // assemble conversation payload
+  const payload = {
+    workspace_id: workspace,
+    context: req.body.content || {},
+    input: req.body.input || {},
+  };
+
+  // send payload to Conversation and return result
+  conversation.message(payload, (err, data) => {
+    if (err) {
+      return res.status(err.code || 500).json(err);
+    }
+    return res.json(data);
+  });
 });
 
 module.exports = app;
