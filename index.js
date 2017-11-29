@@ -48,7 +48,7 @@ app.post('/api/message', (req, res) => {
   // assemble conversation payload
   const payload = {
     workspace_id: workspace,
-    context: req.body.content || {},
+    context: req.body.context || {},
     input: req.body.input || {},
   };
 
