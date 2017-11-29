@@ -1,10 +1,25 @@
 @import 'colors';
 
 body {
-  background: $duo-gray-80;
+  background: $duo-gray-100;
+  color: $duo-gray-10;
   height: 650px;
 }
 
 .chat-container {
+  background: $duo-gray-90;
+  height: 650px; // TODO: size differently
+}
+
+.chat-list {
   height: 100%;
+  overflow-y: scroll;
+}
+
+.chat-header {
+  background: $duo-gray-80;
+}
+
+.user-chat {
+  text-align: right;
 }

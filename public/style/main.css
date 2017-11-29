@@ -1,0 +1,18 @@
+body {
+  background: #171717;
+  color: #f3f3f3;
+  height: 650px; }
+
+.chat-container {
+  background: #252525;
+  height: 650px; }
+
+.chat-list {
+  height: 100%;
+  overflow-y: scroll; }
+
+.chat-header {
+  background: #3d3d3d; }
+
+.user-chat {
+  text-align: right; }
