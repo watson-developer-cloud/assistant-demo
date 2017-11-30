@@ -1,18 +1,48 @@
 body {
   background: #171717;
   color: #f3f3f3;
-  height: 650px; }
+  max-height: 100vh; }
+
+input {
+  border-style: none;
+  border-color: none;
+  border-width: 0;
+  background: none; }
+  input:focus {
+    outline: none; }
 
 .chat-container {
-  background: #252525;
-  height: 650px; }
-
-.chat-list {
-  height: 100%;
-  overflow-y: scroll; }
+  max-height: 80vh;
+  height: 80vh;
+  background: #252525; }
 
 .chat-header {
   background: #3d3d3d; }
 
+.chat-list {
+  height: 75%;
+  overflow-y: scroll; }
+
+.input-with-button {
+  margin: 5%; }
+  .input-with-button button {
+    visibility: hidden;
+    opacity: 0; }
+  .input-with-button input {
+    width: 100%;
+    font-size: 16px;
+    border-bottom: 1px solid #8a8a8a;
+    color: white; }
+
 .user-chat {
+  background: #757575;
   text-align: right; }
+
+.json-sidebar {
+  max-height: 80vh;
+  overflow-x: scroll;
+  overflow-y: scroll; }
+
+/* Begin JSON styles */
+.property {
+  color: #0f6dff; }
