@@ -1,6 +1,6 @@
 import React from 'react';
 import { InputWithButton } from 'watson-react-components';
-import BotMessage from '../BotMessage/BotMessage';
+import GenericMessage from '../GenericMessage/GenericMessage';
 
 class ChatList extends React.Component {
   constructor(props) {
@@ -47,29 +47,28 @@ class ChatList extends React.Component {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(payload),
-    })
-      .then((data) => {
-        data.json()
-          .then((json) => {
-            // update chat list with conversation response
-            this.updateChatList('bot', json.output.text[0]);
+    }).then((data) => {
+      data.json()
+        .then((json) => {
+          // update chat list with conversation response
+          this.updateChatList('bot', json.output.text[0]);
 
-            // send stringified JSON to sidebar
-            this.updateJsonSidebar(JSON.stringify(json));
+          // send stringified JSON to sidebar
+          this.updateJsonSidebar(JSON.stringify(json));
 
-            // update context
-            this.updateConversationContext(json.context);
-          });
-      });
+          // update context
+          this.updateConversationContext(json.context);
+        });
+    });
   }
 
   render() {
     return (
       <div className="ibm-lg-col-4 ibm-padding chat-list">
         {this.state.messages.map(message => (
-          <BotMessage
+          <GenericMessage
             sender={message.sender}
-            text={message.text}
+            text={message.text || ''}
           />))}
 
         <InputWithButton
