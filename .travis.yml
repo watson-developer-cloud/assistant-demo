@@ -8,7 +8,7 @@ cache:
   - node_modules
 env:
   global:
-  - BX_APP=watson-conversation-duo-staging
+  - BX_APP=watson-conversation-duo-dev
   - BX_API=https://api.ng.bluemix.net
   - BX_ORGANIZATION=WatsonPlatformServices
   - BX_SPACE=demos
@@ -19,7 +19,6 @@ before_install:
 before_deploy: npm install -g https://github.com/andresfvilla/bx-blue-green
 deploy:
   - provider: script
-    BX_APP: watson-conversation-duo-dev
     script:
     - bx-blue-green-travis
     on:
@@ -27,7 +26,6 @@ deploy:
       repo: Watson/watson-conversation-demo-redesign
     skip_cleanup: true
   - provider: script
-    BX_APP: watson-conversation-duo-staging
     script:
       -bx-blue-green-travis
     on:
