@@ -13,21 +13,20 @@ env:
   - BX_ORGANIZATION=WatsonPlatformServices
   - BX_SPACE=demos
   - B_DOMAIN=ng.bluemix.net
-  - secure: DCE35hZpM8n8fP/u7Q4ffnr2bAf9tsz43Tamjj9NwaiB/MmlCNKiahD8wGxGCuYLggslrAi/o3MkeCSjWnTZUCVz9j/MsH+ZvT02MxwitTeE6LMfobD/aIBJu8y/2NMMJRev/xR/OeknECYt3dgV5mlPWAn9JG5A8mK7ea9T4iKf2G2A1z+xFYhE2JbzMd4DqpnHoKnDPyls8YXnKAUZ0sJBs/3dDDeDjvahhvZjQpAuuWkRR4k5tZGAivlJtaWtFPMDs9V9OMd1FVSEJZaTwHjlseuJrgLTGnXwoHDlZhQKeYbtkXIQBi2MILFFJi5aSeUmiov2q+weVoB8UJrnSx0hdQdRGpe0qLHsAxSVFsYFoMJD4fu1MW577kLvfn5OTm8JYwRp3a69XFwM62IqB0ebLSxJaqwkp0m+Qqhfr7ES3d+wYp5HocSvExZoweFTkT3XuN7tyCm6oeDVJ2EvS3bGuodjppnwOq+Er/iHRBp/17Lm7ySNzVcuooLjRWeetW5CmYA8hzzMY+t/d9mf6bH3RZf6tQZ86XXv4sBPlgF4vinWWRDonRm2OkA4+eFPdph9uWbGjUDgr1vt4qtKnKXM86aCx23lKAqmffiTmeVGvHs9SMWctF8WJoUPdgEccAZDpUfKl16PrwV0dzWHT6N3YEr0D3BIQOERB1wBsUo=
-  - secure: xp3zzDKH1plf7oomd22zjT1TL9usGQSwf83eNMcI9OJdpS6imoPPce7xKcrB1Dst7JQa3pj3cvESF4zyWhftZxKpgzC/Q8j/TYSIBtp4e2khG6+e8dOe1OybcNNHydISJ9aOLGreSdsu3SuRNSUIINK0xoV/yAlJZ8LaaHm2ucPiMSuddPv1STW0tFBQiluMVkSBT20Y4lgC5AgVzOGhPgMPMYI2K4/LuWbyUWtrravdnyXDNODALPnp3SlqpNK00oyRcRX/Isv6N6FvakywhcvtcG+XsdspqENJWefOBIxmJNhpkgs1+UPy3wjM7D38TUNTaVwGjLrpmp9mBk/A2uwh58gnYCqSErxquGuGf8l3XUbQs5ySdH01B0MjmsKkTEpm/xirOM1DtdWLBm6/nx88JaP61hQbHJC9LDqfLWrEeuQRNZ4fr4Eq+X8Lii/D3pf49vAZ363hhKEJGpGHLm6gqfTX/JiDC22vSU1//GG/BUYZnAaHcnfsQskYYbKHlOEn3YYN/9qiqvsoFl3AFsYZtm+ERDlEii53vi30GFHFP7BN02x0Mng3wX0owNK9m+QLv6+BXxl/0DHaz8n4aAli8uJE3feOveWHp5laOZcPgqi0X5kbpO7no0b8a9I93DnWD3/u4hlQHP2dfDXh5pW4E3cdOEOdQho1Mu+7OC4=
+  - secure: DYA04CYUyzD86/Obo/g3jEqn4rovvUOTFqwq4L3MqI2lKN4d7txJOSg6scHH9YmfOHZ7tQyJ+wKpGN/2iuhOxIZfITyBc213d+pic4GQ+M/2OgdO05s0nYlP4tkYBGP4byoJ+HSnrRk8A9wKx9OdAGRC0mu/rHq7udBhLn9FLhodVH8jAjcg4xyvyUnw819ioDgVkxNIYZFS36ErX0IlRX9KrxLWVNWmZ7j6dktxwcyNcM0t7PL0Z41vUwFRRDsPo8CefgY0z9/VfWVy1G4iYYF4qz1yRGXyrNJuV3aCfdNZOffcU6nQC9/unF4ghe0Fi/LAwbnOd4/xR1XS9yExR+uEEUO4bCTI/7SaG9FivkxEdSiC1SxiGm2/qgT7PI254o1+1hiL4IQQ4Jxp98gYUfpHTxtBbjh6bBbB1eCXkoi88ye5673pePv4xNlN9S5+trMrvDqv71NL4OM0jETQl9dsirz9ed/mURQzqYI2UJsHuIOqw/YIEr5bgo/tiihVe1yIap83547ibBtyewd7t7cZOgwXQzbtTsg+1cBtqxPtLSAVsKmkEh75f5J3zSr+CQT4TP1+5C6pMqhreolzFzvkrvqT62+PdAv9hhv7Dd3VUdfNWHCpPXsHv1dtgYIq7w60SEBzn2uuPDH4Rqj0Ke63FGSMeQ/JqOodbRSAPRQ=
+  - secure: V/BBVoZ/v4PVIatufAXZehJxnDnzEtKX1qgy/TiPjpmpuqpgicQMQftxP4M2wGHOyc26m+kLX9w4FIb4dU2dbh31lpB7Ga0NaYeaVp+fPZ6hZgMb1XznNIgmtuTcQDq+Ezgh7U5GvNQafB5u5vI7/Xt7anXwmQIifjHdo+v8nYwY8K/tMM2YjWR/o3R4TRPIFeiIiSNCiquynn0yFz7KnWtkPnU6kgk1rnUw0u+2qqlQejb5SAcp0Jr2gdMevdhNFLWHQIksuCi182zghKzruOVmV0vMwPG141wfP3ZPIJRumsrb0v5gMTRxAhlfX6kmPrfiq4mdrw+j+nrfP0MG43iQ+B1Ts9xF4Wk/O5hgGXT0bhcbFMghsVn5sHwcF7UwFluRcy+tdoOVIV2ZZ5kXJ3fPDvbjt8CYe8qjRLAr4rDh1QAXzozf10rMMmJfNNu9WEQu2CLrBUeLQuMZSEk4T0HSTpGlV2WCu6tDbucjQcZIo7f7slWmUpbrqMfK0PVGD3yNDxLdimQXriBKouByIVk7Bgmz7x2WQe3G+8M5YVZXnfzxlm0A0UsxdKGWcoBtdJaUyhfOybgV8PzBPLO3gQbqkyMDKzvKaWAZNl/yPEzGJpiU+MrOefc8LaYt0xUeHOyFbM7OxgXBnDC7v7CLPCn7zqQIMxsgwPoqHdCKV7w=
 before_install: 
 before_deploy: npm install -g https://github.com/andresfvilla/bx-blue-green
 deploy:
-  - provider: script
-    script:
-    - bx-blue-green-travis
-    on:
-      branch: dev
-      repo: Watson/watson-conversation-demo-redesign
-    skip_cleanup: true
-  - provider: script
-    script:
-      -bx-blue-green-travis
-    on:
-      branch: master
-      repo: Watson/watson-conversation-demo-redesign
+- provider: script
+  script:
+  - bx-blue-green-travis
+  on:
+    branch: dev
+    repo: Watson/watson-conversation-demo-redesign
+  skip_cleanup: true
+- provider: script
+  script: "-bx-blue-green-travis"
+  on:
+    branch: master
+    repo: Watson/watson-conversation-demo-redesign
