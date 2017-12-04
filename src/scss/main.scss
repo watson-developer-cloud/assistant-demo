@@ -1,0 +1,69 @@
+@import 'colors';
+
+body {
+  background: $duo-gray-100;
+  color: $duo-gray-10;
+  max-height: 100vh;
+}
+
+input {
+  border-style: none;
+  border-color: none;
+  border-width: 0;
+  background: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.chat-container {
+  max-height: 80vh;
+  height: 80vh;
+  background: $duo-gray-90;
+}
+
+.chat-header {
+  background: $duo-gray-80;
+}
+
+.chat-list {
+  height: 75%;
+  overflow-y: scroll;
+}
+
+.input-with-button {
+  margin: 5%;
+
+  button {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  input {
+    width: 100%;
+    font-size: 16px;
+    border-bottom: 1px solid $duo-gray-50;
+    color: $duo-white;
+  }
+}
+
+.user-chat {
+  background: $duo-gray-60;
+  text-align: right;
+}
+
+.json-sidebar {
+  max-height: 80vh;
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+
+/* Begin JSON styles */
+.token {
+  // something with font type here
+}
+
+.property {
+  color: $duo-blue-60;
+}

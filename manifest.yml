@@ -1,13 +1,8 @@
 ---
-declared-services:
-  conversation-service:
-    label: watson_conversation
-    plan: standard
 applications:
-- name: watson-conversation-redesign
+- name: watson-conversation-duo-dev
   path: .
   command: npm start
   memory: 512M
-  services:
   env:
     NODE_ENV: production

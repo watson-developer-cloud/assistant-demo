@@ -41,4 +41,4 @@ jspm_packages
 *.swo
 
 # environment variables
-*.env*
+*.env

@@ -36,7 +36,7 @@ app.get('/', (req, res) => {
 
 app.post('/api/message', (req, res) => {
   // check for workspace id and handle null workspace env variable
-  const workspace = process.env.WORKSPACE_ID || '<workspace-id>';
+  const workspace = process.env.CONVERSATION_WORKSPACE || '<workspace-id>';
   if (!workspace || workspace === '<workspace-id>') {
     return res.json({
       output: {
@@ -48,7 +48,7 @@ app.post('/api/message', (req, res) => {
   // assemble conversation payload
   const payload = {
     workspace_id: workspace,
-    context: req.body.content || {},
+    context: req.body.context || {},
     input: req.body.input || {},
   };
 
