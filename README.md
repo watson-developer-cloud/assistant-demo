@@ -1,6 +1,7 @@
 # Watson Conversation Demo for IBM.com - Redesign
 
 ### Build Status
+Master [![Build Status](https://travis.ibm.com/Watson/watson-conversation-demo-redesign.svg?token=iJCYw8QYkDn5J4kz9weU&branch=master)](https://travis.ibm.com/Watson/watson-conversation-demo-redesign)  
 Dev [![Build Status](https://travis.ibm.com/Watson/watson-conversation-demo-redesign.svg?token=iJCYw8QYkDn5J4kz9weU&branch=dev)](https://travis.ibm.com/Watson/watson-conversation-demo-redesign)
 
 Stage   
