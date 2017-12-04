@@ -1,0 +1,8 @@
+---
+applications:
+- name: watson-conversation-duo-dev
+  path: .
+  command: npm start
+  memory: 512M
+  env:
+    NODE_ENV: production
