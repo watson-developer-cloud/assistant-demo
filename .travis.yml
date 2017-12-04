@@ -19,14 +19,13 @@ before_install:
 before_deploy: npm install -g https://github.com/andresfvilla/bx-blue-green
 deploy:
 - provider: script
-  script:
-  - bx-blue-green-travis
+  script: bx-blue-green-travis
   on:
     branch: dev
     repo: Watson/watson-conversation-demo-redesign
   skip_cleanup: true
 - provider: script
-  script: "-bx-blue-green-travis"
+  script: bx-blue-green-travis
   on:
     branch: master
     repo: Watson/watson-conversation-demo-redesign
