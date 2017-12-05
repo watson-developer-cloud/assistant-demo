@@ -21,6 +21,18 @@ p {
   font-size: 16px;
 }
 
+button {
+  background: $duo-gray-80;
+  border: none;
+  border-radius: 0;
+  color: $duo-gray-20;
+  padding: 28px 16px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
 .chat-container {
   max-height: 80vh;
   height: 80vh;
@@ -82,10 +94,37 @@ p {
   border-radius: 8px;
 }
 
-.json-sidebar {
-  max-height: 80vh;
-  overflow-x: scroll;
+.json-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: -75%;
+  z-index: 2;
   overflow-y: scroll;
+  transition: right 0.5s ease-in-out;
+}
+
+/* Triggered when the JSON button is toggled */
+.is-hidden {
+  right: -100%;
+  opacity: 0;
+  visibility: hidden; 
+  transition: all 0.5s ease-in-out;
+}
+
+/* JSON button */
+.json-toggle {
+  position: relative;
+  right: 0;
+  z-index: 10;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Triggered when the JSON button is clicked */
+.json-toggle--right {
+  right: -75%;
+  transition: all 0.5s ease-in-out;
 }
 
 /* Begin JSON styles */
