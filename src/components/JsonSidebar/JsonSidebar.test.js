@@ -9,6 +9,6 @@ const mockJson = {
 describe('JsonSidebar', () => {
   it('renders json widget', () => {
     const component = shallow(<JsonSidebar json={JSON.stringify(mockJson)} />);
-    expect(component.find('div').text()).toEqual('<JsonLinkInline />');
+    expect(component.find('.json-sidebar').text()).toEqual(expect.stringContaining('<JsonLinkInline />'));
   });
 });
