@@ -5,13 +5,13 @@ const GenericMessage = ({ sender, text }) => {
   if (sender === 'bot') {
     return (
       <p className="bot-chat">
-        {text}
+        <span className="chatBar">{text}</span>
       </p>
     );
   } else if (sender === 'user') {
     return (
       <p className="user-chat">
-        {text}
+        <span className="bubble">{text}</span>
       </p>
     );
   }

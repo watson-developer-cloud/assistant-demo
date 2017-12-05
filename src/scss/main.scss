@@ -17,6 +17,10 @@ input {
   }
 }
 
+p {
+  font-size: 16px;
+}
+
 .chat-container {
   max-height: 80vh;
   height: 80vh;
@@ -48,9 +52,34 @@ input {
   }
 }
 
+.bot-chat {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  &::before {
+//    display: block;
+    flex: 0 1 1%;
+    content: "|";
+    padding: 0 5px;
+    color: $duo-blue-60;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.chatBar {
+  padding: 0.3rem 0;
+}
+
 .user-chat {
-  background: $duo-gray-60;
   text-align: right;
+}
+
+.bubble {
+  background: $duo-gray-60;
+  padding: 12px;
+  border-radius: 8px;
 }
 
 .json-sidebar {

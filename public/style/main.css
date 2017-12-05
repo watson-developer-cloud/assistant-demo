@@ -11,6 +11,9 @@ input {
   input:focus {
     outline: none; }
 
+p {
+  font-size: 16px; }
+
 .chat-container {
   max-height: 80vh;
   height: 80vh;
@@ -34,9 +37,28 @@ input {
     border-bottom: 1px solid #8a8a8a;
     color: white; }
 
+.bot-chat {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start; }
+  .bot-chat::before {
+    flex: 0 1 1%;
+    content: "|";
+    padding: 0 5px;
+    color: #0f6dff;
+    font-size: 20px;
+    font-weight: 700; }
+
+.chatBar {
+  padding: 0.3rem 0; }
+
 .user-chat {
-  background: #757575;
   text-align: right; }
+
+.bubble {
+  background: #757575;
+  padding: 12px;
+  border-radius: 8px; }
 
 .json-sidebar {
   max-height: 80vh;
