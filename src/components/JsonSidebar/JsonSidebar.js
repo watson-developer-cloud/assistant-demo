@@ -17,12 +17,12 @@ class JsonSidebar extends React.Component {
 
   render() {
     const isHiddenClass = this.state.isJsonHidden ? 'is-hidden json-overlay' : 'json-overlay';
-    const buttonPositionClass = this.state.isJsonHidden ? 'json-toggle--right json-toggle' : 'json-toggle';
+    const isButtonSelected = this.state.isJsonHidden ? 'json-toggle' : 'json-toggle json-toggle--selected';
 
     return (
       <div className="ibm-col-lg-4 json-sidebar">
         <button
-          className={buttonPositionClass}
+          className={isButtonSelected}
           onClick={() => { this.toggleJson(); }}
         >JSON Button
         </button>
