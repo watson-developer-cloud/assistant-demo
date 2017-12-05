@@ -100,12 +100,16 @@ button {
   border-radius: 8px;
 }
 
+.json-sidebar {
+  position: relative;
+}
+
 .json-overlay {
   position: absolute;
   background: $duo-black;
-  width: 100%;
+  width: 150%;
   height: 100%;
-  right: -60%;
+  right: 0;
   z-index: 1;
   overflow-y: scroll;
   transition: right 0.2s ease-in-out;
@@ -121,6 +125,7 @@ button {
 /* JSON button */
 .json-toggle {
   position: relative;
+  right: 0;
   float: right;
   z-index: 5;
 }
