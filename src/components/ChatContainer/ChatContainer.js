@@ -5,7 +5,7 @@ import ChatList from '../ChatList/ChatList';
 import ChatHeader from '../ChatHeader/ChatHeader';
 
 const ChatContainer = ({ onEnterText, messages }) => (
-  <div className="ibm-col-lg-8 ibm-col-full chat-container">
+  <div className="ibm-col-lg-8 chat-container">
     <ChatHeader />
     <ChatList messages={messages} />
     <InputWithButton
