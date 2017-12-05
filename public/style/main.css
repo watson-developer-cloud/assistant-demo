@@ -25,23 +25,28 @@ button {
 
 .chat-container {
   max-height: 80vh;
-  height: 80vh;
-  background: #252525; }
+  height: 80vh; }
 
 .chat-header {
   background: #3d3d3d; }
 
 .chat-list {
+  background: #252525;
   height: 75%;
   overflow-y: scroll; }
 
 .input-with-button {
-  margin: 5%; }
+  background: #252525;
+  display: flex;
+  justify-content: center; }
   .input-with-button button {
+    position: absolute;
     visibility: hidden;
     opacity: 0; }
   .input-with-button input {
-    width: 100%;
+    flex: 0 1 80%;
+    margin: 5% 0;
+    align-self: center;
     font-size: 16px;
     border-bottom: 1px solid #8a8a8a;
     color: white; }
@@ -71,32 +76,29 @@ button {
 
 .json-overlay {
   position: absolute;
+  background: black;
   width: 100%;
   height: 100%;
-  top: 0;
-  right: -75%;
-  z-index: 2;
+  right: -60%;
+  z-index: 1;
   overflow-y: scroll;
-  transition: right 0.5s ease-in-out; }
+  transition: right 0.2s ease-in-out; }
 
 /* Triggered when the JSON button is toggled */
 .is-hidden {
-  right: -100%;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.5s ease-in-out; }
+  transition: all 0.2s ease-in-out; }
 
 /* JSON button */
 .json-toggle {
   position: relative;
-  right: 0;
-  z-index: 10;
-  transition: all 0.5s ease-in-out; }
+  float: right;
+  z-index: 5; }
 
-/* Triggered when the JSON button is clicked */
-.json-toggle--right {
-  right: -75%;
-  transition: all 0.5s ease-in-out; }
+.json-toggle--selected {
+  background: #054ada;
+  transition: all 0.2s ease-in-out; }
 
 /* Begin JSON styles */
 .property {
