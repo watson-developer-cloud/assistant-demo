@@ -48,6 +48,7 @@ button {
   .input-with-button input {
     flex: 0 1 80%;
     margin: 5% 0;
+    padding: 0.5rem 0;
     align-self: center;
     font-size: 16px;
     border-bottom: 1px solid #8a8a8a;
