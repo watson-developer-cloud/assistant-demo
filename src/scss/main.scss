@@ -4,6 +4,7 @@ body {
   background: $duo-gray-100;
   color: $duo-gray-10;
   max-height: 100vh;
+  font-size: 1rem;
 }
 
 input {
@@ -18,13 +19,14 @@ input {
 }
 
 p {
-  font-size: 16px;
+  font-size: 1.0rem;
 }
 
 button {
   background: $duo-gray-80;
   border: none;
   border-radius: 0;
+  font-size: 1rem;
   color: $duo-gray-20;
   padding: 28px 16px;
 
@@ -36,7 +38,7 @@ button {
 .chat-container {
   max-height: 80vh;
   height: 80vh;
- // background: $duo-gray-90;
+  // background: $duo-gray-90;
 }
 
 .chat-header {
@@ -70,13 +72,31 @@ button {
   }
 }
 
+.chat-option-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.chat-option__button {
+  margin: 0.5rem;
+  padding: 10px 20px;
+  border-radius: 500px;
+  transition: all 0.3s ease-in-out;
+}
+
+.chat-option__button--selected {
+  background: $duo-blue-60;
+}
+
 .bot-chat {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
 
   &::before {
-//    display: block;
+    //    display: block;
     flex: 0 1 1%;
     content: "|";
     padding: 0 5px;

@@ -1,7 +1,8 @@
 body {
   background: #171717;
   color: #f3f3f3;
-  max-height: 100vh; }
+  max-height: 100vh;
+  font-size: 1rem; }
 
 input {
   border-style: none;
@@ -12,12 +13,13 @@ input {
     outline: none; }
 
 p {
-  font-size: 16px; }
+  font-size: 1.0rem; }
 
 button {
   background: #3d3d3d;
   border: none;
   border-radius: 0;
+  font-size: 1rem;
   color: #d8d8d8;
   padding: 28px 16px; }
   button:focus {
@@ -51,6 +53,21 @@ button {
     border-bottom: 1px solid #8a8a8a;
     color: white; }
 
+.chat-option-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap; }
+
+.chat-option__button {
+  margin: 0.5rem;
+  padding: 10px 20px;
+  border-radius: 500px;
+  transition: all 0.3s ease-in-out; }
+
+.chat-option__button--selected {
+  background: #0f6dff; }
+
 .bot-chat {
   display: flex;
   align-items: flex-start;
@@ -74,12 +91,15 @@ button {
   padding: 12px;
   border-radius: 8px; }
 
+.json-sidebar {
+  position: relative; }
+
 .json-overlay {
   position: absolute;
   background: black;
-  width: 100%;
+  width: 150%;
   height: 100%;
-  right: -60%;
+  right: 0;
   z-index: 1;
   overflow-y: scroll;
   transition: right 0.2s ease-in-out; }
@@ -93,6 +113,7 @@ button {
 /* JSON button */
 .json-toggle {
   position: relative;
+  right: 0;
   float: right;
   z-index: 5; }
 
