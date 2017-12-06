@@ -12,6 +12,7 @@ class App extends React.Component {
       messages: [],
       lastMessageJson: JSON.stringify({ test: 'hi' }),
       lastMessageContext: {},
+      chatOptions: [],
     };
   }
 
@@ -31,14 +32,32 @@ class App extends React.Component {
     this.setState({ lastMessageContext: contextObj });
   }
 
+  selectChatOption(option) {
+    this.setState({ chatOptions: [] });
+  }
+
+  updateBotAction(outputObj) {
+    if (outputObj.output.generic !== undefined) {
+      outputObj.output.generic.forEach((response) => {
+        if (response.response_type === 'text') {
+          this.updateChatList('bot', response.text);
+        } else if (response.response_type === 'option') {
+          this.setState({ chatOptions: response.options });
+        }
+      });
+    } else {
+      this.updateChatList('bot', outputObj.output.text[0]);
+    }
+  }
+
   userChatEntered(text) {
     // add user message to state
     this.updateChatList('user', text);
 
     fetchMessage(text, this.state.lastMessageContext)
       .then((data) => {
-        // update chat list with conversation response
-        this.updateChatList('bot', data.output.text[0]);
+        // render appropriate data
+        this.updateBotAction(data);
 
         // send stringified JSON to sidebar
         this.updateJsonSidebar(JSON.stringify(data));
@@ -58,7 +77,9 @@ class App extends React.Component {
         <SelectionSidebar />
         <ChatContainer
           messages={this.state.messages}
+          chatOptions={this.state.chatOptions}
           onEnterText={(text) => { this.userChatEntered(text); }}
+          onSelectOption={(option) => { this.selectChatOption(option); }}
         />
         <JsonSidebar json={this.state.lastMessageJson} />
       </div>

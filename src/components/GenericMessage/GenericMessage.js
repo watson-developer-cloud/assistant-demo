@@ -1,24 +1,34 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GenericMessage = ({ sender, text }) => {
-  if (sender === 'bot') {
+const GenericMessage = ({ type, text }) => {
+  if (type === 'bot') {
     return (
       <p className="bot-chat">
         <span className="chatBar">{text}</span>
       </p>
     );
-  } else if (sender === 'user') {
+  } else if (type === 'user') {
     return (
       <p className="user-chat">
         <span className="bubble">{text}</span>
       </p>
     );
+  } else if (type === 'option') {
+    return (
+      <div className="chat-option">
+        <button
+          className="chat-option__button chat-option__button--selected"
+          disabled
+        >{text}
+        </button>
+      </div>
+    );
   }
 };
 
 GenericMessage.propTypes = {
-  sender: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
 };
 
