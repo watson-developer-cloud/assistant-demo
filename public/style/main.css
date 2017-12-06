@@ -14,7 +14,7 @@ input {
   background: none;
   font-size: 1em;
   line-height: 1.375em;
-  color: white; }
+  color: #8a8a8a; }
   input:focus {
     outline: none; }
 
@@ -77,7 +77,8 @@ button {
 .bot-chat {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-start; }
+  justify-content: flex-start;
+  color: #f3f3f3; }
   .bot-chat::before {
     flex: 0 1 1%;
     content: "|";

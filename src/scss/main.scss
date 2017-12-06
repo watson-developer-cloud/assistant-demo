@@ -18,7 +18,7 @@ input {
   background: none;
   font-size: 1em; // 16px
   line-height: 1.375em;
-  color: $duo-white;
+  color: $duo-gray-50;
 
   &:focus {
     outline: none;
@@ -101,6 +101,7 @@ button {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  color: $duo-gray-10;
 
   &::before {
     flex: 0 1 1%;
