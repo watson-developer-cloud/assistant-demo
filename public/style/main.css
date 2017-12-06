@@ -95,8 +95,8 @@ button {
 
 .bubble {
   background: #757575;
-  padding: 12px;
-  border-radius: 8px;
+  padding: 10px 20px;
+  border-radius: 500px;
   font-size: 0.875em; }
 
 .json-sidebar {
