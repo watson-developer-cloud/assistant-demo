@@ -1,26 +1,32 @@
+/* set base font size */
+html {
+  font-size: 16px; }
+
 body {
   background: #171717;
   color: #f3f3f3;
-  max-height: 100vh;
-  font-size: 1rem; }
+  max-height: 100vh; }
 
 input {
   border-style: none;
   border-color: none;
   border-width: 0;
-  background: none; }
+  background: none;
+  font-size: 1em;
+  line-height: 1.375em;
+  color: white; }
   input:focus {
     outline: none; }
 
 p {
-  padding: 0.3rem;
-  font-size: 1.1rem; }
+  font-size: 1.125em;
+  line-height: 1.5em; }
 
 button {
   background: #3d3d3d;
   border: none;
   border-radius: 0;
-  font-size: 1rem;
+  font-size: 0.875em;
   color: #d8d8d8;
   padding: 28px 16px; }
   button:focus {
@@ -51,9 +57,7 @@ button {
     margin: 5% 0;
     padding: 0.5rem 0;
     align-self: center;
-    font-size: 16px;
-    border-bottom: 1px solid #8a8a8a;
-    color: white; }
+    border-bottom: 1px solid #8a8a8a; }
 
 .chat-option-list {
   width: 100%;
@@ -77,9 +81,9 @@ button {
   .bot-chat::before {
     flex: 0 1 1%;
     content: "|";
-    padding: 0 5px;
+    padding: 5px;
     color: #0f6dff;
-    font-size: 20px;
+    font-size: 1.2em;
     font-weight: 700; }
 
 .chatBar {
@@ -91,7 +95,8 @@ button {
 .bubble {
   background: #757575;
   padding: 12px;
-  border-radius: 8px; }
+  border-radius: 8px;
+  font-size: 0.875em; }
 
 .json-sidebar {
   position: relative; }

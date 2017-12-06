@@ -1,10 +1,14 @@
 @import 'colors';
 
+/* set base font size */
+html {
+  font-size: 16px;
+}
+
 body {
   background: $duo-gray-100;
   color: $duo-gray-10;
   max-height: 100vh;
-  font-size: 1rem;
 }
 
 input {
@@ -12,6 +16,9 @@ input {
   border-color: none;
   border-width: 0;
   background: none;
+  font-size: 1em; // 16px
+  line-height: 1.375em;
+  color: $duo-white;
 
   &:focus {
     outline: none;
@@ -19,15 +26,15 @@ input {
 }
 
 p {
-  padding: 0.3rem;
-  font-size: 1.1rem;
+  font-size: 1.125em; // 18px
+  line-height: 1.5em;
 }
 
 button {
   background: $duo-gray-80;
   border: none;
   border-radius: 0;
-  font-size: 1rem;
+  font-size: 0.875em;
   color: $duo-gray-20;
   padding: 28px 16px;
 
@@ -68,9 +75,7 @@ button {
     margin: 5% 0;
     padding: 0.5rem 0;
     align-self: center;
-    font-size: 16px;
     border-bottom: 1px solid $duo-gray-50;
-    color: $duo-white;
   }
 }
 
@@ -98,12 +103,11 @@ button {
   justify-content: flex-start;
 
   &::before {
-    //    display: block;
     flex: 0 1 1%;
     content: "|";
-    padding: 0 5px;
+    padding: 5px;
     color: $duo-blue-60;
-    font-size: 20px;
+    font-size: 1.2em;
     font-weight: 700;
   }
 }
@@ -120,6 +124,7 @@ button {
   background: $duo-gray-60;
   padding: 12px;
   border-radius: 8px;
+  font-size: 0.875em; // 14px
 }
 
 .json-sidebar {
