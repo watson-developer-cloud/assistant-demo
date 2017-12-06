@@ -13,7 +13,8 @@ input {
     outline: none; }
 
 p {
-  font-size: 1.0rem; }
+  padding: 0.3rem;
+  font-size: 1.1rem; }
 
 button {
   background: #3d3d3d;
