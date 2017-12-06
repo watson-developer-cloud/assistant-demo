@@ -12,16 +12,15 @@ class App extends React.Component {
       messages: [],
       lastMessageJson: JSON.stringify({ test: 'hi' }),
       lastMessageContext: {},
-      chatOptions: [],
     };
   }
 
   componentWillMount() {
-    this.userChatEntered();
+    this.userInputEntered('user', 'Hi');
   }
 
-  updateChatList(sender, text) {
-    this.setState({ messages: [...this.state.messages, { sender, text }] });
+  updateChatList(type, text) {
+    this.setState({ messages: [...this.state.messages, { type, text }] });
   }
 
   updateJsonSidebar(json) {
@@ -32,27 +31,29 @@ class App extends React.Component {
     this.setState({ lastMessageContext: contextObj });
   }
 
-  selectChatOption(option) {
-    this.setState({ chatOptions: [] });
-  }
-
   updateBotAction(outputObj) {
     if (outputObj.output.generic !== undefined) {
       outputObj.output.generic.forEach((response) => {
         if (response.response_type === 'text') {
           this.updateChatList('bot', response.text);
         } else if (response.response_type === 'option') {
-          this.setState({ chatOptions: response.options });
+          this.updateChatList('option', response.options);
         }
       });
     } else {
-      this.updateChatList('bot', outputObj.output.text[0]);
+      outputObj.output.text.forEach((response) => {
+        if (response !== '') {
+          this.updateChatList('bot', response);
+        }
+      });
     }
   }
 
-  userChatEntered(text) {
+  userInputEntered(type, text) {
     // add user message to state
-    this.updateChatList('user', text);
+    if (type !== 'option') {
+      this.updateChatList(type, text);
+    }
 
     fetchMessage(text, this.state.lastMessageContext)
       .then((data) => {
@@ -78,8 +79,7 @@ class App extends React.Component {
         <ChatContainer
           messages={this.state.messages}
           chatOptions={this.state.chatOptions}
-          onEnterText={(text) => { this.userChatEntered(text); }}
-          onSelectOption={(option) => { this.selectChatOption(option); }}
+          onUserInput={(type, text) => { this.userInputEntered(type, text); }}
         />
         <JsonSidebar json={this.state.lastMessageJson} />
       </div>
