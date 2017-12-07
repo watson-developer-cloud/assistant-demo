@@ -40,5 +40,8 @@ jspm_packages
 *.swp
 *.swo
 
+# Webpack dist directory
+dist/
+
 # environment variables
 *.env
