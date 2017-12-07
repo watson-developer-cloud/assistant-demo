@@ -40,8 +40,8 @@ module.exports = (app) => {
   // if we aren't in production we will use
   // webpack dev middleware for dev server
   if (process.env.NODE_ENV !== 'production') {
-    const webpackCompiler = webpack(webpackConfig);
     const webpackConfig = require('./webpack.config.dev.js');
+    const webpackCompiler = webpack(webpackConfig);
 
     app.use(webpackDevMiddleware(webpackCompiler, {
       publicPath: webpackConfig.output.publicPath,
