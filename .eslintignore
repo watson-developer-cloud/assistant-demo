@@ -1,3 +1,3 @@
 coverage
-public/js/vendors
+dist/
 test/test.thermometer.js
