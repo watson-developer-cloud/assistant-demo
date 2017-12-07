@@ -4,13 +4,19 @@ import PropTypes from 'prop-types';
 import ChatList from '../ChatList/ChatList';
 import ChatHeader from '../ChatHeader/ChatHeader';
 
-const ChatContainer = ({ onEnterText, messages }) => (
-  <div className="ibm-col-lg-8 ibm-col-full chat-container">
+const ChatContainer = ({
+  messages,
+  onUserInput,
+}) => (
+  <div className="ibm-col-lg-8 chat-container">
     <ChatHeader />
-    <ChatList messages={messages} />
+    <ChatList
+      messages={messages}
+      onUserInput={onUserInput}
+    />
     <InputWithButton
       onSubmit={(e) => {
-        onEnterText(e.target.value);
+        onUserInput('user', e.target.value);
         e.target.value = '';
       }}
       placeholder="Type here..."
@@ -20,7 +26,7 @@ const ChatContainer = ({ onEnterText, messages }) => (
 
 ChatContainer.propTypes = {
   messages: PropTypes.array.isRequired,
-  onEnterText: PropTypes.func.isRequired,
+  onUserInput: PropTypes.func.isRequired,
 };
 
 export default ChatContainer;

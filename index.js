@@ -31,7 +31,7 @@ app.get('/', (req, res) => {
   res.render('use', {
     bluemixAnalytics: !!process.env.BLUEMIX_ANALYTICS,
   });
-  res.sendFile('./public/index.html');
+  res.render('./dist/index.html');
 });
 
 app.post('/api/message', (req, res) => {

@@ -1,10 +1,13 @@
+process.env.NODE_ENV = 'production';
 require('dotenv').config({ silent: true });
 const app = require('../../index');
 const request = require('supertest');
 
 describe('express', () => {
   it('should load home page when GET /', (done) => {
-    request(app).get('/').expect(200, done);
+    request(app)
+      .get('/')
+      .expect(200, done);
   });
   it('should respond with JSON when GET /api/message', (done) => {
     request(app)

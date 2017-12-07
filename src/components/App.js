@@ -2,6 +2,7 @@ import React from 'react';
 import ChatContainer from './ChatContainer/ChatContainer';
 import SelectionSidebar from './SelectionSidebar/SelectionSidebar';
 import JsonSidebar from './JsonSidebar/JsonSidebar';
+import fetchMessage from './fetchMessage';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,11 +16,11 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.fetchMessage();
+    this.userInputEntered('user', 'Hi');
   }
 
-  updateChatList(sender, text) {
-    this.setState({ messages: [...this.state.messages, { sender, text }] });
+  updateChatList(type, text) {
+    this.setState({ messages: [...this.state.messages, { type, text }] });
   }
 
   updateJsonSidebar(json) {
@@ -30,37 +31,45 @@ class App extends React.Component {
     this.setState({ lastMessageContext: contextObj });
   }
 
-  fetchMessage(text) {
-    // construct conversation payload
-    const payload = {
-      input: { text },
-      context: this.state.lastMessageContext,
-    };
+  updateBotAction(outputObj) {
+    if (outputObj.output.generic !== undefined) {
+      outputObj.output.generic.forEach((response) => {
+        if (response.response_type === 'text') {
+          this.updateChatList('bot', response.text);
+        } else if (response.response_type === 'option') {
+          this.updateChatList('option', response.options);
+        }
+      });
+    } else {
+      outputObj.output.text.forEach((response) => {
+        if (response !== '') {
+          this.updateChatList('bot', response);
+        }
+      });
+    }
+  }
 
+  userInputEntered(type, text) {
     // add user message to state
-    this.updateChatList('user', text);
+    if (type !== 'option') {
+      this.updateChatList(type, text);
+    }
 
-    // send payload to conversation
-    fetch('/api/message', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    }).then((data) => {
-      data.json()
-        .then((json) => {
-          // update chat list with conversation response
-          this.updateChatList('bot', json.output.text[0]);
+    fetchMessage(text, this.state.lastMessageContext)
+      .then((data) => {
+        // render appropriate data
+        this.updateBotAction(data);
 
-          // send stringified JSON to sidebar
-          this.updateJsonSidebar(JSON.stringify(json));
+        // send stringified JSON to sidebar
+        this.updateJsonSidebar(JSON.stringify(data));
 
-          // update context
-          this.updateConversationContext(json.context);
-        });
-    });
+        // update context
+        this.updateConversationContext(data.context);
+      })
+      .catch((err) => {
+        this.updateChatList('bot', 'An error has occured.');
+        throw new Error(err);
+      });
   }
 
   render() {
@@ -69,7 +78,8 @@ class App extends React.Component {
         <SelectionSidebar />
         <ChatContainer
           messages={this.state.messages}
-          onEnterText={(text) => { this.fetchMessage(text); }}
+          chatOptions={this.state.chatOptions}
+          onUserInput={(type, text) => { this.userInputEntered(type, text); }}
         />
         <JsonSidebar json={this.state.lastMessageJson} />
       </div>
