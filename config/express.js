@@ -15,14 +15,19 @@
  */
 
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const expressBrowserify = require('express-browserify');
-const path = require('path');
+const webpack = require('webpack');
+const webpackDevMiddleware = require('webpack-dev-middleware');
+const webpackHotMiddleware = require('webpack-hot-middleware');
+const webpackConfig = require('./webpack.config.dev.js');
 
 module.exports = (app) => {
   // parse cookies
   app.use(cookieParser());
+
+  app.set('view engine', 'html');
 
   // handle URLencoded and json params
   app.use(bodyParser.urlencoded({
@@ -33,21 +38,21 @@ module.exports = (app) => {
     limit: '40mb',
   }));
 
-  // automatically bundle front end js on the fly
-  // note: this should be used before express.static since bundle.js is in the
-  // public folder
-  const isDev = (app.get('env') === 'development');
-  const browserifyier = expressBrowserify('./public/js/bundle.js', {
-    watch: isDev,
-    debug: isDev,
-    extension: ['jsx', 'js'],
-    transform: [['babelify', { presets: ['es2015', 'react'] }]],
-  });
-  if (!isDev) {
-    browserifyier.browserify.transform('uglifyify', { global: true });
-  }
-  app.get('/js/bundle.js', browserifyier);
+  // if we aren't in production we will use
+  // webpack dev middleware for dev server
+  if (process.env.NODE_ENV !== 'production') {
+    const webpackCompiler = webpack(webpackConfig);
 
-  // serve static files from the public folder
-  app.use(express.static(path.join(__dirname, '..', 'public')));
+    app.use(webpackDevMiddleware(webpackCompiler, {
+      publicPath: webpackConfig.output.publicPath,
+    }));
+
+    // hot loading makes everything better
+    app.use(webpackHotMiddleware(webpackCompiler, {
+      reload: false,
+    }));
+  // if we are in production, serve dist as static
+  } else {
+    app.use(express.static(path.resolve(__dirname, '..', 'dist')));
+  }
 };
