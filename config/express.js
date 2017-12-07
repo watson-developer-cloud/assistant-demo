@@ -21,7 +21,6 @@ const cookieParser = require('cookie-parser');
 const webpack = require('webpack');
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const webpackConfig = require('./webpack.config.dev.js');
 
 module.exports = (app) => {
   // parse cookies
@@ -42,6 +41,7 @@ module.exports = (app) => {
   // webpack dev middleware for dev server
   if (process.env.NODE_ENV !== 'production') {
     const webpackCompiler = webpack(webpackConfig);
+    const webpackConfig = require('./webpack.config.dev.js');
 
     app.use(webpackDevMiddleware(webpackCompiler, {
       publicPath: webpackConfig.output.publicPath,
