@@ -9,6 +9,6 @@ const mockJson = {
 describe('OptionsSidebar', () => {
   it('renders json widget', () => {
     const component = shallow(<OptionsSidebar json={JSON.stringify(mockJson)} />);
-    expect(component.find('.json-sidebar').text()).toEqual(expect.stringContaining('<JsonLinkInline />'));
+    expect(component.find('div').text()).toEqual(expect.stringContaining('<OptionsPanel /><JsonPane />'));
   });
 });
