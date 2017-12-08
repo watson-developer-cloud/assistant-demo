@@ -10,7 +10,6 @@ html {
 body {
   background: $duo-gray-100;
   color: $duo-gray-10;
-  max-height: 100vh;
 }
 
 input {
@@ -33,22 +32,25 @@ p {
 }
 
 button {
-  background: $duo-gray-80;
   border: none;
   border-radius: 0;
-  font-size: 0.875em;
+  background: $duo-gray-80;
   color: $duo-gray-20;
-  padding: 28px 16px;
+  font-size: 0.875em;
 
   &:focus {
     outline: none;
   }
 }
 
+.App {
+  height: 100vh;
+  max-height: 100vh;
+}
+
 .chat-container {
-  max-height: 80vh;
-  height: 80vh;
-  // background: $duo-gray-90;
+  max-height: 80%;
+  height: 80%;
 }
 
 .chat-header {
@@ -79,6 +81,10 @@ button {
     align-self: center;
     border-bottom: 1px solid $duo-gray-50;
   }
+}
+
+.generic-button {
+  padding: 30px;
 }
 
 .chat-option-list {
@@ -134,11 +140,25 @@ button {
   position: relative;
 }
 
+.options-panel {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
+.options-panel__button {
+  width: 20%;
+  flex: 0 1 100%;
+  margin-bottom: 3px;
+}
+
 .json-sidebar__overlay {
   position: absolute;
   background: $duo-black;
   width: 150%;
   height: 100%;
+  top: 0;
   right: 0; 
   z-index: 1;
   overflow-y: scroll;
