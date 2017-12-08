@@ -1,14 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import JsonSidebar from './JsonSidebar';
+import OptionsSidebar from './OptionsSidebar';
 
 const mockJson = {
   message: 'test',
 };
 
-describe('JsonSidebar', () => {
+describe('OptionsSidebar', () => {
   it('renders json widget', () => {
-    const component = shallow(<JsonSidebar json={JSON.stringify(mockJson)} />);
+    const component = shallow(<OptionsSidebar json={JSON.stringify(mockJson)} />);
     expect(component.find('.json-sidebar').text()).toEqual(expect.stringContaining('<JsonLinkInline />'));
   });
 });

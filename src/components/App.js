@@ -1,7 +1,7 @@
 import React from 'react';
 import ChatContainer from './ChatContainer/ChatContainer';
 import SelectionSidebar from './SelectionSidebar/SelectionSidebar';
-import JsonSidebar from './JsonSidebar/JsonSidebar';
+import OptionsSidebar from './OptionsSidebar/OptionsSidebar';
 import fetchMessage from './fetchMessage';
 
 class App extends React.Component {
@@ -16,14 +16,14 @@ class App extends React.Component {
   }
 
   componentWillMount() {
-    this.userInputEntered('user', 'Hi');
+    this.userInputEntered('user', '');
   }
 
   updateChatList(type, text) {
     this.setState({ messages: [...this.state.messages, { type, text }] });
   }
 
-  updateJsonSidebar(json) {
+  updateOptionsSidebar(json) {
     this.setState({ lastMessageJson: json });
   }
 
@@ -61,7 +61,7 @@ class App extends React.Component {
         this.updateBotAction(data);
 
         // send stringified JSON to sidebar
-        this.updateJsonSidebar(JSON.stringify(data));
+        this.updateOptionsSidebar(JSON.stringify(data));
 
         // update context
         this.updateConversationContext(data.context);
@@ -74,14 +74,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="ibm">
+      <div className="ibm App">
         <SelectionSidebar />
         <ChatContainer
           messages={this.state.messages}
           chatOptions={this.state.chatOptions}
           onUserInput={(type, text) => { this.userInputEntered(type, text); }}
         />
-        <JsonSidebar json={this.state.lastMessageJson} />
+        <OptionsSidebar json={this.state.lastMessageJson} />
       </div>
     );
   }

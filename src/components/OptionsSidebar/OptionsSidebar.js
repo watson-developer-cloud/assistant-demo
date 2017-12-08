@@ -2,7 +2,7 @@ import React from 'react';
 import { JsonLinkInline } from 'watson-react-components';
 import PropTypes from 'prop-types';
 
-class JsonSidebar extends React.Component {
+class OptionsSidebar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -16,17 +16,15 @@ class JsonSidebar extends React.Component {
   }
 
   render() {
-    const isHiddenClass = this.state.isJsonHidden ? 'is-hidden json-overlay' : 'json-overlay';
-    const isButtonSelected = this.state.isJsonHidden ? 'json-toggle' : 'json-toggle json-toggle--selected';
+    const isHiddenClass = this.state.isJsonHidden ? 'json-sidebar__overlay--hidden' : '';
+    //    const isSelectedClass = this.state.isJsonHidden ? '' : 'json-sidebar__button--selected';
+
+    // const jsonButtonClasses = `json-sidebar__button ${isSelectedClass}`;
+    const jsonOverlayClasses = `json-sidebar__overlay ${isHiddenClass}`;
 
     return (
       <div className="ibm-col-lg-4 json-sidebar">
-        <button
-          className={isButtonSelected}
-          onClick={() => { this.toggleJson(); }}
-        >JSON Button
-        </button>
-        <div className={isHiddenClass}>
+        <div className={jsonOverlayClasses}>
           <JsonLinkInline
             json={this.props.json}
             showJson={this.state.isJsonHidden}
@@ -40,8 +38,8 @@ class JsonSidebar extends React.Component {
   }
 }
 
-JsonSidebar.propTypes = {
+OptionsSidebar.propTypes = {
   json: PropTypes.string.isRequired,
 };
 
-export default JsonSidebar;
+export default OptionsSidebar;

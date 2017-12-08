@@ -89,6 +89,7 @@
     "phantomjs-prebuilt": "^2.1.15",
     "postcss-sass": "^0.2.0",
     "precommit-hook": "^3.0.0",
+    "react-svg-loader": "^2.1.0",
     "react-test-renderer": "^15.6.1",
     "sass-loader": "^6.0.6",
     "sinon": "^4.1.2",
