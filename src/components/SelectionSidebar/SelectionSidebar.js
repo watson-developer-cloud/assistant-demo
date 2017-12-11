@@ -1,6 +1,7 @@
 import React from 'react';
 import { Modal } from 'watson-react-components';
 import GenericButton from '../GenericButton/GenericButton';
+import PathSelectionCard from '../PathSelectionCard/PathSelectionCard';
 
 class SelectionSidebar extends React.Component {
   constructor(props) {
@@ -34,6 +35,24 @@ class SelectionSidebar extends React.Component {
             <p>In this demo, Watson Conversation has been trained on specific banking capabilities.
               Choose one of the 4 scenarios to explore.
             </p>
+            <div className="selection-sidebar__path-group">
+              <PathSelectionCard
+                text="Path One"
+                onClick={null}
+              />
+              <PathSelectionCard
+                text="Path Two"
+                onClick={null}
+              />
+              <PathSelectionCard
+                text="Path Three"
+                onClick={null}
+              />
+              <PathSelectionCard
+                text="Path Four"
+                onClick={null}
+              />
+            </div>
           </div>
         </Modal>
       </div>

@@ -83,7 +83,20 @@ button {
   }
 }
 
-.selection-sidebar__modal-content {
+.selection-sidebar__path-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.path-selection-card {
+  flex: 0 1 40%;
+  margin: 1rem;
+  padding: 3rem 0;
+  background: $duo-blue-60;
 }
 
 .generic-button {
