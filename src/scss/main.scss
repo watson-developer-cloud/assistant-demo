@@ -83,6 +83,9 @@ button {
   }
 }
 
+.selection-sidebar__modal-content {
+}
+
 .generic-button {
   padding: 30px;
 }
@@ -192,4 +195,42 @@ button {
 
 .property {
   color: $duo-blue-60;
+}
+
+.overlay {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.1s ease-in-out;
+}
+
+.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal {
+  background: $duo-gray-80;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100vw;
+  width: 100vw;
+  max-height: 100vh;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.modal--x {
+  position: absolute;
+  top: 2rem;
+  left: 1rem;
+  
+  svg {
+    fill: white;
+  }
 }
