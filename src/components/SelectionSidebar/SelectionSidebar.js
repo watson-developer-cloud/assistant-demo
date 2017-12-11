@@ -31,9 +31,11 @@ class SelectionSidebar extends React.Component {
           onEnter={() => { this.onEnter(); }}
         >
           <div className="selection-sidebar__modal-content ibm-col-lg-8">
-            <p>In this demo, Watson Conversation has been trained on specific banking capabilities. Choose one of the 4 scenarios to explore.</p>
+            <p>In this demo, Watson Conversation has been trained on specific banking capabilities.
+              Choose one of the 4 scenarios to explore.
+            </p>
           </div>
-          </Modal>
+        </Modal>
       </div>
     );
   }
