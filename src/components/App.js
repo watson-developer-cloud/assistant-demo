@@ -32,18 +32,20 @@ class App extends React.Component {
   }
 
   updateBotAction(outputObj) {
+    // always read the text from output
+    outputObj.output.text.forEach((response) => {
+      if (response !== '') {
+        this.updateChatList('bot', response);
+      }
+    });
+
+    // check for chat options in generic options object
     if (outputObj.output.generic !== undefined) {
       outputObj.output.generic.forEach((response) => {
         if (response.response_type === 'text') {
           this.updateChatList('bot', response.text);
         } else if (response.response_type === 'option') {
           this.updateChatList('option', response.options);
-        }
-      });
-    } else {
-      outputObj.output.text.forEach((response) => {
-        if (response !== '') {
-          this.updateChatList('bot', response);
         }
       });
     }
