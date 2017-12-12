@@ -31,7 +31,7 @@ class App extends React.Component {
     this.setState({ lastMessageContext: contextObj });
   }
 
-  updateBotAction(outputObj) {
+  botResponseHandler(outputObj) {
     // always read the text from output
     outputObj.output.text.forEach((response) => {
       if (response !== '') {
@@ -42,6 +42,7 @@ class App extends React.Component {
     // check for chat options in generic options object
     if (outputObj.output.generic !== undefined) {
       outputObj.output.generic.forEach((response) => {
+        // update text responses at bot chat, and option responses as options
         if (response.response_type === 'text') {
           this.updateChatList('bot', response.text);
         } else if (response.response_type === 'option') {
@@ -60,7 +61,7 @@ class App extends React.Component {
     fetchMessage(text, this.state.lastMessageContext)
       .then((data) => {
         // render appropriate data
-        this.updateBotAction(data);
+        this.botResponseHandler(data);
 
         // send stringified JSON to sidebar
         this.updateOptionsSidebar(JSON.stringify(data));
