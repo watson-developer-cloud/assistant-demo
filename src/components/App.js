@@ -21,6 +21,12 @@ class App extends React.Component {
 
   updateChatList(type, text) {
     this.setState({ messages: [...this.state.messages, { type, text }] });
+
+    // autoscroll to bottom
+    const chatContainer = document.getElementsByClassName('chat-list');
+    if (chatContainer[0] !== undefined) {
+      chatContainer[0].scrollTop = chatContainer[0].scrollHeight;
+    }
   }
 
   updateOptionsSidebar(json) {
