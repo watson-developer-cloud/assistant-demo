@@ -1,0 +1,38 @@
+@import '../../scss/colors';
+
+.property {
+  color: $duo-blue-60;
+}
+
+.json-pane {
+  position: absolute;
+  background: $duo-black;
+  width: 150%;
+  height: 100%;
+  top: 0;
+  right: 0; 
+  z-index: 1;
+  overflow-y: scroll;
+  transition: right 0.2s ease-in-out;
+}
+
+/* Triggered when the JSON button is toggled */
+.json-pane--hidden {
+  opacity: 0;
+  visibility: hidden; 
+  transition: all 0.2s ease-in-out;
+}
+
+/* JSON button */
+// TODO: move to sidebar
+.json-sidebar__button {
+  position: relative;
+  right: 0;
+  float: right;
+  z-index: 5;
+}
+
+.json-sidebar__button--selected {
+  background: $duo-blue-70;
+  transition: all 0.2s ease-in-out;
+}

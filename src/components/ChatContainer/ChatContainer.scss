@@ -1,0 +1,31 @@
+@import '../../scss/colors';
+
+.chat-container {
+  max-height: 80%;
+  height: 80%;
+}
+
+.chat-container__header {
+  background: $duo-gray-80;
+  border-radius: 7px 7px 0 0;
+}
+
+.input-with-button {
+  background: $duo-gray-90;
+  display: flex;
+  justify-content: center;
+
+  button {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  input {
+    flex: 0 1 80%;
+    margin: 5% 0;
+    padding: 0.5rem 0;
+    align-self: center;
+    border-bottom: 1px solid $duo-gray-50;
+  }
+}
