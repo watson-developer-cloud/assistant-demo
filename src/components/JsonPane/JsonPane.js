@@ -3,8 +3,8 @@ import { JsonLinkInline } from 'watson-react-components';
 import PropTypes from 'prop-types';
 
 const JsonPane = ({ json, isVisible }) => {
-  const isHiddenClass = isVisible ? '' : 'json-sidebar__overlay--hidden';
-  const jsonOverlayClasses = `json-sidebar__overlay ${isHiddenClass}`;
+  const isHiddenClass = isVisible ? '' : 'json-pane--hidden';
+  const jsonOverlayClasses = `json-pane ${isHiddenClass}`;
 
   return (
     <div className={jsonOverlayClasses}>
@@ -14,6 +14,7 @@ const JsonPane = ({ json, isVisible }) => {
         onExit={null}
         onShow={null}
         description={<p>JSON</p>}
+        lineNumbers
       />
     </div>
   );

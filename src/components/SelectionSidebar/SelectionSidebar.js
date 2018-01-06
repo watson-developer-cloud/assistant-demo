@@ -1,60 +1,35 @@
 import React from 'react';
-import { Modal } from 'watson-react-components';
-import GenericButton from '../GenericButton/GenericButton';
-import PathSelectionCard from '../PathSelectionCard/PathSelectionCard';
+import DemoButton from '../DemoButton/DemoButton';
+import PathSelectionOverlay from '../PathSelectionOverlay/PathSelectionOverlay';
 
 class SelectionSidebar extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      modalVisible: false,
+      isOverlayVisible: false,
     };
   }
 
   onExit() {
-    this.setState({ modalVisible: false });
+    this.setState({ isOverlayVisible: false });
   }
 
   onEnter() {
-    this.setState({ modalVisible: true });
+    this.setState({ isOverlayVisible: true });
   }
 
   render() {
     return (
       <div className="ibm-col-lg-4 ibm-col-sm-0">
-        <GenericButton
+        <DemoButton
           onClick={() => { this.onEnter(); }}
         />
-        <Modal
-          isOpen={this.state.modalVisible}
-          onExit={() => { this.onExit(); }}
+        <PathSelectionOverlay
+          isOverlayVisible={this.state.isOverlayVisible}
           onEnter={() => { this.onEnter(); }}
-        >
-          <div className="selection-sidebar__modal-content ibm-col-lg-8">
-            <p>In this demo, Watson Conversation has been trained on specific banking capabilities.
-              Choose one of the 4 scenarios to explore.
-            </p>
-            <div className="selection-sidebar__path-group">
-              <PathSelectionCard
-                text="Path One"
-                onClick={null}
-              />
-              <PathSelectionCard
-                text="Path Two"
-                onClick={null}
-              />
-              <PathSelectionCard
-                text="Path Three"
-                onClick={null}
-              />
-              <PathSelectionCard
-                text="Path Four"
-                onClick={null}
-              />
-            </div>
-          </div>
-        </Modal>
+          onExit={() => { this.onExit(); }}
+        />
       </div>
     );
   }

@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import OptionsPanel from '../OptionsPanel/OptionsPanel';
 import JsonPane from '../JsonPane/JsonPane';
+import DemoButton from '../DemoButton/DemoButton';
+import DemoToggleButton from '../DemoToggleButton/DemoToggleButton';
 
 class OptionsSidebar extends React.Component {
   constructor(props) {
@@ -17,15 +18,16 @@ class OptionsSidebar extends React.Component {
   }
 
   render() {
-    //    const isSelectedClass = this.state.isJsonVisible ? '' : 'json-sidebar__button--selected';
-
-    // const jsonButtonClasses = `json-sidebar__button ${isSelectedClass}`;
-
     return (
       <div className="ibm-col-lg-4 json-sidebar">
-        <OptionsPanel
-          toggleJson={() => { this.toggleJson(); }}
-        />
+        <div className="options-panel">
+          <DemoToggleButton
+            isToggled={this.state.isJsonVisible}
+            onClick={() => { this.toggleJson(); }}
+          />
+          <DemoButton />
+          <DemoButton />
+        </div>
         <JsonPane
           json={this.props.json}
           isVisible={this.state.isJsonVisible}

@@ -3,12 +3,16 @@ import { shallow } from 'enzyme';
 import ChatList from './ChatList';
 
 const mockMessages = [
-  { sender: 'bot', text: 'first' },
+  { type: 'bot', content: 'first' },
 ];
+
+const onUserInput = () => (
+  'works'
+);
 
 describe('ChatList', () => {
   it('renders a list of messages', () => {
-    const component = shallow(<ChatList messages={mockMessages} />);
-    expect(component.find('div').text()).toEqual('<GenericMessage />');
+    const component = shallow(<ChatList messages={mockMessages} onUserInput={onUserInput} />);
+    expect(component.find('div').text()).toEqual('<ChatMessage />');
   });
 });
