@@ -1,0 +1,11 @@
+.demo-button {
+  margin: 0.1em 0;
+  padding: 30px;
+}
+
+@media (max-width: 500px) {
+  .demo-button {
+    margin: 0.1em 0;
+  }
+}
+
