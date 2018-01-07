@@ -36,3 +36,10 @@
   background: $duo-blue-70;
   transition: all 0.2s ease-in-out;
 }
+
+@media (max-width: 500px) {
+  .json-pane {
+    width: 100vw;
+    height: 100vh;
+  }
+}
