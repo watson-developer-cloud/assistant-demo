@@ -14,7 +14,7 @@
 @import '../components/JsonPane/JsonPane';
 @import '../components/PathSelectionOverlay/PathSelectionOverlay';
 @import '../components/DemoToggleButton/DemoToggleButton';
-
+@import '../components/OptionsSidebar/OptionsSidebar';
 
 .path-selection-card {
   flex: 0 1 40%;
@@ -60,23 +60,6 @@
 
 .chat-option__button--selected {
   background: $duo-blue-60;
-}
-
-.json-sidebar {
-  position: relative;
-}
-
-.options-panel {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  align-items: flex-end;
-}
-
-.options-panel__button {
-  width: 20%;
-  flex: 0 1 100%;
-  margin-bottom: 3px;
 }
 
 .overlay {
