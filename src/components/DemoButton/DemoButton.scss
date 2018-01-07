@@ -1,6 +1,6 @@
 .demo-button {
-  margin: 0.1em 0;
-  padding: 1.7em;
+  margin-bottom: 0.1em;
+  padding: 1.4em;
 
   img {
     width: 24px;
@@ -10,7 +10,8 @@
 
 @media (max-width: 500px) {
   .demo-button {
-    margin: 0.1em 0;
+    margin: 0;
+    padding: 1.4em;
   }
 }
 

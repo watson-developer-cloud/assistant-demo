@@ -1,14 +1,40 @@
 @import '../../scss/colors';
 
-.property {
-  color: $duo-blue-60;
+/* Start JSON format styles */
+
+/* token is a shared class for all JSON tokens */
+.token {
+  font-size: 0.9em;
 }
+
+.property {
+  color: $duo-teal-30;
+}
+
+.operator {}
+
+.punctuation {}
+
+.string {
+  color: $duo-blue-50;
+}
+
+.number {
+  color: $duo-alert-yellow;
+}
+
+.boolean {
+  color: $duo-alert-orange;
+}
+
+/* end JSON format styles */
 
 .json-pane {
   position: absolute;
+  margin: 1.515151vw; // to match container padding
   background: $duo-black;
-  width: 150%;
-  height: 100%;
+  width: 200%;
+  height: 78%;
   top: 0;
   right: 0; 
   z-index: 1;
@@ -23,22 +49,9 @@
   transition: all 0.2s ease-in-out;
 }
 
-/* JSON button */
-// TODO: move to sidebar
-.json-sidebar__button {
-  position: relative;
-  right: 0;
-  float: right;
-  z-index: 5;
-}
-
-.json-sidebar__button--selected {
-  background: $duo-blue-70;
-  transition: all 0.2s ease-in-out;
-}
-
 @media (max-width: 500px) {
   .json-pane {
+    margin: 0;
     width: 100vw;
     height: 100vh;
   }

@@ -13,7 +13,7 @@ const JsonPane = ({ json, isVisible }) => {
         showJson={isVisible}
         onExit={null}
         onShow={null}
-        description={<p>JSON</p>}
+        description=""
         lineNumbers
       />
     </div>
