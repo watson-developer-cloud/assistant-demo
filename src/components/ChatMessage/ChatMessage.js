@@ -12,7 +12,7 @@ const ChatMessage = ({ type, text }) => {
     );
   } else if (type === 'user') {
     return (
-      <div className="chat-message">
+      <div className="chat-message chat-message--anchor-right">
         <p className="chat-message--user">
           {text}
         </p>

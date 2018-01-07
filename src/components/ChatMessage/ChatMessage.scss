@@ -5,6 +5,13 @@
   margin-left: auto;
 }
 
+.chat-message--anchor-right {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+
 .chat-message--bot {
   display: inline-block;
   color: $duo-gray-10;
