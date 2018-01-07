@@ -8,7 +8,7 @@
     "start:prod": "npm run build && NODE_ENV=production node server.js",
     "build": "./node_modules/webpack/bin/webpack.js --config ./config/webpack.config.prod.js",
     "test-unit": "npm run build && istanbul cover ./node_modules/mocha/bin/_mocha ./test/unit",
-    "test-react": "./node_modules/jest/bin/jest.js --bail --coverage",
+    "test-react": "./node_modules/jest/bin/jest.js --config ./test/jest.config.json",
     "test": "npm run lint && npm run test-unit && npm run test-react",
     "lint": "eslint .",
     "autofix": "eslint --fix .",
