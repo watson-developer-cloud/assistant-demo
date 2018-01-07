@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Icon from '../Icon/Icon';
 
-const DemoButton = ({ onClick }) => (
+const DemoButton = ({ icon, onClick }) => (
   <button
     className="demo-button"
     onClick={() => { onClick(); }}
-  />
+  >
+    <Icon type={icon} size={24} />
+  </button>
 );
 
 DemoButton.propTypes = {
+  icon: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };
 

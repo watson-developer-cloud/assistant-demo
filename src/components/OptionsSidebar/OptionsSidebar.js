@@ -23,10 +23,18 @@ class OptionsSidebar extends React.Component {
         <div className="options-panel">
           <DemoToggleButton
             isToggled={this.state.isJsonVisible}
+            icon="code"
+            alt="json-button"
             onClick={() => { this.toggleJson(); }}
           />
-          <DemoButton />
-          <DemoButton />
+          <DemoButton
+            icon="code"
+            onClick={null}
+          />
+          <DemoButton
+            icon="code"
+            onClick={null}
+          />
         </div>
         <JsonPane
           json={this.props.json}
