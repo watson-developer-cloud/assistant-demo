@@ -36,11 +36,16 @@ button {
   border-radius: 0;
   background: $duo-gray-80;
   color: $duo-gray-20;
-  font-size: 0.875em;
 
   &:focus {
     outline: none;
   }
 }
 
+svg {
+  fill: none;
 
+  g {
+    fill: $duo-gray-20;
+  }
+}
