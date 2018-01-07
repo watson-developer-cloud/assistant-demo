@@ -1,0 +1,24 @@
+.options-sidebar {
+  position: relative;
+}
+
+.options-panel {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
+.options-panel__button {
+  width: 20%;
+  flex: 0 1 100%;
+  margin-bottom: 3px;
+}
+
+@media (max-width: 500px) {
+  .options-sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

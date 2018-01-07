@@ -19,7 +19,7 @@ class OptionsSidebar extends React.Component {
 
   render() {
     return (
-      <div className="ibm-col-lg-4 json-sidebar">
+      <div className="ibm-col-lg-4 options-sidebar">
         <div className="options-panel">
           <DemoToggleButton
             isToggled={this.state.isJsonVisible}
