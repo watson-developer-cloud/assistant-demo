@@ -9,14 +9,9 @@
   align-items: flex-end;
 }
 
-.options-panel__button {
-  width: 20%;
-  flex: 0 1 100%;
-  margin-bottom: 3px;
-}
-
 @media (max-width: 500px) {
   .options-sidebar {
+    padding: 0;
     position: absolute;
     top: 0;
     right: 0;
