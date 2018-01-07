@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const DemoButton = ({ onClick }) => (
   <button
-    className="demo-button options-panel__button"
+    className="demo-button"
     onClick={() => { onClick(); }}
   />
 );
