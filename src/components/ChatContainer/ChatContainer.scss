@@ -14,6 +14,7 @@
   background: $duo-gray-90;
   display: flex;
   justify-content: center;
+  padding: inherit;
 
   button {
     position: absolute;
@@ -22,9 +23,7 @@
   }
 
   input {
-    flex: 0 1 80%;
-    margin: 5% 0;
-    padding: 0.5rem 0;
+    flex: 0 1 90%;
     align-self: center;
     border-bottom: 1px solid $duo-gray-50;
   }
