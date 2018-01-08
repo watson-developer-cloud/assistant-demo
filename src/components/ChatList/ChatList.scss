@@ -2,6 +2,7 @@
 
 .chat-list {
   background: $duo-gray-90;
-  height: 75%;
+  // height: 75%;
   overflow-y: scroll;
+  flex: 1;
 }

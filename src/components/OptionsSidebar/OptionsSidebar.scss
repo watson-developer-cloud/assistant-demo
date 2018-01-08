@@ -1,6 +1,10 @@
 .options-sidebar {
   position: relative;
   height: 80%;
+  .options-sidebar-container {
+    position: relative;
+    height: 100%;
+  }
 }
 
 .options-panel {

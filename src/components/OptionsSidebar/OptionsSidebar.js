@@ -20,26 +20,28 @@ class OptionsSidebar extends React.Component {
   render() {
     return (
       <div className="ibm-col-lg-4 options-sidebar">
-        <div className="options-panel">
-          <DemoToggleButton
-            isToggled={this.state.isJsonVisible}
-            icon="code"
-            alt="json-button"
-            onClick={() => { this.toggleJson(); }}
-          />
-          <DemoButton
-            icon="code"
-            onClick={null}
-          />
-          <DemoButton
-            icon="code"
-            onClick={null}
+        <div className="options-sidebar-container">
+          <div className="options-panel">
+            <DemoToggleButton
+              isToggled={this.state.isJsonVisible}
+              icon="code"
+              alt="json-button"
+              onClick={() => { this.toggleJson(); }}
+            />
+            <DemoButton
+              icon="code"
+              onClick={null}
+            />
+            <DemoButton
+              icon="code"
+              onClick={null}
+            />
+          </div>
+          <JsonPane
+            json={this.props.json}
+            isVisible={this.state.isJsonVisible}
           />
         </div>
-        <JsonPane
-          json={this.props.json}
-          isVisible={this.state.isJsonVisible}
-        />
       </div>
     );
   }
