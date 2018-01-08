@@ -31,12 +31,11 @@
 
 .json-pane {
   position: absolute;
-  margin: 1.515151vw; // to match container padding
   background: $duo-black;
   width: 200%;
-  height: 78%;
+  height: 100%;
   top: 0;
-  right: 0; 
+  right: 0;
   z-index: 1;
   overflow-y: scroll;
   transition: right 0.2s ease-in-out;
