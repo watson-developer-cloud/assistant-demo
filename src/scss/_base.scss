@@ -1,0 +1,51 @@
+@import 'colors';
+
+/*
+ * Contains base styles for all demo applications
+ */
+html {
+  font-size: 16px;
+}
+
+body {
+  background: $duo-gray-100;
+  color: $duo-gray-10;
+}
+
+input {
+  border-style: none;
+  border-color: none;
+  border-width: 0;
+  background: none;
+  font-size: 1em; // 16px
+  line-height: 1.375em;
+  color: $duo-gray-50;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+p {
+  font-size: 1.125em; // 18px
+  line-height: 1.5em;
+}
+
+button {
+  border: none;
+  border-radius: 0;
+  background: $duo-gray-80;
+  color: $duo-gray-20;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+svg {
+  fill: none;
+
+  g {
+    fill: $duo-gray-20;
+  }
+}

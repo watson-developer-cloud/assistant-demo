@@ -1,85 +1,46 @@
+/* main imports */
+@import 'base';
 @import 'colors';
+
+/* vendor imports */
 @import '~\@ibm/grid/dist/ibm-grid.min.css';
 @import '~\@ibm/type/css/ibm-type.min.css';
 
-/* set base font size */
-html {
-  font-size: 16px;
+/* component specific imports */
+@import '../components/App';
+@import '../components/ChatContainer/ChatContainer';
+@import '../components/ChatList/ChatList';
+@import '../components/ChatMessage/ChatMessage';
+@import '../components/JsonPane/JsonPane';
+@import '../components/PathSelectionOverlay/PathSelectionOverlay';
+@import '../components/DemoButton/DemoButton';
+@import '../components/DemoToggleButton/DemoToggleButton';
+@import '../components/OptionsSidebar/OptionsSidebar';
+
+.path-selection-card {
+  flex: 0 1 40%;
+  margin: 1rem;
+  padding: 3rem 0;
+  background: $duo-blue-60;
 }
 
-body {
-  background: $duo-gray-100;
-  color: $duo-gray-10;
-  max-height: 100vh;
+// TODO: move this to base?
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-input {
-  border-style: none;
-  border-color: none;
-  border-width: 0;
-  background: none;
-  font-size: 1em; // 16px
-  line-height: 1.375em;
-  color: $duo-gray-50;
-
-  &:focus {
-    outline: none;
+.modal--x {
+  position: absolute;
+  top: 2rem;
+  left: 1rem;
+  
+  svg {
+    fill: white;
   }
 }
-
-p {
-  font-size: 1.125em; // 18px
-  line-height: 1.5em;
-}
-
-button {
-  background: $duo-gray-80;
-  border: none;
-  border-radius: 0;
-  font-size: 0.875em;
-  color: $duo-gray-20;
-  padding: 28px 16px;
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.chat-container {
-  max-height: 80vh;
-  height: 80vh;
-  // background: $duo-gray-90;
-}
-
-.chat-header {
-  background: $duo-gray-80;
-}
-
-.chat-list {
-  background: $duo-gray-90;
-  height: 75%;
-  overflow-y: scroll;
-}
-
-.input-with-button {
-  background: $duo-gray-90;
-  display: flex;
-  justify-content: center;
-
-  button {
-    position: absolute;
-    visibility: hidden;
-    opacity: 0;
-  }
-
-  input {
-    flex: 0 1 80%;
-    margin: 5% 0;
-    padding: 0.5rem 0;
-    align-self: center;
-    border-bottom: 1px solid $duo-gray-50;
-  }
-}
+// TODO: move to base selector
 
 .chat-option-list {
   width: 100%;
@@ -99,77 +60,13 @@ button {
   background: $duo-blue-60;
 }
 
-.bot-chat {
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  color: $duo-gray-10;
-
-  &::before {
-    flex: 0 1 1%;
-    content: "|";
-    padding: 5px;
-    color: $duo-blue-60;
-    font-size: 1.2em;
-    font-weight: 700;
-  }
-}
-
-.chatBar {
-  padding: 0.3rem 0;
-}
-
-.user-chat {
-  text-align: right;
-}
-
-.bubble {
-  background: $duo-gray-60;
-  padding: 10px 20px;
-  border-radius: 500px;
-  font-size: 0.875em; // 14px
-}
-
-.json-sidebar {
-  position: relative;
-}
-
-.json-sidebar__overlay {
-  position: absolute;
-  background: $duo-black;
-  width: 150%;
-  height: 100%;
-  right: 0; 
-  z-index: 1;
-  overflow-y: scroll;
-  transition: right 0.2s ease-in-out;
-}
-
-/* Triggered when the JSON button is toggled */
-.json-sidebar__overlay--hidden {
+.overlay {
   opacity: 0;
-  visibility: hidden; 
-  transition: all 0.2s ease-in-out;
+  visibility: hidden;
+  transition: all 0.1s ease-in-out;
 }
 
-/* JSON button */
-.json-sidebar__button {
-  position: relative;
-  right: 0;
-  float: right;
-  z-index: 5;
-}
-
-.json-sidebar__button--selected {
-  background: $duo-blue-70;
-  transition: all 0.2s ease-in-out;
-}
-
-/* Begin JSON styles */
-.token {
-  // something with font type here
-}
-
-.property {
-  color: $duo-blue-60;
+.show {
+  opacity: 1;
+  visibility: visible;
 }

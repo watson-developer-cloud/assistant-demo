@@ -1,0 +1,58 @@
+@import '../../scss/colors';
+
+/* Start JSON format styles */
+
+/* token is a shared class for all JSON tokens */
+.token {
+  font-size: 0.9em;
+}
+
+.property {
+  color: $duo-teal-30;
+}
+
+.operator {}
+
+.punctuation {}
+
+.string {
+  color: $duo-blue-50;
+}
+
+.number {
+  color: $duo-alert-yellow;
+}
+
+.boolean {
+  color: $duo-alert-orange;
+}
+
+/* end JSON format styles */
+
+.json-pane {
+  position: absolute;
+  margin: 1.515151vw; // to match container padding
+  background: $duo-black;
+  width: 200%;
+  height: 78%;
+  top: 0;
+  right: 0; 
+  z-index: 1;
+  overflow-y: scroll;
+  transition: right 0.2s ease-in-out;
+}
+
+/* Triggered when the JSON button is toggled */
+.json-pane--hidden {
+  opacity: 0;
+  visibility: hidden; 
+  transition: all 0.2s ease-in-out;
+}
+
+@media (max-width: 500px) {
+  .json-pane {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+}

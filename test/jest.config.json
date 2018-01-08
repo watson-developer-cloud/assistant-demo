@@ -1,0 +1,10 @@
+{
+  "bail": true,
+  "verbose": true,
+  "collectCoverage": true,
+  "rootDir": "../",
+  "setupTestFrameworkScriptFile": "<rootDir>/src/components/setupTests.js",
+  "moduleNameMapper": {
+    "\\.(css|jpg|svg|png|)$": "<rootDir>/test/emptyModule.js"
+  }
+}

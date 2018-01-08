@@ -1,0 +1,9 @@
+@import '../../scss/colors';
+
+.demo-toggle-button {
+  z-index: 5;
+}
+
+.demo-toggle-button__toggled {
+  background: $duo-gradient-blue;
+}

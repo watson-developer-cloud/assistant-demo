@@ -1,0 +1,23 @@
+.options-sidebar {
+  position: relative;
+}
+
+.options-panel {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+}
+
+@media (max-width: 500px) {
+  .options-sidebar {
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  .options-panel {
+    flex-direction: row-reverse;
+  }
+}
