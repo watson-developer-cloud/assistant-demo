@@ -1,5 +1,8 @@
-.App {
+#root {
   height: 100vh;
-  max-height: 100vh;
+  .App {
+  	min-height: 50vh;
+  	height: 65vh;
+  }
 }
 
