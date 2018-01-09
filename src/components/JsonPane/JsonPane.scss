@@ -56,3 +56,19 @@
     height: 100vh;
   }
 }
+
+@media (max-width: 639px) {
+  .json-pane {
+    width: 100vw;
+    top: 0;
+    left: 1.5151515vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .json-pane {
+    width: 100vw;
+    top: 0;
+    left: 0;
+  }
+}

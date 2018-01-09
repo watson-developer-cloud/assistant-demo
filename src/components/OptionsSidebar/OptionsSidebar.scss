@@ -1,7 +1,7 @@
 .options-sidebar {
   position: relative;
   // height: 65%;
-  width: auto;
+  // width: auto;
   .options-sidebar-container {
     position: relative;
     height: 100%;
@@ -18,7 +18,7 @@
 /* Tablet size */
 @media (max-width: 1055px) {
   .options-sidebar {
-    margin: 3.125vw;
+    margin: 3.125vw 1.6vw;
     padding: 0;
     position: absolute;
     top: 0;
@@ -28,6 +28,14 @@
 
   .options-panel {
     flex-direction: row-reverse;
+    button {
+      &:first-of-type {
+        border-radius: 0 7px 0 0;
+        &.demo-toggle-button__toggled {
+          border-radius: 0;
+        }
+      }
+    }
   }
 }
 
@@ -49,6 +57,7 @@
 }
 @media (max-width: 500px) {
   .options-sidebar {
+    width: 100%;
     margin: 0;
   }
 }
