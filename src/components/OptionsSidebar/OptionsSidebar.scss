@@ -14,12 +14,25 @@
   align-items: flex-end;
 }
 
-@media (max-width: 500px) {
+/* Tablet size */
+@media (max-width: 1055px) {
   .options-sidebar {
+    margin: 3.125vw;
     padding: 0;
     position: absolute;
     top: 0;
     right: 0;
+  }
+
+  .options-panel {
+    flex-direction: row-reverse;
+  }
+}
+
+/* Mobile Size */
+@media (max-width: 500px) {
+  .options-sidebar {
+    margin: 0;
   }
 
   .options-panel {
