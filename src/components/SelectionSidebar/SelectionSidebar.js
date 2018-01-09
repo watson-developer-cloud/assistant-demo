@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import DemoButton from '../DemoButton/DemoButton';
 import PathSelectionOverlay from '../PathSelectionOverlay/PathSelectionOverlay';
 
@@ -19,6 +20,11 @@ class SelectionSidebar extends React.Component {
     this.setState({ isOverlayVisible: true });
   }
 
+  onPathSelect(path) {
+    this.props.onPathSelect(path);
+    this.onExit();
+  }
+
   render() {
     return (
       <div className="ibm-col-lg-4 ibm-col-sm-0">
@@ -29,10 +35,15 @@ class SelectionSidebar extends React.Component {
           isOverlayVisible={this.state.isOverlayVisible}
           onEnter={() => { this.onEnter(); }}
           onExit={() => { this.onExit(); }}
+          onPathSelect={(path) => { this.onPathSelect(path); }}
         />
       </div>
     );
   }
 }
+
+SelectionSidebar.propTypes = {
+  onPathSelect: PropTypes.func.isRequired,
+};
 
 export default SelectionSidebar;
