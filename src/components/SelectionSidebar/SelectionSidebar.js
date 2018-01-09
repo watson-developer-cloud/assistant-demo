@@ -29,6 +29,7 @@ class SelectionSidebar extends React.Component {
     return (
       <div className="ibm-col-lg-4 ibm-col-md-2 ibm-col-sm-0">
         <DemoButton
+          icon="path"
           onClick={() => { this.onEnter(); }}
         />
         <PathSelectionOverlay
