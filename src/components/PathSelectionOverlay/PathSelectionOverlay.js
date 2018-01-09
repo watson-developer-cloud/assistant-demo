@@ -15,11 +15,13 @@ const PathSelectionOverlay = ({
     onEnter={() => { onEnter(); }}
   >
     <div className="ibm path-selection-overlay__container">
-      <div className="ibm-col-lg-8 path-selection-overlay">
-        <p>In this demo, Watson Conversation has been trained on specific banking capabilities.
-          Choose one of the 4 scenarios to explore.
-        </p>
+      <div className="path-selection-overlay">
         <div className="path-selection-overlay__card-group">
+          <div className="path-selection-card__card-intro">
+            <p className="ibm-type-c">In this demo, Watson Conversation has been trained on specific banking capabilities.
+              Choose one of the 4 scenarios to explore.
+            </p>
+          </div>
           <PathSelectionCard
             pathNode={0}
             label="Path One"

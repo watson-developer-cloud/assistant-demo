@@ -18,7 +18,12 @@
       flex-wrap: wrap;
       align-items: flex-start;
       justify-content: center;
-      margin-top: 5rem;
+      .path-selection-card__card-intro {
+        // margin-top: 5rem;
+        flex: 0 1 73%;
+        // margin: 1rem;
+        padding: 1rem 0;
+      }
     }
   }
 }
