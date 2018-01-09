@@ -27,7 +27,7 @@ class SelectionSidebar extends React.Component {
 
   render() {
     return (
-      <div className="ibm-col-lg-4 ibm-col-sm-0">
+      <div className="ibm-col-lg-4 ibm-col-md-2 ibm-col-sm-0">
         <DemoButton
           onClick={() => { this.onEnter(); }}
         />
