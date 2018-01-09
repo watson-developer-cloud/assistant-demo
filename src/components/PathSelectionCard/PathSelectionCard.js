@@ -1,18 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const PathSelectionCard = ({ text, onClick }) => (
+const PathSelectionCard = ({ label, path, onClick }) => (
   <button
     className="path-selection-card"
-    onClick={() => { onClick(); }}
+    onClick={() => { onClick(path); }}
   >
-    <p>{text}</p>
+    <p>{label}</p>
   </button>
 );
 
 PathSelectionCard.propTypes = {
-  text: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default PathSelectionCard;

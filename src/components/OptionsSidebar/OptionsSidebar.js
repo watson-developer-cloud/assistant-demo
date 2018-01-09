@@ -29,11 +29,11 @@ class OptionsSidebar extends React.Component {
               onClick={() => { this.toggleJson(); }}
             />
             <DemoButton
-              icon="code"
+              icon="restart"
               onClick={null}
             />
             <DemoButton
-              icon="code"
+              icon="share"
               onClick={null}
             />
           </div>

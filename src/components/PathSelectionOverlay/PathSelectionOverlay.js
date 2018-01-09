@@ -22,23 +22,27 @@ const PathSelectionOverlay = ({
         <div className="path-selection-overlay__card-group">
           <PathSelectionCard
             pathNode={0}
-            text="Path One"
-            onClick={() => { onPathSelect(); }}
+            label="Path One"
+            path="I\'d like to get a new credit card"
+            onClick={(path) => { onPathSelect(path); }}
           />
           <PathSelectionCard
             pathNode={1}
-            text="Path Two"
-            onClick={() => { onPathSelect(); }}
+            label="Path Two"
+            path="This is the second path available"
+            onClick={(path) => { onPathSelect(path); }}
           />
           <PathSelectionCard
             pathNode={2}
-            text="Path Three"
-            onClick={() => { onPathSelect(); }}
+            label="Path Three"
+            path="This is the third path available"
+            onClick={(path) => { onPathSelect(path); }}
           />
           <PathSelectionCard
             pathNode={3}
-            text="Path Four"
-            onClick={() => { onPathSelect(); }}
+            label="Path Four"
+            path="This is the fourth path avilable"
+            onClick={(path) => { onPathSelect(path); }}
           />
         </div>
       </div>

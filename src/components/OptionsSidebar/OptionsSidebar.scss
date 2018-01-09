@@ -14,8 +14,10 @@
   align-items: flex-end;
 }
 
-@media (max-width: 500px) {
+/* Tablet size */
+@media (max-width: 1055px) {
   .options-sidebar {
+    margin: 3.125vw;
     padding: 0;
     position: absolute;
     top: 0;
@@ -24,5 +26,26 @@
 
   .options-panel {
     flex-direction: row-reverse;
+  }
+}
+
+/* Mobile Size */
+@media (max-width: 1056px) {
+  .options-sidebar {
+    // margin: 6.25vw;
+  }
+}
+@media (max-width: 639px) {
+  .options-sidebar {
+    margin: 6.25vw;
+  }
+
+  .options-panel {
+    flex-direction: row-reverse;
+  }
+}
+@media (max-width: 500px) {
+  .options-sidebar {
+    margin: 0;
   }
 }

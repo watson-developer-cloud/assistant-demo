@@ -111,7 +111,9 @@ class App extends React.Component {
   render() {
     return (
       <div className="ibm App">
-        <SelectionSidebar />
+        <SelectionSidebar
+          onPathSelect={(path) => { this.userMessageHandler('user', path); }}
+        />
         <ChatContainer
           messages={this.state.messages}
           chatOptions={this.state.chatOptions}
