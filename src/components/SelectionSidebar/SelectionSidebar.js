@@ -38,6 +38,13 @@ class SelectionSidebar extends React.Component {
           onExit={() => { this.onExit(); }}
           onPathSelect={(path) => { this.onPathSelect(path); }}
         />
+        <div>
+          <p>{this.props.currentPath}/{this.props.maxPaths}</p>
+          <p>This is where the path description is going to go.
+            It is typically about two sentences long.
+            Perhaps it will be three sentences, but who knows.
+          </p>
+        </div>
       </div>
     );
   }
@@ -45,6 +52,8 @@ class SelectionSidebar extends React.Component {
 
 SelectionSidebar.propTypes = {
   onPathSelect: PropTypes.func.isRequired,
+  currentPath: PropTypes.number.isRequired,
+  maxPaths: PropTypes.number.isRequired,
 };
 
 export default SelectionSidebar;
