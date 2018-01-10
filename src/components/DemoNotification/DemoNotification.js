@@ -2,25 +2,37 @@ import React from 'react';
 import { Modal } from 'watson-react-components';
 import PropTypes from 'prop-types';
 
-const GenericNotification = ({
-  message, isVisible, onExit, onEnter,
+const DemoNotification = ({
+  message,
+  notificationLink,
+  isVisible,
+  onExit,
+  onEnter,
 }) => (
-  <div className="generic-notification">
+  <div className="demo-notification">
     <Modal
       isOpen={isVisible}
       onExit={() => { onExit(); }}
       onEnter={() => { onEnter(); }}
     >
-      <p>{message}</p>
+      <div className="demo-notification__content">
+        <p>{message}</p>
+        <a href={notificationLink}>Click here</a>
+      </div>
     </Modal>
   </div>
 );
 
-GenericNotification.propTypes = {
+DemoNotification.propTypes = {
   message: PropTypes.string.isRequired,
+  notificationLink: PropTypes.string,
   isVisible: PropTypes.bool.isRequired,
   onExit: PropTypes.func.isRequired,
   onEnter: PropTypes.func.isRequired,
 };
 
-export default GenericNotification;
+DemoNotification.defaultProps = {
+  notificationLink: '#',
+};
+
+export default DemoNotification;
