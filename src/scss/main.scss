@@ -17,6 +17,7 @@
 @import '../components/DemoButton/DemoButton';
 @import '../components/DemoToggleButton/DemoToggleButton';
 @import '../components/OptionsSidebar/OptionsSidebar';
+@import '../components/DemoNotification/DemoNotification';
 
 .path-selection-card {
   flex: 0 1 35%;
@@ -78,7 +79,6 @@
   opacity: 0;
   margin-top: 0rem;
   z-index: 10000;
-
 }
 
 .show {
