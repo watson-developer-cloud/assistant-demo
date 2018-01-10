@@ -24,6 +24,19 @@
   border-radius: 1.5em;
   padding: 0.8em 1.3em;
   background: $duo-gray-60;
+  position: relative;
+
+  &:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: auto;
+  right: 0px;
+  bottom: -17px;
+  border: 18px solid;
+  border-color: transparent $duo-gray-60 transparent transparent;
+  }
 }
 
 .chatBar {

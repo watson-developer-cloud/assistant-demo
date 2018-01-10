@@ -38,16 +38,23 @@
   right: 0;
   z-index: 1;
   overflow-y: auto;
-  transition: right 0.2s ease-in-out;
+  // transition: right 0.2s ease-in-out;
   padding-left: 1.5151515vw;
+  @extend .slide-in-right-down;
+  &.json-pane--hidden {
+    width: 0;
+    height: 65px;
+    overflow: hidden;
+    padding: 0;
+    @extend .slide-in-right-down--reverse;
+  }
 }
 
 /* Triggered when the JSON button is toggled */
-.json-pane--hidden {
-  opacity: 0;
-  visibility: hidden; 
-  transition: all 0.2s ease-in-out;
-}
+// .json-pane--hidden {
+  // width: 0 !important;
+  // height: 0 !important;
+// }
 
 @media (max-width: 1056px) {
   .json-pane {
@@ -59,16 +66,23 @@
 
 @media (max-width: 639px) {
   .json-pane {
-    width: 100vw;
+    width: calc(100vw - 1.5151515vw);
     top: 0;
     left: 1.5151515vw;
+    &.json-pane--hidden {
+      height: auto;
+    }
   }
 }
 
 @media (max-width: 500px) {
   .json-pane {
-    width: 100vw;
+    width: calc(100vw - 1.5151515vw);
     top: 0;
     left: 0;
+    height: 100vh;
+    &.json-pane--hidden {
+      height: auto;
+    }
   }
 }
