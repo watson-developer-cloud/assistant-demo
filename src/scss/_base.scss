@@ -12,6 +12,13 @@ body {
   color: $duo-gray-10;
 }
 
+.ibm {
+  &.App {
+    width: auto;
+    flex-wrap: nowrap;
+  }
+}
+
 input {
   border-style: none;
   border-color: none;

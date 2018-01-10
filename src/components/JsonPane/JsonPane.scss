@@ -53,7 +53,7 @@
   .json-pane {
     margin: 0;
     width: 95%;
-    height: 100vh;
+    height: calc(100vh - 6.25vw);
   }
 }
 
