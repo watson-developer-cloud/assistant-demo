@@ -36,6 +36,9 @@
   .results--json {
     padding-left: 1.5151515vw;
   }
+  .json-link-inline--button, .base--a {
+    display: none;
+  }
   @extend .slide-in-right-down;
   &.json-pane--hidden {
     width: 0;

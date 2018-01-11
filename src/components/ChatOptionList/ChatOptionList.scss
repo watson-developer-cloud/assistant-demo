@@ -1,6 +1,8 @@
 .chat-option-list {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  // display: flex;
+  // flex-direction: row;
+  // flex-wrap: wrap;
+  position: relative;
+  min-height: 3em;
 }

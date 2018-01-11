@@ -48,10 +48,12 @@ button {
     outline: none;
   }
   &:active {
-    background-image: linear-gradient(to right, rgba(0, 108, 252, 0) 0%, rgba(0, 108, 252, 0) 16.6667%, rgb(0, 108, 252) 33.3333%, rgb(0, 108, 252) 66.6667%, rgba(0, 108, 252, 0) 83.3333%, rgba(0, 108, 252, 0) 100%);
-    transition: all 109.721ms cubic-bezier(0.2, 0.2, 0.38, 0.9);
-    background-position: 50% top;
-    background-size: 600% 100%;
+    &:not(.modal--x) {
+      background-image: linear-gradient(to right, rgba(0, 108, 252, 0) 0%, rgba(0, 108, 252, 0) 16.6667%, rgb(0, 108, 252) 33.3333%, rgb(0, 108, 252) 66.6667%, rgba(0, 108, 252, 0) 83.3333%, rgba(0, 108, 252, 0) 100%);
+      transition: all 109.721ms cubic-bezier(0.2, 0.2, 0.38, 0.9);
+      background-position: 50% top;
+      background-size: 600% 100%;
+    }
   }
 }
 
