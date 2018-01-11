@@ -37,6 +37,12 @@ module.exports = (app) => {
     limit: '40mb',
   }));
 
+  app.get('*.js', (req, res, next) => {
+    req.url = `${req.url}.gz`;
+    res.set('Content-Encoding', 'gzip');
+    next();
+  });
+
   // if we aren't in production we will use
   // webpack dev middleware for dev server
   if (process.env.NODE_ENV !== 'production') {
