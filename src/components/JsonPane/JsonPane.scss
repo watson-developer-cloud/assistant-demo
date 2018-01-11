@@ -47,14 +47,20 @@
   @include respond-to-max($breakpoint--lg) {
     margin: 0;
     width: calc(100% - 6.25vw);
-    height: calc(100vh - 6.25vw);
+    height: calc(90vh - 6.25vw);
   }
   @include respond-to-max($breakpoint--md) {
     width: 100%;
     top: 0;
     left: 0;
     &.json-pane--hidden {
-      height: auto;
+      height: calc(90vh - 6.25vw);
+    }
+  }
+  @include respond-to-max($breakpoint--sm) {
+    height: 100vh;
+    &.json-pane--hidden {
+      height: 100vh;
     }
   }
 }
