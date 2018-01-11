@@ -1,0 +1,49 @@
+.options-sidebar {
+  position: relative;
+  .options-sidebar-container {
+    position: relative;
+    height: 100%;
+  }
+  @include respond-to-max($breakpoint--lg) {
+    margin: 3.125vw;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 75vw;
+  }
+  @include respond-to-max($breakpoint--md) {
+    width: calc(100% - 12.5vw);
+    margin: 6.25vw;
+  }
+  @include respond-to-max($breakpoint--sm) {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+.options-panel {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  @include respond-to-max($breakpoint--lg) {
+    flex-direction: row-reverse;
+    button {
+      &:first-of-type {
+        border-radius: 0 7px 0 0;
+        &.demo-toggle-button__toggled {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+  @include respond-to-max($breakpoint--md) {
+    flex-direction: row-reverse;
+  }
+  @include respond-to-max($breakpoint--sm) {
+    button {
+      height: 55px;
+    }
+  }
+}

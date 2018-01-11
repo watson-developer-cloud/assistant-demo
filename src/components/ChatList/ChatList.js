@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import GenericMessage from '../GenericMessage/GenericMessage';
+import ChatMessage from '../ChatMessage/ChatMessage';
 import ChatOptionList from '../ChatOptionList/ChatOptionList';
 
 const ChatList = ({ messages, onUserInput }) => (
@@ -9,15 +9,15 @@ const ChatList = ({ messages, onUserInput }) => (
       if (message.type === 'option') {
         return (
           <ChatOptionList
-            options={message.text}
+            options={message.content}
             onUserInput={onUserInput}
           />
         );
       }
       return (
-        <GenericMessage
+        <ChatMessage
           type={message.type}
-          text={message.text || ''}
+          text={message.content || ''}
         />
       );
     })}

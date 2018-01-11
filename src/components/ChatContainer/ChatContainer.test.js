@@ -3,20 +3,21 @@ import { shallow } from 'enzyme';
 import ChatContainer from './ChatContainer';
 
 const mockMessages = [
-  { user: 'bot', text: 'hi' },
+  { type: 'bot', content: 'hi' },
 ];
 
+// TODO: replace with mocked function
+const onUserInput = () => (
+  'works'
+);
+
 describe('ChatContainer', () => {
-  it('contains ChatHeader', () => {
-    const component = shallow(<ChatContainer onEnterText={null} messages={mockMessages} />);
-    expect(component.find('div').text()).toEqual(expect.stringContaining('<ChatHeader />'));
-  });
   it('contains ChatList', () => {
-    const component = shallow(<ChatContainer onEnterText={null} messages={mockMessages} />);
-    expect(component.find('div').text()).toEqual(expect.stringContaining('<ChatList />'));
+    const component = shallow(<ChatContainer onUserInput={onUserInput} messages={mockMessages} />);
+    expect(component.find('.chat-container').text()).toEqual(expect.stringContaining('<ChatList />'));
   });
   it('contains InputWithButton', () => {
-    const component = shallow(<ChatContainer onEnterText={null} messages={mockMessages} />);
-    expect(component.find('div').text()).toEqual(expect.stringContaining('<InputWithButton />'));
+    const component = shallow(<ChatContainer onUserInput={onUserInput} messages={mockMessages} />);
+    expect(component.find('.chat-container').text()).toEqual(expect.stringContaining('<InputWithButton />'));
   });
 });

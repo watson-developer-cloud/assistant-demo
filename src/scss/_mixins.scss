@@ -1,0 +1,15 @@
+@mixin respond-to-max($breakpoint) {
+  @if $breakpoint != null {
+    @media(max-width: $breakpoint) {
+      @content;
+    }
+  }
+}
+
+@mixin respond-to-min($breakpoint) {
+  @if $breakpoint != null {
+    @media(min-width: $breakpoint) {
+      @content;
+    }
+  }
+}

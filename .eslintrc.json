@@ -5,7 +5,8 @@
       "consistent-return": 0,
       "import/newline-after-import": false,
       "prefer-destructuring": 0,
-      "global-require": 0
+      "global-require": 0,
+      "no-console": 0
     },
     "env": {
       "browser": true,

@@ -1,0 +1,60 @@
+.demo-notification {
+  transition: all 100.271ms cubic-bezier(0.4, 0.14, 0.3, 1);
+  position: relative;
+  transform: translateX(150%);
+  &.active {
+    transform: translateX(0);
+  }
+  .overlay {
+    position: relative;
+    z-index: 9997;
+    left: 0;
+    .modal {
+      width: auto;
+      right: 0;
+      .demo-notification__content {
+        background: $duo-gradient-blue;
+        & > div, & > a {
+          padding: 1.51515vw;
+        }
+        & > a {
+          color: $duo-white;
+          text-decoration: none;
+          display: block;
+          margin: 0;
+          border-top: 1px solid $duo-gray-100;
+          p {
+            margin: 0;
+          }
+        }
+        a {
+          .demo-notification__cta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            span {
+              display: block;
+              height: 28px;
+              width: 24px;
+              text-align: center;
+            }
+          }
+        }
+      }
+      .modal--x {
+        top: 1.3vw;
+        right: 1.4vw;
+        left: auto;
+        background: transparent;
+        padding: 0;
+      }
+      @include respond-to-max($breakpoint--lg) {
+        width: calc(100% - 6.25vw);
+        left: auto;
+      }
+      @include respond-to-max($breakpoint--md) {
+        width: 100%;
+      }
+    }
+  }
+}

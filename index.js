@@ -27,6 +27,17 @@ const conversation = new Conversation({
   version_date: '2017-05-26',
 });
 
+const accountData = {
+  acc_minamt: 50,
+  acc_currbal: 430,
+  acc_paydue: '2018-01-26 12:00:00',
+  accnames: [
+    5624,
+    5893,
+    9225,
+  ],
+};
+
 app.get('/', (req, res) => {
   res.render('use', {
     bluemixAnalytics: !!process.env.BLUEMIX_ANALYTICS,
@@ -45,17 +56,21 @@ app.post('/api/message', (req, res) => {
     });
   }
 
+  const contextWithAcc = Object.assign({}, req.body.context, accountData);
+
   // assemble conversation payload
   const payload = {
     workspace_id: workspace,
-    context: req.body.context || {},
+    context: contextWithAcc || {},
     input: req.body.input || {},
   };
 
   // send payload to Conversation and return result
   conversation.message(payload, (err, data) => {
     if (err) {
-      return res.status(err.code || 500).json(err);
+      // TODO: return error from service, currently service returns non-legal
+      // status code
+      return res.status(500);
     }
     return res.json(data);
   });

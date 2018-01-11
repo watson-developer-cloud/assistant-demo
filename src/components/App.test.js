@@ -11,8 +11,8 @@ describe('App', () => {
     const component = shallow(<App />);
     expect(component.find('div').text()).toEqual(expect.stringContaining('<ChatContainer />'));
   });
-  it('contains JsonSidebar', () => {
+  it('contains OptionsSidebar', () => {
     const component = shallow(<App />);
-    expect(component.find('div').text()).toEqual(expect.stringContaining('<JsonSidebar />'));
+    expect(component.find('div').text()).toEqual(expect.stringContaining('<OptionsSidebar />'));
   });
 });

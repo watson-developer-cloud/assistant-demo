@@ -1,7 +1,7 @@
 import React from 'react';
 import ChatContainer from './ChatContainer/ChatContainer';
 import SelectionSidebar from './SelectionSidebar/SelectionSidebar';
-import JsonSidebar from './JsonSidebar/JsonSidebar';
+import OptionsSidebar from './OptionsSidebar/OptionsSidebar';
 import fetchMessage from './fetchMessage';
 
 class App extends React.Component {
@@ -12,18 +12,33 @@ class App extends React.Component {
       messages: [],
       lastMessageJson: JSON.stringify({ test: 'hi' }),
       lastMessageContext: {},
+      currentPath: 1,
+      maxPaths: 4,
     };
   }
 
   componentWillMount() {
-    this.userInputEntered('user', 'Hi');
+    this.sendMessageToConversation('');
   }
 
-  updateChatList(type, text) {
-    this.setState({ messages: [...this.state.messages, { type, text }] });
+  // eslint-disable-next-line
+  scrollChatListToBottom() {
+    const chatContainer = document.getElementsByClassName('chat-list');
+    if (chatContainer[0] !== undefined) {
+      chatContainer[0].scrollTop = chatContainer[0].scrollHeight;
+    }
   }
 
-  updateJsonSidebar(json) {
+  updateChatList(messageObj) {
+    this.setState({ messages: [...this.state.messages, messageObj] });
+
+    // the ChatList component will re-render when messages in state is updated
+    // so we call scrollChatListToBottom to anchor the scrollbar at the bottom
+    // of the list
+    this.scrollChatListToBottom();
+  }
+
+  updateOptionsSidebar(json) {
     this.setState({ lastMessageJson: json });
   }
 
@@ -31,57 +46,84 @@ class App extends React.Component {
     this.setState({ lastMessageContext: contextObj });
   }
 
-  updateBotAction(outputObj) {
+  botMessageHandler(outputObj) {
+    // always read the text from output
+    outputObj.output.text.forEach((response) => {
+      if (response !== '') {
+        this.updateChatList({
+          type: 'bot',
+          content: response,
+        });
+      }
+    });
+    // check for chat options in generic options object
     if (outputObj.output.generic !== undefined) {
-      outputObj.output.generic.forEach((response) => {
-        if (response.response_type === 'text') {
-          this.updateChatList('bot', response.text);
-        } else if (response.response_type === 'option') {
-          this.updateChatList('option', response.options);
-        }
-      });
-    } else {
-      outputObj.output.text.forEach((response) => {
-        if (response !== '') {
-          this.updateChatList('bot', response);
-        }
-      });
+      this.botMessageOptionsHandler(outputObj.output.generic);
     }
   }
 
-  userInputEntered(type, text) {
+  botMessageOptionsHandler(genericObj) {
+    genericObj.forEach((response) => {
+      if (response.response_type === 'text') {
+        this.updateChatList({
+          type: 'bot',
+          content: response.text,
+        });
+      } else if (response.response_type === 'option') {
+        this.updateChatList({
+          type: 'option',
+          content: response.options,
+        });
+      }
+    });
+  }
+
+  userMessageHandler(type, text) {
     // add user message to state
     if (type !== 'option') {
-      this.updateChatList(type, text);
+      this.updateChatList({
+        type: 'user',
+        content: text,
+      });
     }
+    this.sendMessageToConversation(text);
+  }
 
+  sendMessageToConversation(text) {
     fetchMessage(text, this.state.lastMessageContext)
       .then((data) => {
         // render appropriate data
-        this.updateBotAction(data);
+        this.botMessageHandler(data);
 
         // send stringified JSON to sidebar
-        this.updateJsonSidebar(JSON.stringify(data));
+        this.updateOptionsSidebar(JSON.stringify(data));
 
         // update context
         this.updateConversationContext(data.context);
       })
       .catch((err) => {
-        this.updateChatList('bot', 'An error has occured.');
+        this.updateChatList({
+          type: 'bot',
+          content: 'Could not connect to Watson Conversation',
+        });
         throw new Error(err);
       });
   }
 
   render() {
     return (
-      <div className="ibm">
-        <SelectionSidebar />
+      <div className="ibm App">
+        <SelectionSidebar
+          onPathSelect={(path) => { this.userMessageHandler('user', path); }}
+          currentPath={this.state.currentPath}
+          maxPaths={this.state.maxPaths}
+        />
         <ChatContainer
           messages={this.state.messages}
           chatOptions={this.state.chatOptions}
-          onUserInput={(type, text) => { this.userInputEntered(type, text); }}
+          onUserInput={(type, text) => { this.userMessageHandler(type, text); }}
         />
-        <JsonSidebar json={this.state.lastMessageJson} />
+        <OptionsSidebar json={this.state.lastMessageJson} />
       </div>
     );
   }

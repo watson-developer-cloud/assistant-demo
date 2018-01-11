@@ -1,0 +1,10 @@
+.chat-option__button {
+  margin: 0 0.5rem;
+  padding: 10px 20px;
+  border-radius: 500px;
+  transition: all 0.3s ease-in-out;
+}
+
+.chat-option__button--selected {
+  background: $duo-blue-60;
+}

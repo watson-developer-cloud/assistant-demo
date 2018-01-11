@@ -1,0 +1,17 @@
+.path-selection__container {
+  @include respond-to-min($breakpoint--md) {
+    display: flex !important;
+    flex-direction: column;
+    .demo-button {
+      align-self: flex-start;
+    }
+    .path-selection__description {
+      margin-top: auto;
+      p {
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

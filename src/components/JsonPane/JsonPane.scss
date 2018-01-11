@@ -1,0 +1,60 @@
+// @import '../../scss/colors';
+
+/* Start JSON format styles */
+
+/* token is a shared class for all JSON tokens */
+.token {
+  font-size: 0.9em;
+}
+
+.property {
+  color: $duo-teal-30;
+}
+
+.string {
+  color: $duo-blue-50;
+}
+
+.number {
+  color: $duo-alert-yellow;
+}
+
+.boolean {
+  color: $duo-alert-orange;
+}
+/* end JSON format styles */
+
+.json-pane {
+  position: absolute;
+  background: $duo-black;
+  width: 200%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  z-index: 9998;
+  overflow-y: auto;
+  .results--json {
+    padding-left: 1.5151515vw;
+  }
+  @extend .slide-in-right-down;
+  &.json-pane--hidden {
+    width: 0;
+    height: 65px;
+    overflow: hidden;
+    padding: 0;
+    @extend .slide-in-right-down--reverse;
+  }
+  @include respond-to-max($breakpoint--lg) {
+    margin: 0;
+    width: calc(100% - 6.25vw);
+    height: calc(100vh - 6.25vw);
+  }
+  @include respond-to-max($breakpoint--md) {
+    width: 100%;
+    top: 0;
+    left: 0;
+    &.json-pane--hidden {
+      height: auto;
+    }
+  }
+}

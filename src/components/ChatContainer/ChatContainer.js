@@ -2,14 +2,15 @@ import React from 'react';
 import { InputWithButton } from 'watson-react-components';
 import PropTypes from 'prop-types';
 import ChatList from '../ChatList/ChatList';
-import ChatHeader from '../ChatHeader/ChatHeader';
 
 const ChatContainer = ({
   messages,
   onUserInput,
 }) => (
-  <div className="ibm-col-lg-8 chat-container">
-    <ChatHeader />
+  <div className="ibm-col-lg-8 ibm-col-md-6 ibm-col-sm-4 chat-container">
+    <div className="ibm-lg-col-4 ibm-padding chat-container__header">
+      XBankBot
+    </div>
     <ChatList
       messages={messages}
       onUserInput={onUserInput}
