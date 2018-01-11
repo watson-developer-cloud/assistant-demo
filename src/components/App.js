@@ -12,6 +12,8 @@ class App extends React.Component {
       messages: [],
       lastMessageJson: JSON.stringify({ test: 'hi' }),
       lastMessageContext: {},
+      currentPath: 1,
+      maxPaths: 4,
     };
   }
 
@@ -113,6 +115,8 @@ class App extends React.Component {
       <div className="ibm App">
         <SelectionSidebar
           onPathSelect={(path) => { this.userMessageHandler('user', path); }}
+          currentPath={this.state.currentPath}
+          maxPaths={this.state.maxPaths}
         />
         <ChatContainer
           messages={this.state.messages}

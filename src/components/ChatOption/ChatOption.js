@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const ChatOption = ({ option, onUserInput, isSelected }) => {
   const isSelectedClass = (isSelected) ? 'chat-option__button--selected' : '';
-  const classes = `chat-option__button ${isSelectedClass}`;
+  const classes = `ibm-type-b chat-option__button ${isSelectedClass}`;
 
   return (
     <button

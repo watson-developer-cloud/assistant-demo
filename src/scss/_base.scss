@@ -12,6 +12,13 @@ body {
   color: $duo-gray-10;
 }
 
+.ibm {
+  &.App {
+    width: auto;
+    flex-wrap: nowrap;
+  }
+}
+
 input {
   border-style: none;
   border-color: none;
@@ -40,14 +47,59 @@ button {
   &:focus {
     outline: none;
   }
+  &:active {
+    background-image: linear-gradient(to right, rgba(0, 108, 252, 0) 0%, rgba(0, 108, 252, 0) 16.6667%, rgb(0, 108, 252) 33.3333%, rgb(0, 108, 252) 66.6667%, rgba(0, 108, 252, 0) 83.3333%, rgba(0, 108, 252, 0) 100%);
+    transition: all 109.721ms cubic-bezier(0.2, 0.2, 0.38, 0.9);
+    background-position: 50% top;
+    background-size: 600% 100%;
+  }
 }
 
 svg {
   fill: none;
 
   #Icon {
-      fill: $duo-gray-20;
-    }
+    fill: $duo-gray-20;
+  }
 }
 
-
+/* generic modal */
+.overlay {
+  visibility: hidden;
+  transition: all 0.1s ease-in-out;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0rem;
+  left: 0rem;
+  opacity: 0;
+  margin-top: 0rem;
+  z-index: 10000;
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: $duo-gray-80;
+    width: 100vw;
+    .modal--x {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      &:hover {
+        cursor: pointer;
+      }
+      svg {
+        fill: white;
+        width: 28px;
+        height: 28px;
+        path {
+          display: none;
+        }
+      }
+    }
+  }
+}

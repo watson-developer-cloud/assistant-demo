@@ -1,4 +1,7 @@
 /* main imports */
+@import 'variables';
+@import 'mixins';
+@import 'animations';
 @import 'base';
 @import 'colors';
 
@@ -10,77 +13,14 @@
 @import '../components/App';
 @import '../components/ChatContainer/ChatContainer';
 @import '../components/ChatList/ChatList';
+@import '../components/ChatOption/ChatOption';
+@import '../components/ChatOptionList/ChatOptionList';
 @import '../components/ChatMessage/ChatMessage';
 @import '../components/JsonPane/JsonPane';
+@import '../components/PathSelectionCard/PathSelectionCard';
 @import '../components/PathSelectionOverlay/PathSelectionOverlay';
+@import '../components/SelectionSidebar/SelectionSidebar';
 @import '../components/DemoButton/DemoButton';
 @import '../components/DemoToggleButton/DemoToggleButton';
 @import '../components/OptionsSidebar/OptionsSidebar';
-
-.path-selection-card {
-  flex: 0 1 35%;
-  margin: 1rem;
-  padding: 3rem 0;
-  background: $duo-blue-60;
-}
-
-// TODO: move this to base?
-.modal {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background: $duo-gray-80;
-  width: 100vw;
-}
-
-.modal--x {
-  position: absolute;
-  top: 2rem;
-  left: 2rem;
-  &:hover {
-    cursor: pointer;
-  }
-  svg {
-    fill: white;
-    width: 24px;
-    height: 24px;
-  }
-}
-// TODO: move to base selector
-
-.chat-option-list {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.chat-option__button {
-  margin: 0 0.5rem;
-  padding: 10px 20px;
-  border-radius: 500px;
-  transition: all 0.3s ease-in-out;
-}
-
-.chat-option__button--selected {
-  background: $duo-blue-60;
-}
-
-.overlay {
-  visibility: hidden;
-  transition: all 0.1s ease-in-out;
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0rem;
-  left: 0rem;
-  opacity: 0;
-  margin-top: 0rem;
-  z-index: 10000;
-
-}
-
-.show {
-  opacity: 1;
-  visibility: visible;
-}
+@import '../components/DemoNotification/DemoNotification';

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import JsonPane from '../JsonPane/JsonPane';
 import DemoButton from '../DemoButton/DemoButton';
 import DemoToggleButton from '../DemoToggleButton/DemoToggleButton';
+import DemoNotification from '../DemoNotification/DemoNotification';
 
 class OptionsSidebar extends React.Component {
   constructor(props) {
@@ -37,6 +38,13 @@ class OptionsSidebar extends React.Component {
               onClick={null}
             />
           </div>
+          <DemoNotification
+            message="This is a test notification"
+            notificationLink="#"
+            isVisible
+            onEnter={null}
+            onExit={null}
+          />
           <JsonPane
             json={this.props.json}
             isVisible={this.state.isJsonVisible}
