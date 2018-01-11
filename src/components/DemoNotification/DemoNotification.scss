@@ -1,9 +1,9 @@
 .demo-notification {
   transition: all 100.271ms cubic-bezier(0.4, 0.14, 0.3, 1);
   position: relative;
-  transform: translateX(150%);
+  display: none;
   &.active {
-    transform: translateX(0);
+    display: block;
   }
   .overlay {
     position: relative;

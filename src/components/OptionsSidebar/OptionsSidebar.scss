@@ -3,6 +3,7 @@
   .options-sidebar-container {
     position: relative;
     height: 100%;
+    // overflow: hidden;
   }
   @include respond-to-max($breakpoint--lg) {
     margin: 3.125vw;
