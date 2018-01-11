@@ -57,49 +57,4 @@
       height: auto;
     }
   }
-  // @include respond-to-max($breakpoint--sm) {
-  //   width: 100%;
-  //   top: 0;
-  //   left: 0;
-  //   &.json-pane--hidden {
-  //     height: auto;
-  //   }
-  // }
 }
-
-/* Triggered when the JSON button is toggled */
-// .json-pane--hidden {
-//   width: 0 !important;
-//   height: 0 !important;
-// }
-
-// @media (max-width: 1056px) {
-//   .json-pane {
-//     margin: 0;
-//     width: 95%;
-//     height: calc(100vh - 6.25vw);
-//   }
-// }
-
-// @media (max-width: 639px) {
-//   .json-pane {
-//     width: calc(100vw - 1.5151515vw);
-//     top: 0;
-//     left: 1.5151515vw;
-//     &.json-pane--hidden {
-//       height: auto;
-//     }
-//   }
-// }
-
-// @media (max-width: 500px) {
-//   .json-pane {
-//     width: calc(100vw - 1.5151515vw);
-//     top: 0;
-//     left: 0;
-//     height: 100vh;
-//     &.json-pane--hidden {
-//       height: auto;
-//     }
-//   }
-// }
