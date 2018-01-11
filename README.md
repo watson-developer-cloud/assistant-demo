@@ -1,10 +1,12 @@
 # Watson Conversation Demo for IBM.com - Redesign
 
 ### Build Status
-Master [![Build Status](https://travis.ibm.com/Watson/watson-conversation-demo-redesign.svg?token=iJCYw8QYkDn5J4kz9weU&branch=master)](https://travis.ibm.com/Watson/watson-conversation-demo-redesign)  
-Dev [![Build Status](https://travis.ibm.com/Watson/watson-conversation-demo-redesign.svg?token=iJCYw8QYkDn5J4kz9weU&branch=dev)](https://travis.ibm.com/Watson/watson-conversation-demo-redesign)
 
-Stage   
+| Branch       | Status           | Coverage |Link  |
+| ------------- |:-------------:| -----:|-----:|
+| Master     | [![Build Status](https://travis.ibm.com/Watson/watson-conversation-demo-redesign.svg?token=iJCYw8QYkDn5J4kz9weU&branch=master)](https://travis.ibm.com/Watson/watson-conversation-demo-redesign)  |  | https://watson-conversation-duo-dev.ng.bluemix.net/|
+| Dev     | [![Build Status](https://travis.ibm.com/Watson/watson-conversation-demo-redesign.svg?token=iJCYw8QYkDn5J4kz9weU&branch=dev)](https://travis.ibm.com/Watson/watson-conversation-demo-redesign)      ||
+ 
 This is the repository for an updated Watson Conversation demo, which is intended to be embedded directly within IBM.com on the Conversation service page. It runs on `bluemix.net` and will be `<iframe>`'d into the service page.
 
 ### Codebase Structure
