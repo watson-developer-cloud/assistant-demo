@@ -3,8 +3,11 @@
   padding: 10px 20px;
   border-radius: 500px;
   transition: all 0.3s ease-in-out;
+  &.chat-option__button--selected {
+  	background: $duo-blue-60;
+  	position: absolute;
+  	right: 0;
+  	margin: 0;
+  }
 }
 
-.chat-option__button--selected {
-  background: $duo-blue-60;
-}

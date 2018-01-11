@@ -39,8 +39,8 @@ class SelectionSidebar extends React.Component {
           onPathSelect={(path) => { this.onPathSelect(path); }}
         />
         <div className="path-selection__description">
-          <p>{this.props.currentPath}/{this.props.maxPaths}</p>
-          <p>This is where the path description is going to go.
+          <p className="ibm-type-c">{this.props.currentPath}/{this.props.maxPaths}</p>
+          <p className="ibm-type-c">This is where the path description is going to go.
             It is typically about two sentences long.
             Perhaps it will be three sentences, but who knows.
           </p>

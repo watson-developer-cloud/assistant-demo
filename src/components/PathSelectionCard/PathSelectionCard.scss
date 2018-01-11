@@ -1,6 +1,12 @@
 .path-selection-card {
   flex: 0 1 35%;
-  margin: 1rem;
+  margin: 1px;
   padding: 3rem 0;
-  background: $duo-blue-60;
+  background: $duo-white;
+  color: $duo-gray-100;
+  &:hover {
+  	cursor: pointer;
+  	color: $duo-white;
+  	background: $duo-gradient-blue;
+  }
 }
