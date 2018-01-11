@@ -1,7 +1,6 @@
 .demo-button {
   margin-bottom: 0.1em;
   padding: 1.3em;
-
   img {
     width: 24px;
     height: 24px;
@@ -9,12 +8,8 @@
   &:hover {
     cursor: pointer;
   }
-}
-
-@media (max-width: 500px) {
-  .demo-button {
+  @include respond-to-max($breakpoint--sm) {
     margin: 0;
     padding: 1.4em;
   }
 }
-

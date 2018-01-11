@@ -13,7 +13,7 @@ const ChatMessage = ({ type, text }) => {
   } else if (type === 'user') {
     return (
       <div className="chat-message chat-message--anchor-right">
-        <p className="chat-message--user">
+        <p className="chat-message--user ibm-type-b">
           {text}
         </p>
       </div>

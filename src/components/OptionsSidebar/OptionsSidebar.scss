@@ -1,10 +1,24 @@
 .options-sidebar {
   position: relative;
-  // height: 65%;
-  // width: auto;
   .options-sidebar-container {
     position: relative;
     height: 100%;
+  }
+  @include respond-to-max($breakpoint--lg) {
+    margin: 3.125vw;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 75vw;
+  }
+  @include respond-to-max($breakpoint--md) {
+    width: calc(100% - 12.5vw);
+    margin: 6.25vw;
+  }
+  @include respond-to-max($breakpoint--sm) {
+    width: 100%;
+    margin: 0;
   }
 }
 
@@ -13,20 +27,7 @@
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: flex-end;
-}
-
-/* Tablet size */
-@media (max-width: 1055px) {
-  .options-sidebar {
-    margin: 3.125vw;
-    padding: 0;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 75vw;
-  }
-
-  .options-panel {
+  @include respond-to-max($breakpoint--lg) {
     flex-direction: row-reverse;
     button {
       &:first-of-type {
@@ -37,30 +38,10 @@
       }
     }
   }
-}
-
-/* Mobile Size */
-@media (max-width: 1056px) {
-  .options-sidebar {
-    // margin: 6.25vw;
-  }
-}
-@media (max-width: 639px) {
-  .options-sidebar {
-    margin: 6.25vw;
-    width: 95%;
-  }
-
-  .options-panel {
+  @include respond-to-max($breakpoint--md) {
     flex-direction: row-reverse;
   }
-}
-@media (max-width: 500px) {
-  .options-sidebar {
-    width: 100%;
-    margin: 0;
-  }
-  .options-panel {
+  @include respond-to-max($breakpoint--sm) {
     button {
       height: 55px;
     }

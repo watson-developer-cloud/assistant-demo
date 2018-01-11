@@ -1,4 +1,6 @@
 /* main imports */
+@import 'variables';
+@import 'mixins';
 @import 'animations';
 @import 'base';
 @import 'colors';
@@ -13,18 +15,14 @@
 @import '../components/ChatList/ChatList';
 @import '../components/ChatMessage/ChatMessage';
 @import '../components/JsonPane/JsonPane';
+@import '../components/PathSelectionCard/PathSelectionCard';
 @import '../components/PathSelectionOverlay/PathSelectionOverlay';
+@import '../components/SelectionSidebar/SelectionSidebar';
 @import '../components/DemoButton/DemoButton';
 @import '../components/DemoToggleButton/DemoToggleButton';
 @import '../components/OptionsSidebar/OptionsSidebar';
 @import '../components/DemoNotification/DemoNotification';
 
-.path-selection-card {
-  flex: 0 1 35%;
-  margin: 1rem;
-  padding: 3rem 0;
-  background: $duo-blue-60;
-}
 
 // TODO: move this to base?
 .modal {
@@ -44,8 +42,11 @@
   }
   svg {
     fill: white;
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
+    path {
+      display: none;
+    }
   }
 }
 // TODO: move to base selector

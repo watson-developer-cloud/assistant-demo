@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ArrowRight from '../../images/arrow-right.svg';
 import Code from '../../images/code.svg';
 import Grid from '../../images/grid.svg';
 import Restart from '../../images/restart.svg';
@@ -7,6 +8,8 @@ import Share from '../../images/share.svg';
 
 const Icon = ({ type, size }) => {
   switch (type) {
+    case 'arrow-right':
+      return (<ArrowRight width={size} height={size} />);
     case 'code':
       return (<Code width={size} height={size} />);
     case 'path':

@@ -1,7 +1,47 @@
 .demo-notification {
-
-}
-
-.demo-notification__content {
-
+  .overlay {
+    position: relative;
+    z-index: 9997;
+    .modal {
+      width: auto;
+      right: 0;
+      .demo-notification__content {
+        background: $duo-gradient-blue;
+        & > div, & > a {
+          padding: 1.51515vw;
+        }
+        & > a {
+          color: $duo-white;
+          text-decoration: none;
+          display: block;
+          margin: 0;
+          border-top: 1px solid $duo-gray-100;
+          p {
+            margin: 0;
+          }
+        }
+        a {
+          .demo-notification__cta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+          }
+        }
+      }
+      .modal--x {
+        top: 1em;
+        right: 1em;
+        left: auto;
+        background: transparent;
+        padding: 0;
+      }
+      @include respond-to-max($breakpoint--lg) {
+        width: calc(100% - 6.25vw);
+        left: auto;
+      }
+      @include respond-to-max($breakpoint--md) {
+        width: 100%;
+      }
+    }
+  }
 }

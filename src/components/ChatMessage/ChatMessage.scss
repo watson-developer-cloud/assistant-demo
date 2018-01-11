@@ -1,5 +1,3 @@
-@import '../../scss/colors';
-
 .chat-message {
   max-width: 50%;
   margin-left: auto;
@@ -19,13 +17,12 @@
 
 .chat-message--user {
   display: inline-block;
-  font-size: 0.875em; // 14px
+  // font-size: 0.875em; // 14px
   text-align: right;
   border-radius: 1.5em;
   padding: 0.8em 1.3em;
   background: $duo-gray-60;
   position: relative;
-
   &:after {
   content: ' ';
   position: absolute;
@@ -33,8 +30,11 @@
   height: 0;
   left: auto;
   right: 0px;
-  bottom: -17px;
-  border: 18px solid;
+  bottom: -7px;
+  border-top: 20px solid;
+  border-right: 21px solid;
+  border-bottom: 8px solid;
+  border-left: 18px solid;
   border-color: transparent $duo-gray-60 transparent transparent;
   }
 }
