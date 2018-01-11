@@ -37,6 +37,14 @@ module.exports = (app) => {
     limit: '40mb',
   }));
 
+  if (process.env.NODE_ENV === 'production') {
+    app.get('*.js', (req, res, next) => {
+      req.url = `${req.url}.gz`;
+      res.set('Content-Encoding', 'gzip');
+      next();
+    });
+  }
+
   // if we aren't in production we will use
   // webpack dev middleware for dev server
   if (process.env.NODE_ENV !== 'production') {
@@ -51,7 +59,7 @@ module.exports = (app) => {
     app.use(webpackHotMiddleware(webpackCompiler, {
       reload: false,
     }));
-  // if we are in production, serve dist as static
+    // if we are in production, serve dist as static
   } else {
     app.use(express.static(path.resolve(__dirname, '..', 'dist')));
   }

@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 const PathSelectionCard = ({ label, path, onClick }) => (
   <button
-    className="path-selection-card"
+    className="path-selection-card ibm-type-c"
     onClick={() => { onClick(path); }}
   >
-    <p>{label}</p>
+    {label}
   </button>
 );
 
