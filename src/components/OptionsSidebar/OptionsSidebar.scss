@@ -3,7 +3,6 @@
   .options-sidebar-container {
     position: relative;
     height: 100%;
-    // overflow: hidden;
   }
   @include respond-to-max($breakpoint--lg) {
     margin: 3.125vw;
@@ -16,6 +15,7 @@
   @include respond-to-max($breakpoint--md) {
     width: calc(100% - 12.5vw);
     margin: 6.25vw;
+    height: 55px;
   }
   @include respond-to-max($breakpoint--sm) {
     width: 100%;
@@ -30,7 +30,15 @@
   align-items: flex-end;
   @include respond-to-max($breakpoint--lg) {
     flex-direction: row-reverse;
+    height: 55px;
     button {
+      padding: 0;
+      width: 54px;
+      height: 54px;
+      margin: 0;
+      svg {
+        padding-top: 2px;
+      }
       &:first-of-type {
         border-radius: 0 7px 0 0;
         &.demo-toggle-button__toggled {
@@ -40,11 +48,13 @@
     }
   }
   @include respond-to-max($breakpoint--md) {
-    flex-direction: row-reverse;
-  }
-  @include respond-to-max($breakpoint--sm) {
+    align-items: center;
     button {
       height: 55px;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
     }
   }
 }

@@ -8,6 +8,9 @@
     .path-selection__description {
       margin-top: auto;
       p {
+        &.duo-gray-50 {
+          color: $duo-gray-50;
+        }
         &:last-of-type {
           margin-bottom: 0;
         }
