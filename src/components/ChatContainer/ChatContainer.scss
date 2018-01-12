@@ -6,6 +6,10 @@
     border-radius: 7px 7px 0 0;
     display: flex;
     padding: 1.1em 1.51515vw;
+    @include respond-to-max($breakpoint--lg) {
+      min-height: 55px;
+      align-items: center;
+    }
   }
   .input-with-button {
     background: $duo-gray-90;
