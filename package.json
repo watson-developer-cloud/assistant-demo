@@ -58,7 +58,7 @@
     "uglifyify": "^4.0.3",
     "uuid": "^3.1.0",
     "watson-developer-cloud": "^2.39.0",
-    "watson-react-components": "^0.6.13",
+    "watson-react-components": "^0.6.16",
     "webpack": "^3.10.0",
     "webpack-dev-middleware": "^1.12.2",
     "webpack-hot-middleware": "^2.21.0"
