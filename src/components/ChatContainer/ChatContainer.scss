@@ -6,6 +6,18 @@
     border-radius: 7px 7px 0 0;
     display: flex;
     padding: 1.1em 1.51515vw;
+    position: relative;
+    z-index: 4;
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -25px;
+      left: 0;
+      width: calc(100% - 15px);
+      height: 25px;
+      background: linear-gradient(to bottom, rgba(37, 37, 37,1), rgba(37, 37, 37,0));
+      z-index: 9999;
+    }
     @include respond-to-max($breakpoint--lg) {
       min-height: 55px;
       align-items: center;

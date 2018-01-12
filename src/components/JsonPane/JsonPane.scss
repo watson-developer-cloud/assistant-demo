@@ -16,7 +16,7 @@
 }
 
 .number {
-  color: $duo-alert-yellow;
+  color: $duo-magenta-40;
 }
 
 .boolean {
@@ -33,6 +33,10 @@
   right: 0;
   z-index: 9998;
   overflow-y: auto;
+  code {
+
+    font-family: 'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
+  }
   .results--json {
     padding-left: 1.5151515vw;
   }
@@ -64,6 +68,49 @@
     height: 100vh;
     &.json-pane--hidden {
       height: 100vh;
+    }
+  }
+
+  // line numbers for json pane
+  pre {
+    &.line-numbers {
+      position: relative;
+      padding-left: 3.8em;
+      counter-reset: linenumber;
+      > code {
+        position: relative;
+        white-space: inherit;
+        overflow-y: visible;
+      }
+      .line-numbers-rows {
+        position: absolute;
+        pointer-events: none;
+        top: 0;
+        font-size: 100%;
+        left: -3.8em;
+        width: 3em;
+        margin-top: 0;
+        /* works for line-numbers below 1000 lines */
+        letter-spacing: -1px;
+        // border-right: 1px solid #999;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        > span {
+          pointer-events: none;
+          display: block;
+          counter-increment: linenumber;
+          margin-top: 0;
+          &:before {
+            content: counter(linenumber);
+            color: #fff;
+            display: block;
+            padding-right: 0.8em;
+            text-align: right;
+          }
+        }
+      }
     }
   }
 }
