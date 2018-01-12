@@ -2,7 +2,6 @@
   background: $duo-gray-90;
   overflow-y: auto;
   flex: 1;
-  // box-shadow: inset rgba(0, 0, 0, 0.4) 0px 0px 30px;
-
-  box-shadow: inset 0px 0px 30px rgba(37, 37, 37, 0.6);
+  position: relative;
+  z-index: 3;
 }
