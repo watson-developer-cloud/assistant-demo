@@ -36,6 +36,9 @@
       width: 54px;
       height: 54px;
       margin: 0;
+      &:not(.demo-toggle-button) {
+        z-index: 9997;
+      }
       svg {
         padding-top: 2px;
       }

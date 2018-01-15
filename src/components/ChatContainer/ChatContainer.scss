@@ -23,18 +23,17 @@
       align-items: center;
     }
   }
+  .chat-container__input {
+    background: $duo-gray-90;
+  }
   .input-with-button {
     background: $duo-gray-90;
-    display: flex;
-    justify-content: center;
-    padding: inherit;
     button {
       position: absolute;
       left: -9999px;
     }
     input {
-      flex: 0 1 90%;
-      align-self: center;
+      width: 100%;
       border-bottom: 1px solid $duo-gray-50;
     }
   }
@@ -46,7 +45,7 @@
       border-radius: 0;
     }
     .input-with-button {
-      padding: 6.25vw 0;
+      padding: 6.25vw 0 0;
     }
   }
 }

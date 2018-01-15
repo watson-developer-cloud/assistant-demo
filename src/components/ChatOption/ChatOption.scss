@@ -4,10 +4,9 @@
   border-radius: 500px;
   transition: all 1s ease;
   &.chat-option__button--selected {
-  	background: $duo-blue-60;
-  	position: absolute;
-  	right: 0;
-  	margin: 0;
+    background: $duo-blue-60;
+    position: absolute;
+    right: 0;
+    margin: 0;
   }
 }
-
