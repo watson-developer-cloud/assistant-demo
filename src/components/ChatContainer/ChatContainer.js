@@ -15,13 +15,15 @@ const ChatContainer = ({
       messages={messages}
       onUserInput={onUserInput}
     />
-    <InputWithButton
-      onSubmit={(e) => {
-        onUserInput('user', e.target.value);
-        e.target.value = '';
-      }}
-      placeholder="Type here..."
-    />
+    <div className="ibm-lg-col-4 ibm-padding chat-container__input">
+      <InputWithButton
+        onSubmit={(e) => {
+          onUserInput('user', e.target.value);
+          e.target.value = '';
+        }}
+        placeholder="Type here..."
+      />
+    </div>
   </div>
 );
 
