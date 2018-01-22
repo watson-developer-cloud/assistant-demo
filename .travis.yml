@@ -17,6 +17,8 @@ env:
   - secure: BThlMaH42iHR2cCOLe4Ud/tBKE/0fycl3hhLzIAFg3CmdWk6j26QCXmn9l97cG+c+Sftwp6o2sqTRo4gumtDhvAlM3YWCllG+8oPIr6eUk/iHLm/ac/T7JuYw4ve01Xc69AK0Y71dczyzr/sm7uEDw+GCkCiiaF5VxUtrSni2gw3BC5p5jS8NHbwrBZoite72P3pDRNzK/eXCDf6Lizeyqws0UNRXWXivwB7GtSwZU152+IiHN2EwP51tKeWTnZlGqlkp5QRXr4qazE8yortylcsww/7SLdaMpqu6POaukseq0KtRM0E32pNDzK8Pd22vHGnog2uIVZ3sJTm0UgZu5/MmVriQV4Mo3HoCobiL3QNNfA1t/NRo4ODyxFkW6AfGZxg0leZpK5nUztzS5pKsS5zjxbL2TuSYnUsRU8T9I+Yy2mG2Ztv495P1KRGE45Yr65pq9E8Dy6Rebz1DbSMFgWbEGrs8IkxAAw1+5OZ2e2VxKvMYfxpuvOdp578Op98G3J06xOeP4HqpWKedrbSkf0r+esJxP+5hhINU5Om34/cqcBYJuvwbW7qawa+WLO1W9Ixb9eVNXlcuX8DIy8B69/KM8Z6+d+NnFkf0GveaVZoNZm4Z4Vv9MZP0gdsVsGTW0C7GVMNTriwca7Ap+X6mfmVg1vE1xXkPIIN551G3IE=
 before_install:
 - openssl aes-256-cbc -K $encrypted_cdd14ff783eb_key -iv $encrypted_cdd14ff783eb_iv
+  -in .env.enc -out ./.env -d
+- openssl aes-256-cbc -K $encrypted_cdd14ff783eb_key -iv $encrypted_cdd14ff783eb_iv
   -in .env.enc -out .env -d
 before_deploy:
 - npm install -g https://github.com/andresfvilla/bx-blue-green
