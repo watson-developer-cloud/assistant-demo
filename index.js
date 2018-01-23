@@ -36,6 +36,12 @@ const accountData = {
     5893,
     9225,
   ],
+  private: {
+    function_creds: {
+      user: process.env.CLOUD_FUNCTION_USER,
+      password: process.env.CLOUD_FUNCTION_PASS,
+    },
+  },
 };
 
 app.get('/', (req, res) => {
