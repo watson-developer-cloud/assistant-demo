@@ -3,6 +3,7 @@ import ChatContainer from './ChatContainer/ChatContainer';
 import SelectionSidebar from './SelectionSidebar/SelectionSidebar';
 import OptionsSidebar from './OptionsSidebar/OptionsSidebar';
 import fetchMessage from './fetchMessage';
+import executeAction from '../utils';
 
 class App extends React.Component {
   constructor(props) {
@@ -56,6 +57,15 @@ class App extends React.Component {
         });
       }
     });
+
+    // execute actions if they exist
+    if (outputObj.actions !== undefined && outputObj.actions.length > 0) {
+      if (outputObj.actions[0].name === 'ValidateAcc') {
+        executeAction('/bank/validate', outputObj.actions[0].parameters.chosen_acc)
+          .then(result => this.sendMessageToConversation(result.result));
+      }
+    }
+
     // check for chat options in generic options object
     if (outputObj.output.generic !== undefined) {
       this.botMessageOptionsHandler(outputObj.output.generic);
