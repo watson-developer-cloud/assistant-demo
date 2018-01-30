@@ -19,6 +19,7 @@ const express = require('express');
 const app = express();
 require('./config/express')(app);
 const Conversation = require('watson-developer-cloud/conversation/v1');
+const bank = require('./lib/bankFunctions');
 
 // declare Watson Conversation service
 const conversation = new Conversation({
@@ -80,6 +81,16 @@ app.post('/api/message', (req, res) => {
     }
     return res.json(data);
   });
+});
+
+app.get('/bank/validate', (req, res) => {
+  const value = req.query.value;
+  const isAccValid = bank.validateAcc(Number(value));
+  if (isAccValid) {
+    res.send({ result: `acc${value}valid` });
+  }
+
+  res.send({ result: `acc${value}valid` });
 });
 
 module.exports = app;
