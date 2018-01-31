@@ -4,6 +4,7 @@ import SelectionSidebar from './SelectionSidebar/SelectionSidebar';
 import OptionsSidebar from './OptionsSidebar/OptionsSidebar';
 import fetchMessage from './fetchMessage';
 import executeAction from '../utils';
+import { IDLE, IN_PROGRESS, COMPLETED, FAILED } from '../constants';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,10 +16,11 @@ class App extends React.Component {
       lastMessageContext: {},
       currentPath: 1,
       maxPaths: 4,
+      botMessageStatus: IDLE,
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.sendMessageToConversation('');
   }
 
@@ -39,12 +41,16 @@ class App extends React.Component {
     this.scrollChatListToBottom();
   }
 
-  updateOptionsSidebar(json) {
-    this.setState({ lastMessageJson: json });
+  updateOptionsSidebar(lastMessageJson) {
+    this.setState({ lastMessageJson });
   }
 
-  updateConversationContext(contextObj) {
-    this.setState({ lastMessageContext: contextObj });
+  updateConversationContext(lastMessageContext) {
+    this.setState({ lastMessageContext });
+  }
+
+  updateMessageStatus(botMessageStatus) {
+    this.setState({ botMessageStatus });
   }
 
   botMessageHandler(outputObj) {
@@ -62,7 +68,8 @@ class App extends React.Component {
     if (outputObj.actions !== undefined && outputObj.actions.length > 0) {
       if (outputObj.actions[0].name === 'ValidateAcc') {
         executeAction('/bank/validate', outputObj.actions[0].parameters.chosen_acc)
-          .then(result => this.sendMessageToConversation(result.result));
+          .then(result =>
+            this.sendMessageToConversation(result.result, this.state.lastMessageContext));
       }
     }
 
@@ -96,12 +103,17 @@ class App extends React.Component {
         content: text,
       });
     }
-    this.sendMessageToConversation(text);
+    this.sendMessageToConversation(text, this.state.lastMessageContext);
   }
 
-  sendMessageToConversation(text) {
-    fetchMessage(text, this.state.lastMessageContext)
+  sendMessageToConversation(text, context = {}) {
+    this.updateMessageStatus(IN_PROGRESS);
+
+    fetchMessage(text, context)
       .then((data) => {
+        // update message status
+        this.updateMessageStatus(COMPLETED);
+
         // render appropriate data
         this.botMessageHandler(data);
 
@@ -112,6 +124,9 @@ class App extends React.Component {
         this.updateConversationContext(data.context);
       })
       .catch((err) => {
+        // update message status
+        this.updateMessageStatus(FAILED);
+
         this.updateChatList({
           type: 'bot',
           content: 'Could not connect to Watson Conversation',
@@ -132,6 +147,7 @@ class App extends React.Component {
           messages={this.state.messages}
           chatOptions={this.state.chatOptions}
           onUserInput={(type, text) => { this.userMessageHandler(type, text); }}
+          botMessageStatus={this.state.botMessageStatus}
         />
         <OptionsSidebar json={this.state.lastMessageJson} />
       </div>
