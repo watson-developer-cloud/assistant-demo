@@ -18,7 +18,11 @@ const ChatOption = ({ option, onUserInput, isSelected }) => {
 ChatOption.propTypes = {
   option: PropTypes.object.isRequired,
   onUserInput: PropTypes.func.isRequired,
-  isSelected: PropTypes.bool.isRequired,
+  isSelected: PropTypes.bool,
+};
+
+ChatOption.defaultProps = {
+  isSelected: false,
 };
 
 export default ChatOption;
