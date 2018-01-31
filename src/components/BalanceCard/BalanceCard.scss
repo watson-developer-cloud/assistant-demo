@@ -1,0 +1,28 @@
+.balance-card {
+  width: 80%;
+  background: $duo-gray-10;
+  color: black;
+}
+
+.balance-card__header {
+  padding: 0 5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.balance-card__content {
+  background: $duo-gray-20;
+  padding: 5%;
+}
+
+.balance-card__item {
+  color: $duo-gray-70;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  p {
+    margin: 0;
+  }
+}
