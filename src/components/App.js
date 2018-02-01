@@ -2,8 +2,7 @@ import React from 'react';
 import ChatContainer from './ChatContainer/ChatContainer';
 import SelectionSidebar from './SelectionSidebar/SelectionSidebar';
 import OptionsSidebar from './OptionsSidebar/OptionsSidebar';
-import fetchMessage from './fetchMessage';
-import executeAction from '../utils';
+import { fetchMessage, executeClientAction, executeWorkspaceAction } from '../conversation';
 import { IDLE, IN_PROGRESS, COMPLETED, FAILED } from '../constants';
 
 class App extends React.Component {
@@ -64,13 +63,17 @@ class App extends React.Component {
       }
     });
 
-    // execute actions if they exist
+    // execute client programmatic actions if they exist
     if (outputObj.actions !== undefined && outputObj.actions.length > 0) {
-      if (outputObj.actions[0].name === 'ValidateAcc') {
-        executeAction('/bank/validate', outputObj.actions[0].parameters.chosen_acc)
-          .then(result =>
-            this.sendMessageToConversation(result.result, this.state.lastMessageContext));
-      }
+      executeClientAction(outputObj.actions[0])
+        .then(result =>
+          this.sendMessageToConversation(result.result, this.state.lastMessageContext));
+    }
+
+    // execute standard workspace actions if they exist
+    if (outputObj.output.action !== undefined) {
+      const action = executeWorkspaceAction(outputObj.output.action);
+      this.updateChatList(action);
     }
 
     // check for chat options in generic options object
