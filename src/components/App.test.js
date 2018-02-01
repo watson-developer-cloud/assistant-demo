@@ -26,18 +26,18 @@ describe('App', () => {
     const setState = sandbox.spy(React.Component.prototype, 'setState');
     const component = shallow(<App />);
     component.instance().updateChatList(mockBotChatMessage);
-    expect(setState.calledOnce).toBe(true);
+    expect(setState.calledTwice).toBe(true);
   });
   it('updateOptionsSidebar calls setState', () => {
     const setState = sandbox.spy(React.Component.prototype, 'setState');
     const component = shallow(<App />);
     component.instance().updateOptionsSidebar(mockSidebarJson);
-    expect(setState.calledOnce).toBe(true);
+    expect(setState.calledTwice).toBe(true);
   });
   it('updateConversationContext calls setState', () => {
     const setState = sandbox.spy(React.Component.prototype, 'setState');
     const component = shallow(<App />);
     component.instance().updateConversationContext(mockSidebarJson);
-    expect(setState.calledOnce).toBe(true);
+    expect(setState.calledTwice).toBe(true);
   });
 });

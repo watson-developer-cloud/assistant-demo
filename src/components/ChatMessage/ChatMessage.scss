@@ -1,5 +1,4 @@
 .chat-message {
-  max-width: 50%;
   margin-left: auto;
 }
 
@@ -23,18 +22,18 @@
   background: $duo-gray-60;
   position: relative;
   &:after {
-  content: ' ';
-  position: absolute;
-  width: 0;
-  height: 0;
-  left: auto;
-  right: 0px;
-  bottom: -7px;
-  border-top: 20px solid;
-  border-right: 21px solid;
-  border-bottom: 8px solid;
-  border-left: 18px solid;
-  border-color: transparent $duo-gray-60 transparent transparent;
+    content: ' ';
+    position: absolute;
+    width: 0;
+    height: 0;
+    left: auto;
+    right: 0px;
+    bottom: -7px;
+    border-top: 20px solid;
+    border-right: 21px solid;
+    border-bottom: 8px solid;
+    border-left: 18px solid;
+    border-color: transparent $duo-gray-60 transparent transparent;
   }
 }
 

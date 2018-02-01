@@ -87,10 +87,14 @@ app.get('/bank/validate', (req, res) => {
   const value = req.query.value;
   const isAccValid = bank.validateAcc(Number(value));
   if (isAccValid) {
-    res.send({ result: `acc${value}valid` });
+    res.send({ result: 'acc123valid' });
   }
 
-  res.send({ result: `acc${value}valid` });
+  res.send({ result: 'acc123valid' });
+});
+
+app.get('/bank/locate', (req, res) => {
+  res.send({ result: 'zip123retrieved' });
 });
 
 module.exports = app;

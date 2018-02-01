@@ -27,7 +27,7 @@ class ChatOptionList extends React.Component {
           <ChatOption
             option={option}
             onUserInput={(selectedOption) => { this.optionSelect(selectedOption); }}
-            isSelected={option.isSelected || false}
+            isSelected={option.isSelected}
           />
         ))}
       </div>
