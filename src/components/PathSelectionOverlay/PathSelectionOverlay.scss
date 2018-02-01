@@ -13,14 +13,10 @@
     justify-content: flex-start;
     .path-selection-overlay__card-group {
       display: flex;
-      flex-direction: row;
       flex-wrap: wrap;
-      align-items: flex-start;
-      justify-content: center;
       width: 70vw;
       max-width: 650px;
       .path-selection-card__card-intro {
-        flex: 0 1 71%;
         padding: 1rem 0;
       }
     }
