@@ -2,7 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../Icon/Icon';
 
-const ApptCard = ({ zip, apptDate, reason }) => (
+const ApptCard = ({
+  zip,
+  apptDate,
+  apptTime,
+  reason,
+}) => (
   <div className="appt-card">
     <div className="appt-card__header">
       <div className="appt-card__address">
@@ -14,7 +19,7 @@ const ApptCard = ({ zip, apptDate, reason }) => (
     </div>
     <div className="appt-card__content">
       <p>{apptDate}</p>
-      <p>1:00pm - 2:00pm</p>
+      <p>{apptTime}</p>
       <p>{reason}</p>
       <p>With Emma Eggplant</p>
     </div>
@@ -24,6 +29,7 @@ const ApptCard = ({ zip, apptDate, reason }) => (
 ApptCard.propTypes = {
   zip: PropTypes.number.isRequired,
   apptDate: PropTypes.string.isRequired,
+  apptTime: PropTypes.string.isRequired,
   reason: PropTypes.string.isRequired,
 };
 
