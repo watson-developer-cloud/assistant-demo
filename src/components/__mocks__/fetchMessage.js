@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock';
-import fetchMessage from '../fetchMessage';
+import { fetchMessage } from '../../conversation';
 
 fetchMock.post('*', { hello: 'world' });
 
