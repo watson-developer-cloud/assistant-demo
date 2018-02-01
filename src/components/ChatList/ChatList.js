@@ -19,11 +19,19 @@ const ChatList = ({ messages, onUserInput }) => (
           );
         case 'balance':
           return (
-            <BalanceCard />
+            <BalanceCard
+              balance={message.content['Total Balance']}
+              recPay={message.content['Payment Amount']}
+            />
           );
         case 'appointment':
           return (
-            <ApptCard />
+            <ApptCard
+              zip={message.content.address}
+              apptDate={message.content.date}
+              apptTime={message.content.time}
+              reason="this is a test"
+            />
           );
           /*
         case 'agent':
