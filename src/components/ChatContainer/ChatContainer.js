@@ -6,6 +6,7 @@ import ChatList from '../ChatList/ChatList';
 const ChatContainer = ({
   messages,
   onUserInput,
+  botMessageStatus,
 }) => (
   <div className="ibm-col-lg-8 ibm-col-md-6 ibm-col-sm-4 chat-container">
     <div className="ibm-lg-col-4 ibm-padding chat-container__header">
@@ -14,6 +15,7 @@ const ChatContainer = ({
     <ChatList
       messages={messages}
       onUserInput={onUserInput}
+      botMessageStatus={botMessageStatus}
     />
     <div className="ibm-lg-col-4 ibm-padding chat-container__input">
       <InputWithButton
@@ -30,6 +32,7 @@ const ChatContainer = ({
 ChatContainer.propTypes = {
   messages: PropTypes.array.isRequired,
   onUserInput: PropTypes.func.isRequired,
+  botMessageStatus: PropTypes.string.isRequired,
 };
 
 export default ChatContainer;
