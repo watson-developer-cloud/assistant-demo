@@ -82,6 +82,11 @@ class App extends React.Component {
     }
   }
 
+  routeToPath(path) {
+    this.setState({ messages: [] });
+    this.sendMessageToConversation(path);
+  }
+
   botMessageOptionsHandler(genericObj) {
     genericObj.forEach((response) => {
       if (response.response_type === 'text') {
@@ -145,7 +150,7 @@ class App extends React.Component {
     return (
       <div className="ibm App">
         <SelectionSidebar
-          onPathSelect={(path) => { this.sendMessageToConversation(path); }}
+          onPathSelect={(path) => { this.routeToPath(path); }}
           currentPath={this.state.currentPath}
           maxPaths={this.state.maxPaths}
         />
