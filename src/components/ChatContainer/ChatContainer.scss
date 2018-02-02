@@ -8,13 +8,28 @@
     padding: 1.1em 1.51515vw;
     position: relative;
     z-index: 4;
+    p {
+      position: relative;
+      padding-left: 20px;
+      &:before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 12px;
+        height: 12px;
+        background-color: $duo-blue-60;
+        border-radius: 50%;
+      }
+    }
     &:after {
       content: "";
       position: absolute;
-      bottom: -25px;
+      bottom: -35px;
       left: 0;
       width: calc(100% - 15px);
-      height: 25px;
+      height: 35px;
       background: linear-gradient(to bottom, rgba(37, 37, 37,1), rgba(37, 37, 37,0));
       z-index: 9999;
     }

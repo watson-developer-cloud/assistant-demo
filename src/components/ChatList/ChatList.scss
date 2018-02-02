@@ -4,4 +4,23 @@
   flex: 1;
   position: relative;
   z-index: 3;
+  .chat-list__loader {
+    opacity: 0;
+    transition: all 0.1s ease;
+  }
+  &.chat-list__loading {
+    .chat-list__loader {
+      opacity: 1;
+    }
+  }
+  // default state for all elements in chat chat-list
+  .chat-list__item {
+    opacity: 0;
+    transform: translateY(0.6vw);
+    transition: all 0.1s cubic-bezier(0.4, 0.14, 0.3, 1);
+    &.chat-list__item-loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 }
