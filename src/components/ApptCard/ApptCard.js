@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from '../Icon/Icon';
 
 const ApptCard = ({ zip, apptDate, apptTime }) => (
-  <div className="appt-card">
+  <div className="appt-card chat-item">
     <div className="appt-card__header">
       <div className="appt-card__address">
         <p>Xbank</p>
