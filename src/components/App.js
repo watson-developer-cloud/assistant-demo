@@ -99,14 +99,17 @@ class App extends React.Component {
   }
 
   userMessageHandler(type, text) {
-    // add user message to state
-    if (type !== 'option') {
-      this.updateChatList({
-        type: 'user',
-        content: text,
-      });
+    // do not accept empty inputs
+    if (text.trim() !== '') {
+      // add user message to state
+      if (type !== 'option') {
+        this.updateChatList({
+          type: 'user',
+          content: text,
+        });
+      }
+      this.sendMessageToConversation(text, this.state.lastMessageContext);
     }
-    this.sendMessageToConversation(text, this.state.lastMessageContext);
   }
 
   sendMessageToConversation(text, context = {}) {
