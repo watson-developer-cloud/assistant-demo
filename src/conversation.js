@@ -102,6 +102,12 @@ const executeWorkspaceAction = (actionObj) => {
       type: 'agent',
       content: {},
     };
+  } else if (actionObj.cc_selecteddisplay) {
+    return {
+      type: 'option',
+      subType: 'image',
+      content: [],
+    };
   }
 };
 
