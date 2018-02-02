@@ -1,5 +1,5 @@
 .chat-message {
-  margin-left: auto;
+
 }
 
 .chat-message--anchor-right {
@@ -7,18 +7,41 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-end;
+  max-width: 30vw;
+  margin-left: auto;
 }
 
 .chat-message--bot {
-  display: inline-block;
+  max-width: 80%;
   color: $duo-gray-10;
+  p {
+    position: relative;
+    padding-left: 14px;
+    &:before {
+      content: "";
+      position: absolute;
+      height: calc(21px + .00673 * (100vw - 1650px));
+      width: 3px;
+      display: inline-block;
+      background-color: $duo-blue-60;
+      top: 1px;
+      left: 4px;
+      border-radius: 2px;
+      @include respond-to-max($breakpoint--lg) {
+        height: calc(21px + .00673 * (100vw - 1056px));
+      }
+      @include respond-to-max($breakpoint--sm) {
+        height: calc(21px + .00673 * (100vw - 500px));
+      }
+    }    
+  }
 }
 
 .chat-message--user {
   display: inline-block;
   text-align: right;
   border-radius: 1.5em;
-  padding: 0.8em 1.3em;
+  padding: 10px 20px;
   background: $duo-gray-60;
   position: relative;
   &:after {

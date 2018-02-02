@@ -8,7 +8,7 @@ const ApptCard = ({
   apptTime,
   reason,
 }) => (
-  <div className="appt-card">
+  <div className="appt-card chat-item">
     <div className="appt-card__header">
       <div className="appt-card__address">
         <p>Xbank</p>
