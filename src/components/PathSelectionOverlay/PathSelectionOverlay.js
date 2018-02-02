@@ -25,26 +25,26 @@ const PathSelectionOverlay = ({
           </div>
           <PathSelectionCard
             pathNode={0}
-            label="Path One"
-            path="I\'d like to get a new credit card"
+            label="Make an online payment easy and simple"
+            path="startdemo1"
             onClick={(path) => { onPathSelect(path); }}
           />
           <PathSelectionCard
             pathNode={1}
-            label="Path Two"
-            path="This is the second path available"
+            label="Teach your bot how to gather information"
+            path="startdemo2"
             onClick={(path) => { onPathSelect(path); }}
           />
           <PathSelectionCard
             pathNode={2}
-            label="Path Three"
-            path="This is the third path available"
+            label="Seamlessly integrate with a Live Agent"
+            path="startdemo3"
             onClick={(path) => { onPathSelect(path); }}
           />
           <PathSelectionCard
             pathNode={3}
-            label="Path Four"
-            path="This is the fourth path avilable"
+            label="Promote and suggest products from a portfolio"
+            path="startdemo4"
             onClick={(path) => { onPathSelect(path); }}
           />
         </div>

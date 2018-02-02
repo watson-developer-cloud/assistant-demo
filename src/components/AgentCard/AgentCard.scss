@@ -1,0 +1,17 @@
+.agent-card {
+  width: 80%;
+  background: $duo-gray-10;
+  color: black;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.agent-card__image {
+  flex: 0 1 20%;
+}
+
+.agent-card__content {
+  margin: 3%;
+  flex: 0 1 80%; 
+}
