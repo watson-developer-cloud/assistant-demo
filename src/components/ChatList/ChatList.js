@@ -51,7 +51,10 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
         }
       })}
       <div className="chat-list__loader">
-        <p>working on it!</p>
+        <p className="ibm-type-c">
+          &nbsp;
+          <span></span>
+        </p>
       </div>
     </div>
   );
