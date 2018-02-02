@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ChatMessage = ({ type, text, loaded }) => {
-  const isItemLoaded = loaded ? ' chat-list__item chat-list__item-loaded' : ' chat-list__item';
+const ChatMessage = ({ type, text }) => {
   if (type === 'bot') {
     return (
-      <div className={`chat-message chat-message--bot ${isItemLoaded}`}>
+      <div className="chat-message chat-message--bot">
         <p className="ibm-type-c">
           {text}
         </p>
@@ -13,7 +12,7 @@ const ChatMessage = ({ type, text, loaded }) => {
     );
   } else if (type === 'user') {
     return (
-      <div className={`chat-message chat-message--anchor-right ${isItemLoaded}`}>
+      <div className="chat-message chat-message--anchor-right">
         <p className="chat-message--user ibm-type-b">
           {text}
         </p>
@@ -21,7 +20,7 @@ const ChatMessage = ({ type, text, loaded }) => {
     );
   } else if (type === 'option') {
     return (
-      <div className={`chat-option ${isItemLoaded}`}>
+      <div className="chat-option">
         <button
           className="chat-option__button chat-option__button--selected"
           disabled
@@ -35,7 +34,6 @@ const ChatMessage = ({ type, text, loaded }) => {
 ChatMessage.propTypes = {
   type: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  loaded: PropTypes.bool.isRequired,
 };
 
 export default ChatMessage;
