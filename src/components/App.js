@@ -145,7 +145,7 @@ class App extends React.Component {
     return (
       <div className="ibm App">
         <SelectionSidebar
-          onPathSelect={(path) => { this.userMessageHandler('user', path); }}
+          onPathSelect={(path) => { this.sendMessageToConversation(path); }}
           currentPath={this.state.currentPath}
           maxPaths={this.state.maxPaths}
         />

@@ -100,7 +100,7 @@ const executeWorkspaceAction = (actionObj) => {
   } else if (actionObj.connect_agent) {
     return {
       type: 'agent',
-      content: actionObj.connect_agent,
+      content: {},
     };
   }
 };
