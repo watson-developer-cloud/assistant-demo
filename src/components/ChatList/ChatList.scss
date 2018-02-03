@@ -5,8 +5,8 @@
   height: 4px;
   background-color: $duo-blue-60;
   left: 3px;
-  transform: translateY(-50%);
   top: 50%;
+  transform: translateY(-50%);
   border-radius: 50%;
   animation-duration: 1s;
   animation-iteration-count: infinite;
@@ -17,7 +17,6 @@
   z-index: 3;
   .chat-list__loader {
     display: none;
-    transition: all 0.1s ease;
     p {
       position: relative;
       padding-left: 14px;
