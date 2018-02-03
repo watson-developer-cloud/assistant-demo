@@ -13,9 +13,7 @@
 }
 
 .chat-list {
-  background: $duo-gray-90;
-  overflow-y: auto;
-  flex: 1;
+  // background: $duo-gray-90;
   position: relative;
   z-index: 3;
   .chat-list__loader {
@@ -40,7 +38,6 @@
   }
   &.chat-list__loading {
     .chat-list__loader {
-      // opacity: 1;
       display: block;
     }
   }

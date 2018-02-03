@@ -38,14 +38,14 @@
 }
 
 .chat-message--user {
-  display: inline-block;
+  // display: inline-block;
   text-align: right;
   border-radius: 1.5em;
   padding: 10px 20px;
   background: $duo-gray-60;
   position: relative;
   &:after {
-    content: ' ';
+    content: "";
     position: absolute;
     width: 0;
     height: 0;
