@@ -9,7 +9,6 @@
       "no-console": 0
     },
     "env": {
-      "browser": true,
       "jest": true
     }
 }
