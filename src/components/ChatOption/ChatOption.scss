@@ -1,8 +1,11 @@
 .chat-option__button {
-  margin: 0 0.5rem;
+  margin: 0 0.5em 0.5em 0;
   padding: 10px 20px;
   border-radius: 500px;
   transition: all 1s ease;
+  &:hover {
+    cursor: pointer;
+  }
   &.chat-option__button--selected {
     background: $duo-blue-60;
     position: absolute;

@@ -1,0 +1,15 @@
+<svg width="42px" height="42px" viewBox="0 0 32 32" preserveAspectRatio="xMinYMax meet" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="VR-Demo----Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1056_VR_Demo_Menu_Over" transform="translate(-289.000000, -264.000000)" fill="#FFFFFF">
+            <g id="UI-Elements-/-Arrow/White" transform="translate(288.000000, 263.000000)">
+                <g id="Arrow_Circle-right_32_Artboard-31" transform="translate(1.000000, 1.000000)">
+                    <path d="M11,1.57142857 C16.2072562,1.57142857 20.4285714,5.79274379 20.4285714,11 C20.4285714,16.2072562 16.2072562,20.4285714 11,20.4285714 C5.79274379,20.4285714 1.57142857,16.2072562 1.57142857,11 C1.57142857,5.79274379 5.79274379,1.57142857 11,1.57142857 Z M11,0 C4.92486775,1.04678171e-15 6.97854473e-16,4.92486775 0,11 C-6.97854473e-16,17.0751322 4.92486775,22 11,22 C17.0751322,22 22,17.0751322 22,11 C22,8.08261861 20.8410748,5.28472557 18.7781746,3.22182541 C16.7152744,1.15892524 13.9173814,3.48927236e-16 11,0 Z" id="Shape" fill-rule="fff"></path>
+                    <polygon id="Shape" fill-rule="fff" points="11 6.325 9.89214286 7.43285714 12.6657143 10.2142857 6.325 10.2142857 6.325 11.7857143 12.6657143 11.7857143 9.89214286 14.5671429 11 15.675 15.675 11"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

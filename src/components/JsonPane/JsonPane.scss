@@ -1,4 +1,4 @@
-/* token is a shared class for all JSON tokens */
+// token is a shared class for all JSON tokens
 .token {
   font-size: 0.9em;
 }
@@ -18,7 +18,7 @@
 .boolean {
   color: $duo-alert-orange;
 }
-/* end JSON format styles */
+// end JSON format styles
 
 .json-pane {
   position: absolute;
@@ -29,9 +29,6 @@
   right: 0;
   z-index: 9998;
   overflow-y: auto;
-  code {
-    // font-family: 'IBM Plex Sans','Helvetica Neue',Arial,sans-serif;
-  }
   .results--json {
     padding-left: 1.5151515vw;
   }
@@ -88,7 +85,6 @@
         margin-top: 0;
         /* works for line-numbers below 1000 lines */
         letter-spacing: -1px;
-        // border-right: 1px solid #999;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;

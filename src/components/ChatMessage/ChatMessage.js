@@ -5,7 +5,7 @@ const ChatMessage = ({ type, text }) => {
   if (type === 'bot') {
     return (
       <div className="chat-message chat-message--bot">
-        <p>
+        <p className="ibm-type-c">
           {text}
         </p>
       </div>

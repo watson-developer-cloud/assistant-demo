@@ -1,12 +1,34 @@
-.path-selection-card {
-  flex: 0 1 35%;
-  margin: 1px;
-  padding: 3rem 0;
-  background: $duo-gray-20;
-  color: $duo-gray-100;
-  &:hover {
-  	cursor: pointer;
-  	color: $duo-white;
-  	background: $duo-gradient-blue;
+.path-selection-overlay__card-group {
+  a, button {
+    width: 50%;
+    padding: 1.51515vw;
+    background: $duo-gray-90;
+    color: $duo-white;
+    text-align: left;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    margin-bottom: 2px !important;
+    box-sizing: border-box;
+     &:hover {
+       cursor: pointer;
+       color: $duo-white;
+       background: $duo-gradient-blue;
+      svg {
+        g {
+          fill: $duo-white;
+        }
+      }
+    }
+    svg {
+      g {
+        fill: $duo-blue-60;
+      }
+     }
+    &:nth-of-type(odd) {
+      border-right: 2px solid $duo-gray-100;
+    }
   }
 }

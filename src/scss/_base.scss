@@ -1,8 +1,6 @@
 @import 'colors';
 
-/*
- * Contains base styles for all demo applications
- */
+// Contains base styles for all demo applications
 html {
   font-size: 16px;
 }
@@ -65,7 +63,9 @@ svg {
   }
 }
 
-/* generic modal */
+// global container styles
+
+// generic modal
 .overlay {
   visibility: hidden;
   transition: all 0.1s ease-in-out;
@@ -85,12 +85,13 @@ svg {
     position: absolute;
     top: 0;
     left: 0;
-    background: $duo-gray-80;
+    background: $duo-gray-100;
     width: 100vw;
     .modal--x {
       position: absolute;
       top: 2rem;
       left: 2rem;
+      background: transparent;
       &:hover {
         cursor: pointer;
       }

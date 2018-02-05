@@ -25,9 +25,9 @@ class App extends React.Component {
 
   // eslint-disable-next-line
   scrollChatListToBottom() {
-    const chatContainer = document.getElementsByClassName('chat-list');
-    if (chatContainer[0] !== undefined) {
-      chatContainer[0].scrollTop = chatContainer[0].scrollHeight;
+    const chatContainer = document.getElementById('chat-container__list-wrapper');
+    if (chatContainer !== undefined) {
+      chatContainer.scrollTop = chatContainer.scrollHeight;
     }
   }
 
@@ -37,7 +37,7 @@ class App extends React.Component {
     // the ChatList component will re-render when messages in state is updated
     // so we call scrollChatListToBottom to anchor the scrollbar at the bottom
     // of the list
-    this.scrollChatListToBottom();
+    // this.scrollChatListToBottom();
   }
 
   updateOptionsSidebar(lastMessageJson) {
@@ -82,6 +82,11 @@ class App extends React.Component {
     }
   }
 
+  routeToPath(path) {
+    this.setState({ messages: [] });
+    this.sendMessageToConversation(path);
+  }
+
   botMessageOptionsHandler(genericObj) {
     genericObj.forEach((response) => {
       if (response.response_type === 'text') {
@@ -99,14 +104,17 @@ class App extends React.Component {
   }
 
   userMessageHandler(type, text) {
-    // add user message to state
-    if (type !== 'option') {
-      this.updateChatList({
-        type: 'user',
-        content: text,
-      });
+    // do not accept empty inputs
+    if (text.trim() !== '') {
+      // add user message to state
+      if (type !== 'option') {
+        this.updateChatList({
+          type: 'user',
+          content: text,
+        });
+      }
+      this.sendMessageToConversation(text, this.state.lastMessageContext);
     }
-    this.sendMessageToConversation(text, this.state.lastMessageContext);
   }
 
   sendMessageToConversation(text, context = {}) {
@@ -142,7 +150,7 @@ class App extends React.Component {
     return (
       <div className="ibm App">
         <SelectionSidebar
-          onPathSelect={(path) => { this.userMessageHandler('user', path); }}
+          onPathSelect={(path) => { this.routeToPath(path); }}
           currentPath={this.state.currentPath}
           maxPaths={this.state.maxPaths}
         />
