@@ -14,7 +14,7 @@ const PathSelectionOverlay = ({
     onExit={() => { onExit(); }}
     onEnter={() => { onEnter(); }}
   >
-    <div className="ibm path-selection-overlay__container">
+    <div className="path-selection-overlay__container">
       <div className="path-selection-overlay">
         <div className="path-selection-overlay__card-group">
           <div className="path-selection-card__card-intro">
