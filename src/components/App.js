@@ -13,9 +13,30 @@ class App extends React.Component {
       messages: [],
       lastMessageJson: JSON.stringify({ test: 'hi' }),
       lastMessageContext: {},
-      currentPath: 1,
-      maxPaths: 4,
       botMessageStatus: IDLE,
+      paths: [
+        {
+          id: 1,
+          label: 'Make an Online payment easy and simple',
+          path: 'startdemo1',
+        },
+        {
+          id: 2,
+          label: 'Teach your bot how to gather information',
+          path: 'startdemo2',
+        },
+        {
+          id: 3,
+          label: 'Seamlessly integrate with a Live Agent',
+          path: 'startdemo3',
+        },
+        {
+          id: 4,
+          label: 'Promote and suggest products from a portfolio',
+          path: 'startdemo4',
+        },
+      ],
+      currentPath: 1,
     };
   }
 
@@ -71,7 +92,8 @@ class App extends React.Component {
 
   routeToPath(path) {
     this.setState({ messages: [] });
-    this.sendMessageToConversation(path);
+    this.setState({ currentPath: path.id });
+    this.sendMessageToConversation(path.path);
   }
 
   botMessageOptionsHandler(genericObj) {
@@ -138,8 +160,8 @@ class App extends React.Component {
       <div className="ibm App">
         <SelectionSidebar
           onPathSelect={(path) => { this.routeToPath(path); }}
+          paths={this.state.paths}
           currentPath={this.state.currentPath}
-          maxPaths={this.state.maxPaths}
         />
         <ChatContainer
           messages={this.state.messages}
