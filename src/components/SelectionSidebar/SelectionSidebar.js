@@ -36,10 +36,11 @@ class SelectionSidebar extends React.Component {
           isOverlayVisible={this.state.isOverlayVisible}
           onEnter={() => { this.onEnter(); }}
           onExit={() => { this.onExit(); }}
+          paths={this.props.paths}
           onPathSelect={(path) => { this.onPathSelect(path); }}
         />
         <div className="path-selection__description">
-          <p className="ibm-type-c">{this.props.currentPath}/{this.props.maxPaths}</p>
+          <p className="ibm-type-c">{this.props.currentPath}/{this.props.paths.length}</p>
           <p className="ibm-type-c duo-gray-50">This is where the path description is going to go.
             It is typically about two sentences long.
             Perhaps it will be three sentences, but who knows.
@@ -52,8 +53,8 @@ class SelectionSidebar extends React.Component {
 
 SelectionSidebar.propTypes = {
   onPathSelect: PropTypes.func.isRequired,
+  paths: PropTypes.array.isRequired,
   currentPath: PropTypes.number.isRequired,
-  maxPaths: PropTypes.number.isRequired,
 };
 
 export default SelectionSidebar;

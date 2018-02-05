@@ -7,6 +7,7 @@ const PathSelectionOverlay = ({
   isOverlayVisible,
   onEnter,
   onExit,
+  paths,
   onPathSelect,
 }) => (
   <Modal
@@ -20,33 +21,17 @@ const PathSelectionOverlay = ({
           <div className="path-selection-card__card-intro">
             <p className="ibm-type-c">In this demo, Watson Conversation has been trained
               on specific banking capabilities.
-              Choose one of the 4 scenarios to explore.
+              Choose one of the {paths.length} scenarios to explore.
             </p>
           </div>
-          <PathSelectionCard
-            pathNode={0}
-            label="Make an online payment easy and simple"
-            path="startdemo1"
-            onClick={(path) => { onPathSelect(path); }}
-          />
-          <PathSelectionCard
-            pathNode={1}
-            label="Teach your bot how to gather information"
-            path="startdemo2"
-            onClick={(path) => { onPathSelect(path); }}
-          />
-          <PathSelectionCard
-            pathNode={2}
-            label="Seamlessly integrate with a Live Agent"
-            path="startdemo3"
-            onClick={(path) => { onPathSelect(path); }}
-          />
-          <PathSelectionCard
-            pathNode={3}
-            label="Promote and suggest products from a portfolio"
-            path="startdemo4"
-            onClick={(path) => { onPathSelect(path); }}
-          />
+          {paths.map(path => (
+            <PathSelectionCard
+              pathNode={path.id}
+              label={path.label}
+              path={path.path}
+              onClick={() => { onPathSelect(path); }}
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -57,6 +42,7 @@ PathSelectionOverlay.propTypes = {
   isOverlayVisible: PropTypes.bool.isRequired,
   onEnter: PropTypes.func.isRequired,
   onExit: PropTypes.func.isRequired,
+  paths: PropTypes.array.isRequired,
   onPathSelect: PropTypes.func.isRequired,
 };
 
