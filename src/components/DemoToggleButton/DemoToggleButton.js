@@ -7,7 +7,7 @@ const DemoToggleButton = ({
   icon,
   onClick,
 }) => {
-  const toggleStyle = (isToggled) ? 'demo-toggle-button__toggled' : '';
+  const toggleStyle = (isToggled) ? 'demo-toggle-button--toggled' : '';
   const buttonStyle = `demo-button demo-toggle-button ${toggleStyle}`;
 
   return (
