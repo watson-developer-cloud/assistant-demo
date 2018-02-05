@@ -25,6 +25,7 @@ class ChatOptionList extends React.Component {
       <div className="chat-option-list">
         {this.state.options.map(option => (
           <ChatOption
+            key={option.value}
             option={option}
             onUserInput={(selectedOption) => { this.optionSelect(selectedOption); }}
             isSelected={option.isSelected}
