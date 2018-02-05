@@ -26,6 +26,7 @@ const PathSelectionOverlay = ({
           </div>
           {paths.map(path => (
             <PathSelectionCard
+              key={path.id}
               pathNode={path.id}
               label={path.label}
               path={path.path}
