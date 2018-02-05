@@ -1,26 +1,26 @@
 // transition: [property] [duration] [timing-function] [delay];
 .slide-in-right-down {
   transition: all 299.271ms cubic-bezier(0.4, 0.14, 0.3, 1),
-  left 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
-  width 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
-  bottom 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 99.7569ms,
-  height 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 99.7569ms;
+  left 150ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
+  width 150ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
+  bottom 100ms cubic-bezier(0.4, 0.14, 0.3, 1) 150.5ms,
+  height 100ms cubic-bezier(0.4, 0.14, 0.3, 1) 150.5ms;
   @include respond-to-max($breakpoint--md) {
     transition: all 299.271ms cubic-bezier(0.4, 0.14, 0.3, 1),
-    right 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
-    width 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms;
+    right 100ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
+    width 100ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms;
   }
 }
 
 .slide-in-right-down--reverse {
   transition: all 299.271ms cubic-bezier(0.4, 0.14, 0.3, 1),
-  top 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
-  height 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
-  right 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 99.7569ms,
-  width 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 99.7569ms;
+  top 100ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
+  height 100ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
+  right 150ms cubic-bezier(0.4, 0.14, 0.3, 1) 100.5ms,
+  width 150ms cubic-bezier(0.4, 0.14, 0.3, 1) 100.5ms;
   @include respond-to-max($breakpoint--md) {
     transition: all 299.271ms cubic-bezier(0.4, 0.14, 0.3, 1),
-    left 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
-    width 199.514ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms;
+    left 100ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms,
+    width 100ms cubic-bezier(0.4, 0.14, 0.3, 1) 0ms;
   }
 }

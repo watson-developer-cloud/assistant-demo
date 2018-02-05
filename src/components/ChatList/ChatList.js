@@ -4,13 +4,13 @@ import ChatMessage from '../ChatMessage/ChatMessage';
 import ChatOptionList from '../ChatOptionList/ChatOptionList';
 import BalanceCard from '../BalanceCard/BalanceCard';
 import ApptCard from '../ApptCard/ApptCard';
-import { IN_PROGRESS, COMPLETED } from '../../constants';
+import AgentCard from '../AgentCard/AgentCard';
+import { IN_PROGRESS } from '../../constants';
 
 
 const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
   // eslint-disable-next-line
   const isBotLoading = (botMessageStatus === IN_PROGRESS);
-  const isBotLoaded = (botMessageStatus === COMPLETED);
   const chatListClasses = isBotLoading ? 'ibm-lg-col-4 ibm-padding chat-list chat-list__loading' : 'ibm-lg-col-4 ibm-padding chat-list';
 
   return (
@@ -40,18 +40,26 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
                 reason="this is a test"
               />
             );
+          case 'agent':
+            return (
+              <AgentCard
+                time="12:35pm"
+              />
+            );
           default:
             return (
               <ChatMessage
                 type={message.type}
                 text={message.content || ''}
-                loaded={isBotLoaded}
               />
             );
         }
       })}
       <div className="chat-list__loader">
-        <p>working on it!</p>
+        <p className="ibm-type-c">
+          &nbsp;
+          <span />
+        </p>
       </div>
     </div>
   );

@@ -12,11 +12,13 @@ const ChatContainer = ({
     <div className="ibm-lg-col-4 ibm-padding chat-container__header">
       <p className="ibm-type-a">XBankBot</p>
     </div>
-    <ChatList
-      messages={messages}
-      onUserInput={onUserInput}
-      botMessageStatus={botMessageStatus}
-    />
+    <div id="chat-container__list-wrapper" className="chat-container__list-wrapper">
+      <ChatList
+        messages={messages}
+        onUserInput={onUserInput}
+        botMessageStatus={botMessageStatus}
+      />
+    </div>
     <div className="ibm-lg-col-4 ibm-padding chat-container__input">
       <InputWithButton
         onSubmit={(e) => {

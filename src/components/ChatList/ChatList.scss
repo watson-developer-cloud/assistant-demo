@@ -1,26 +1,72 @@
+%load-dots {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background-color: $duo-blue-60;
+  left: 3px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
 .chat-list {
-  background: $duo-gray-90;
-  overflow-y: auto;
-  flex: 1;
   position: relative;
   z-index: 3;
   .chat-list__loader {
-    opacity: 0;
-    transition: all 0.1s ease;
+    display: none;
+    p {
+      position: relative;
+      padding-left: 14px;
+      margin: 0;
+      span {
+        @extend %load-dots;
+      }
+      &:before {
+        @extend %load-dots;
+        animation-name: dot-up;
+      }
+      &:after {
+        @extend %load-dots;
+        animation-name: dot-down;
+      }
+    }
   }
   &.chat-list__loading {
     .chat-list__loader {
-      opacity: 1;
+      display: block;
     }
   }
   // default state for all elements in chat chat-list
-  .chat-list__item {
+  & > div {
+    opacity: 1;
+    animation-duration: 200ms;
+    animation-name: chat-fade-in;
+  }
+}
+
+@keyframes dot-down {
+  from { top: 50% }
+  30% { top: 90% }
+  to { top: 50% }
+}
+
+@keyframes dot-up {
+  from { top: 50% }
+  30% { top: 10% }
+  to { top: 50% }
+}
+
+@keyframes chat-fade-in {
+  0% { opacity: 0; }
+  66% {
     opacity: 0;
-    transform: translateY(0.6vw);
-    transition: all 0.1s cubic-bezier(0.4, 0.14, 0.3, 1);
-    &.chat-list__item-loaded {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    transform: translateY(0.25em);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

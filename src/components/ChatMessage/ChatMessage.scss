@@ -22,7 +22,6 @@
       position: absolute;
       height: calc(21px + .00673 * (100vw - 1650px));
       width: 3px;
-      display: inline-block;
       background-color: $duo-blue-60;
       top: 1px;
       left: 4px;
@@ -33,19 +32,18 @@
       @include respond-to-max($breakpoint--sm) {
         height: calc(21px + .00673 * (100vw - 500px));
       }
-    }    
+    }
   }
 }
 
 .chat-message--user {
-  display: inline-block;
   text-align: right;
   border-radius: 1.5em;
   padding: 10px 20px;
   background: $duo-gray-60;
   position: relative;
   &:after {
-    content: ' ';
+    content: "";
     position: absolute;
     width: 0;
     height: 0;

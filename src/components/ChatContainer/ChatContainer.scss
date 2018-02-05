@@ -38,6 +38,15 @@
       align-items: center;
     }
   }
+  // set flex-direction to reverse the scroll direction
+  // to simulate mobile chat app
+  .chat-container__list-wrapper {
+    background: $duo-gray-90;
+    display: flex;
+    flex: 1;
+    flex-direction: column-reverse;
+    overflow: auto;
+  }
   .chat-container__input {
     background: $duo-gray-90;
   }
