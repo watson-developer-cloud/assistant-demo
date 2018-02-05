@@ -23,21 +23,8 @@ class App extends React.Component {
     this.sendMessageToConversation('');
   }
 
-  // eslint-disable-next-line
-  scrollChatListToBottom() {
-    const chatContainer = document.getElementById('chat-container__list-wrapper');
-    if (chatContainer !== undefined) {
-      chatContainer.scrollTop = chatContainer.scrollHeight;
-    }
-  }
-
   updateChatList(messageObj) {
     this.setState({ messages: [...this.state.messages, messageObj] });
-
-    // the ChatList component will re-render when messages in state is updated
-    // so we call scrollChatListToBottom to anchor the scrollbar at the bottom
-    // of the list
-    // this.scrollChatListToBottom();
   }
 
   updateOptionsSidebar(lastMessageJson) {
