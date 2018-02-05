@@ -33,7 +33,11 @@ const ChatMessage = ({ type, text }) => {
 
 ChatMessage.propTypes = {
   type: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
+  text: PropTypes.string,
+};
+
+ChatMessage.defaultProps = {
+  text: '',
 };
 
 export default ChatMessage;

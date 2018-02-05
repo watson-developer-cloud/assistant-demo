@@ -50,7 +50,7 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
             return (
               <ChatMessage
                 type={message.type}
-                text={message.content || ''}
+                text={message.content}
               />
             );
         }
