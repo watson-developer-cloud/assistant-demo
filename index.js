@@ -86,11 +86,13 @@ app.post('/api/message', (req, res) => {
 app.get('/bank/validate', (req, res) => {
   const value = req.query.value;
   const isAccValid = bank.validateAcc(Number(value));
-  if (isAccValid) {
+  // if accountNum is in list of valid accounts
+  if (isAccValid === true) {
     res.send({ result: 'acc123valid' });
   }
 
-  res.send({ result: 'acc123valid' });
+  // return invalid by default
+  res.send({ result: 'acc123invalid' });
 });
 
 app.get('/bank/locate', (req, res) => {

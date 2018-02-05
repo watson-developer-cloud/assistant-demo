@@ -46,7 +46,7 @@ const executeClientAction = (actionObj) => {
   switch (actionObj.name) {
     case 'ValidateAcc':
       endpoint = '/bank/validate';
-      value = actionObj.parameters;
+      value = actionObj.parameters.chosen_acc;
       break;
     case 'RetrieveZip':
       endpoint = 'bank/locate';
