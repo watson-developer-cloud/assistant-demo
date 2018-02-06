@@ -1,0 +1,32 @@
+.credit-card-option {
+  max-width: 50%; 
+  padding: 0;
+  background: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.credit-card-option__image {
+  flex: 0 1 100%; 
+
+  img {
+    width: 100%;
+  }
+}
+
+.credit-card-option__content {
+  background: $duo-gray-10;
+  color: $duo-gray-70;
+  padding: 6%;
+  text-align: left;
+
+  h2 {
+    color: black;
+  }
+}
+
+.credit-card-option__link {
+  color: $duo-blue-60;
+}

@@ -46,10 +46,14 @@ const executeClientAction = (actionObj) => {
   switch (actionObj.name) {
     case 'ValidateAcc':
       endpoint = '/bank/validate';
-      value = actionObj.parameters;
+      value = actionObj.parameters.chosen_acc;
       break;
     case 'RetrieveZip':
       endpoint = 'bank/locate';
+      value = actionObj.parameters.zip_value;
+      break;
+    case 'ShowStatement':
+      endpoint = 'bank/statement';
       value = actionObj.parameters.zip_value;
       break;
     default:
@@ -104,9 +108,29 @@ const executeWorkspaceAction = (actionObj) => {
     };
   } else if (actionObj.cc_selecteddisplay) {
     return {
-      type: 'option',
-      subType: 'image',
-      content: [],
+      type: 'creditCard',
+      content: [
+        {
+          id: 0,
+          cardName: 'Travel Rewards',
+          description: '$150 online cash rewards bonus offer',
+        },
+        {
+          id: 1,
+          cardName: 'World Premium',
+          description: 'Save on interest to help pay down your balance faster',
+        },
+        {
+          id: 2,
+          cardName: 'Explorer One',
+          description: '20,000 miles with purchase',
+        },
+        {
+          id: 3,
+          cardName: 'The Emma Card',
+          description: 'Ensures that margin is exactly to spec',
+        },
+      ],
     };
   }
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChatOption from '../ChatOption/ChatOption';
+import CreditCardOption from '../CreditCardOption/CreditCardOption';
 
 class ChatOptionList extends React.Component {
   constructor(props) {
@@ -21,10 +22,25 @@ class ChatOptionList extends React.Component {
   }
 
   render() {
+    if (this.props.type === 'creditCard') {
+      return (
+        <div>
+          {this.state.options.map(option => (
+            <CreditCardOption
+              cardName={option.cardName}
+              description={option.description}
+              onUserInput={(value) => { this.onUserInput(value); }}
+            />
+          ))}
+        </div>
+      );
+    }
+
     return (
       <div className="chat-option-list">
         {this.state.options.map(option => (
           <ChatOption
+            key={option.value}
             option={option}
             onUserInput={(selectedOption) => { this.optionSelect(selectedOption); }}
             isSelected={option.isSelected}
@@ -36,6 +52,7 @@ class ChatOptionList extends React.Component {
 }
 
 ChatOptionList.propTypes = {
+  type: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   onUserInput: PropTypes.func.isRequired,
 };

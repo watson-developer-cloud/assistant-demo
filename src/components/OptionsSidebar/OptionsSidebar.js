@@ -11,11 +11,20 @@ class OptionsSidebar extends React.Component {
 
     this.state = {
       isJsonVisible: false,
+      isNotificationVisible: false,
     };
   }
 
   toggleJson() {
     this.setState({ isJsonVisible: !this.state.isJsonVisible });
+  }
+
+  closeNotification() {
+    this.setState({ isNotificationVisible: false });
+  }
+
+  openNotification() {
+    this.setstate({ isNotificationVisible: true });
   }
 
   render() {
@@ -41,9 +50,9 @@ class OptionsSidebar extends React.Component {
           <DemoNotification
             message="This is a test notification"
             notificationLink="#"
-            isVisible
-            onEnter={null}
-            onExit={null}
+            isVisible={this.state.isNotificationVisible}
+            onEnter={() => { this.openNotification(); }}
+            onExit={() => { this.closeNotification(); }}
           />
           <JsonPane
             json={this.props.json}

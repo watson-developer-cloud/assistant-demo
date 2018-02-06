@@ -9,37 +9,42 @@ const DemoNotification = ({
   isVisible,
   onExit,
   onEnter,
-}) => (
-  <div className="demo-notification">
-    <Modal
-      isOpen={isVisible}
-      onExit={() => { onExit(); }}
-      onEnter={() => { onEnter(); }}
-    >
-      <div className="demo-notification__content">
-        <div className="demo-notification__notification">
-          <p className="ibm-type-b">{message}</p>
-        </div>
-        <a href={notificationLink}>
-          <div className="demo-notification__cta">
-            <p className="ibm-type-b">Click here</p>
+}) => {
+  const visibleClasses = (isVisible) ? 'active' : '';
+  const demoNotificationClasses = `demo-notification ${visibleClasses}`;
 
-            <span>
-              <Icon type="arrow-right" size={13} />
-            </span>
+  return (
+    <div className={demoNotificationClasses}>
+      <Modal
+        isOpen={isVisible}
+        onExit={() => { onExit(); }}
+        onEnter={() => { onEnter(); }}
+      >
+        <div className="demo-notification__content">
+          <div className="demo-notification__notification">
+            <p className="ibm-type-b">{message}</p>
           </div>
-        </a>
-      </div>
-    </Modal>
-  </div>
-);
+          <a href={notificationLink}>
+            <div className="demo-notification__cta">
+              <p className="ibm-type-b">Click here</p>
+              <span>
+                <Icon type="arrow-right" size={13} />
+              </span>
+            </div>
+          </a>
+        </div>
+      </Modal>
+    </div>
+
+  );
+};
 
 DemoNotification.propTypes = {
   message: PropTypes.string.isRequired,
-  notificationLink: PropTypes.string,
   isVisible: PropTypes.bool.isRequired,
   onExit: PropTypes.func.isRequired,
   onEnter: PropTypes.func.isRequired,
+  notificationLink: PropTypes.string,
 };
 
 DemoNotification.defaultProps = {
