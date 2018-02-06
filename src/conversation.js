@@ -52,6 +52,10 @@ const executeClientAction = (actionObj) => {
       endpoint = 'bank/locate';
       value = actionObj.parameters.zip_value;
       break;
+    case 'ShowStatement':
+      endpoint = 'bank/statement';
+      value = actionObj.parameters.zip_value;
+      break;
     default:
       return null;
   }
