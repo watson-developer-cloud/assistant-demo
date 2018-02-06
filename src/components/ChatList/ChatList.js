@@ -44,7 +44,7 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
           case 'agent':
             return (
               <AgentCard
-                time="12:35pm"
+                time={message.content}
               />
             );
           case 'creditCard':

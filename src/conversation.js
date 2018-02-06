@@ -104,7 +104,7 @@ const executeWorkspaceAction = (actionObj) => {
   } else if (actionObj.connect_agent) {
     return {
       type: 'agent',
-      content: {},
+      content: new Date().toLocaleTimeString('en-US'),
     };
   } else if (actionObj.cc_selecteddisplay) {
     return {
