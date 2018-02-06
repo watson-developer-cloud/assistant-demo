@@ -46,6 +46,10 @@ class App extends React.Component {
 
   updateChatList(messageObj) {
     this.setState({ messages: [...this.state.messages, messageObj] });
+    document.getElementById('click-me').click();
+    setTimeout(() => {
+      document.querySelectorAll('[placeholder="Type here..."]')[0].focus();
+    }, 150);
   }
 
   updateOptionsSidebar(lastMessageJson) {

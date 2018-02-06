@@ -11,10 +11,10 @@ import { IN_PROGRESS } from '../../constants';
 const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
   // eslint-disable-next-line
   const isBotLoading = (botMessageStatus === IN_PROGRESS);
-  const chatListClasses = isBotLoading ? 'ibm-lg-col-4 ibm-padding chat-list chat-list__loading' : 'ibm-lg-col-4 ibm-padding chat-list';
+  const chatListClasses = isBotLoading ? 'ibm-lg-col-4 ibm-padding chat-list chat-list--loading' : 'ibm-lg-col-4 ibm-padding chat-list';
 
   return (
-    <div className={chatListClasses}>
+    <div id="chat-list" className={chatListClasses}>
       {messages.map((message) => {
         switch (message.type) {
           case 'option':
@@ -61,6 +61,7 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
           <span />
         </p>
       </div>
+      <div id="chat-list-bottom">&nbsp;</div>
     </div>
   );
 };

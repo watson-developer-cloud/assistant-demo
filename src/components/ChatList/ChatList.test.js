@@ -21,7 +21,7 @@ describe('ChatList', () => {
   // });
   it('renders ChatMessage for each item in messages array', () => {
     const component = shallow(<ChatList messages={mockMessages} onUserInput={onUserInputSpy} />);
-    expect(component.find('.chat-list').children()).toHaveLength(4);
+    expect(component.find('.chat-list').children()).toHaveLength(5);
   });
   it('renders ChatOptionList when type is option', () => {
     const component = shallow(<ChatList messages={mockMessages} onUserInput={onUserInputSpy} />);
