@@ -27,12 +27,12 @@ class App extends React.Component {
         },
         {
           id: 3,
-          label: 'Seamlessly integrate with a Live Agent',
+          label: 'Promote and suggest products from a portfolio',
           path: 'startdemo3',
         },
         {
           id: 4,
-          label: 'Promote and suggest products from a portfolio',
+          label: 'Seamlessly integrate with a Live Agent',
           path: 'startdemo4',
         },
       ],
@@ -40,7 +40,7 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentWillMount() {
     // TODO: wrap in a settimeout of 0
     // this puts it within the event loop
     // so that rendering
@@ -100,7 +100,6 @@ class App extends React.Component {
   routeToPath(path) {
     this.setState({ messages: [] });
     this.setState({ currentPath: path.id });
-    this.sendMessageToConversation('');
     this.sendMessageToConversation(path.path, this.state.lastMessageContext);
   }
 
