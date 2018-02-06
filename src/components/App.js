@@ -41,6 +41,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    // TODO: wrap in a settimeout of 0
+    // this puts it within the event loop
+    // so that rendering
     this.sendMessageToConversation('');
   }
 
@@ -93,7 +96,8 @@ class App extends React.Component {
   routeToPath(path) {
     this.setState({ messages: [] });
     this.setState({ currentPath: path.id });
-    this.sendMessageToConversation(path.path);
+    this.sendMessageToConversation('');
+    this.sendMessageToConversation(path.path, this.state.lastMessageContext);
   }
 
   botMessageOptionsHandler(genericObj) {
