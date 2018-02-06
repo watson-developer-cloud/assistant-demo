@@ -15,12 +15,24 @@
 .chat-list {
   position: relative;
   z-index: 3;
+  scroll-behavior: smooth;
+  // height: 600px;
+  overflow: auto;
+  // scrolling chat window will not scroll page behind it
+  // latest chrome feature only - experimental
+  overscroll-behavior-y: contain;
+  // get rid of this later and do it properly
+  #chat-list-bottom {
+    // position: absolute;
+    // bottom: 0;
+  }
   .chat-list__loader {
     display: none;
-    p {
+    a {
       position: relative;
       padding-left: 14px;
       margin: 0;
+      text-decoration: none;
       span {
         @extend %load-dots;
       }
@@ -32,9 +44,12 @@
         @extend %load-dots;
         animation-name: dot-down;
       }
+      &:hover {
+        cursor: default;
+      }
     }
   }
-  &.chat-list__loading {
+  &.chat-list--loading {
     .chat-list__loader {
       display: block;
     }
