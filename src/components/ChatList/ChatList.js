@@ -20,6 +20,7 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
           case 'option':
             return (
               <ChatOptionList
+                type="button"
                 options={message.content}
                 onUserInput={onUserInput}
               />
@@ -44,6 +45,13 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
             return (
               <AgentCard
                 time="12:35pm"
+              />
+            );
+          case 'creditCard':
+            return (
+              <ChatOptionList
+                type="creditCard"
+                options={message.content}
               />
             );
           default:
