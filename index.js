@@ -99,4 +99,8 @@ app.get('/bank/locate', (req, res) => {
   res.send({ result: 'zip123retrieved' });
 });
 
+app.get('/bank/statement', (req, res) => {
+  res.send({ result: 'statement' });
+});
+
 module.exports = app;

@@ -89,6 +89,7 @@
     "supertest": "^3.0.0",
     "system": "^2.0.1",
     "uglifyjs-webpack-plugin": "^1.1.2",
+    "url-loader": "^0.6.2",
     "webpack-merge": "^4.1.1"
   },
   "author": "IBM",

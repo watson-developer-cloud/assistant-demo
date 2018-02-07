@@ -2,14 +2,17 @@
   margin: 0 0.5em 0.5em 0;
   padding: 10px 20px;
   border-radius: 500px;
-  transition: all 1s ease;
+  transition: left 0.2s ease-in-out;
+  position: relative;
+  left: 0;
   &:hover {
     cursor: pointer;
   }
   &.chat-option__button--selected {
     background: $duo-blue-60;
-    position: absolute;
-    right: 0;
-    margin: 0;
+    transform: translateX(-100%);
+    margin-right: 0;
+    left: 100%;
+    cursor: default;
   }
 }

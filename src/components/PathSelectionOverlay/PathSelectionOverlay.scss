@@ -4,12 +4,16 @@
   transform: translateX(-50%);
   .modal {
     width: 100%;
-    .modal--x {
-      left: 60px;
-    }
+    .modal--x { }
     .path-selection-overlay__container {
-      padding: 0 50px;
+      padding: 0 1.51515vw;
       position: relative;
+      @include respond-to-max($breakpoint--lg) {
+        padding: 0 1.51515vw;
+      }
+      @include respond-to-max($breakpoint--md) {
+        padding: 0;
+      }
       .path-selection-overlay {
         max-height: 100vh;
         height: 100vh;

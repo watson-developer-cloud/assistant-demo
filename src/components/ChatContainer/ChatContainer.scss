@@ -1,6 +1,12 @@
 .chat-container {
   display: flex;
   flex-direction: column;
+  // get rid of this and do properly later
+  #click-me {
+    // position: absolute;
+    // left: -99999px;
+    visibility: hidden;
+  }
   .chat-container__header {
     background: $duo-gray-80;
     border-radius: 7px 7px 0 0;
@@ -11,6 +17,7 @@
     p {
       position: relative;
       padding-left: 20px;
+      margin: 0;
       &:before {
         content: "";
         position: absolute;
@@ -44,7 +51,7 @@
     background: $duo-gray-90;
     display: flex;
     flex: 1;
-    flex-direction: column-reverse;
+    flex-direction: column;
     overflow: auto;
   }
   .chat-container__input {

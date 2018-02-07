@@ -25,7 +25,7 @@ describe('DemoToggleButton', () => {
   });
   it('contains toggled css when toggled on', () => {
     const component = shallow(<DemoToggleButton isToggled icon="code" onClick={onClickSpy} />);
-    expect(component.find('.demo-toggle-button__toggled')).toHaveLength(1);
+    expect(component.find('.demo-toggle-button--toggled')).toHaveLength(1);
   });
   it('doesnt contain toggled css when toggled off', () => {
     const component = shallow(<DemoToggleButton
@@ -33,6 +33,6 @@ describe('DemoToggleButton', () => {
       icon="code"
       onClick={onClickSpy}
     />);
-    expect(component.find('.demo-toggle-button__toggled')).toHaveLength(0);
+    expect(component.find('.demo-toggle-button--toggled')).toHaveLength(0);
   });
 });
