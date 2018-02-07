@@ -4,6 +4,7 @@ import SelectionSidebar from './SelectionSidebar/SelectionSidebar';
 import OptionsSidebar from './OptionsSidebar/OptionsSidebar';
 import { fetchMessage, executeClientAction, executeWorkspaceAction } from '../conversation';
 import { IDLE, IN_PROGRESS, COMPLETED, FAILED } from '../constants';
+require('smoothscroll-polyfill').polyfill();
 
 class App extends React.Component {
   constructor(props) {
