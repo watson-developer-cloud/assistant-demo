@@ -47,15 +47,11 @@ class App extends React.Component {
     this.sendMessageToConversation('');
   }
 
-  scrollToBottom() {
-    scroll.scrollToBottom();
-  }
-
   updateChatList(messageObj) {
     const chatBottom = document.getElementById('chat-list-bottom');
     this.setState({ messages: [...this.state.messages, messageObj] });
     // scroll to bottom of #chat-list on each update
-    chatBottom.scrollIntoView({ behavior: "smooth" });
+    chatBottom.scrollIntoView({ behavior: 'smooth' });
   }
 
   updateOptionsSidebar(lastMessageJson) {

@@ -11,7 +11,6 @@ const ChatContainer = ({
   <div className="ibm-col-lg-8 ibm-col-md-6 ibm-col-sm-4 chat-container">
     <div className="ibm-lg-col-4 ibm-padding chat-container__header">
       <p className="ibm-type-a">XBankBot</p>
-      <a id="click-me" href="#chat-list-bottom">tset</a>
     </div>
     <div id="chat-container__list-wrapper" className="chat-container__list-wrapper">
       <ChatList
