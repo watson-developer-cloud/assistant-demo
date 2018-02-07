@@ -59,13 +59,15 @@
   }
   .input-with-button {
     background: $duo-gray-90;
-    button {
+    padding-bottom: 10px;
+   button {
       position: absolute;
       left: -9999px;
     }
     input {
       width: 100%;
       border-bottom: 1px solid $duo-gray-50;
+      padding-bottom: 10px;
     }
   }
   @include respond-to-max($breakpoint--sm) {

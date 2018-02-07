@@ -1,5 +1,5 @@
 .balance-card {
-  width: 80%;
+  @extend %card-length;
   background: $duo-gray-10;
   color: black;
 }

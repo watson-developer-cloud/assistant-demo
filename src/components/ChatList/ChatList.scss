@@ -12,6 +12,14 @@
   animation-iteration-count: infinite;
 }
 
+// cards, e.g. balance/appointment cards
+%card-length {
+  width: 55%;
+  @include respond-to-max($breakpoint--md) {
+    width: 100%;
+  }
+}
+
 .chat-list {
   position: relative;
   z-index: 3;

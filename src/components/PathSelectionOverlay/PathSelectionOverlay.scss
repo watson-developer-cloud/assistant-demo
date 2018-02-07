@@ -1,38 +1,54 @@
-.overlay {
-  max-width: 1650px;
-  left: 50%;
-  transform: translateX(-50%);
-  .modal {
-    width: 100%;
-    .modal--x { }
-    .path-selection-overlay__container {
-      padding: 0 1.51515vw;
-      position: relative;
-      @include respond-to-max($breakpoint--lg) {
+.path-selection-overlay__container {
+
+  .overlay {
+    max-width: 1650px;
+    left: 50%;
+    transform: translateX(-50%);
+    .modal {
+      width: 100%;
+      .modal--x {
+        width: 53px;
+        height: 53px;
+        top: 3.125vw;
+        left: 3.125vw;
+        // @include respond-to-max($breakpoint--md) {
+          // left: 3.125vw;
+          // top: 3.125vw;
+        // }
+        @include respond-to-min($breakpoint--lg) {
+          top: 1.51515vw;
+          left: 1.51515vw;
+        }
+      }
+      .path-selection-overlay__container {
         padding: 0 1.51515vw;
-      }
-      @include respond-to-max($breakpoint--md) {
-        padding: 0;
-      }
-      .path-selection-overlay {
-        max-height: 100vh;
-        height: 100vh;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        .path-selection-overlay__card-group {
-          display: flex;
-          flex-wrap: wrap;
-          width: 70vw;
-          max-width: 650px;
+        position: relative;
+        @include respond-to-max($breakpoint--lg) {
+          padding: 0 1.51515vw;
+        }
+        @include respond-to-max($breakpoint--md) {
+          padding: 0;
+        }
+        .path-selection-overlay {
+          max-height: 100vh;
+          height: 100vh;
           margin: 0 auto;
-          padding-top: 1.5em;
-          .path-selection-card__card-intro {
-            padding: 1rem 0;
+          display: flex;
+          flex-direction: column;
+          .path-selection-overlay__card-group {
+            display: flex;
+            flex-wrap: wrap;
+            width: 70vw;
+            max-width: 650px;
+            margin: 0 auto;
+            padding-top: 1.5em;
+            .path-selection-card__card-intro {
+              padding: 1rem 0;
+            }
           }
         }
       }
     }
-  }
 
+  }
 }
