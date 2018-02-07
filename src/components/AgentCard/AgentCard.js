@@ -3,10 +3,17 @@ import PropTypes from 'prop-types';
 import LindaPic from '../../images/linda.png';
 
 const AgentCard = ({ time }) => (
-  <div className="agent-card">
-    <img src={LindaPic} alt="agent" className="agent-card__image" />
-    <div className="agent-card__content">
-      <p>Your chat history, started at {time}, has been transferred to Lisa Dumbell.</p>
+  <div className="image-card agent-card">
+    <div
+      className="image-card__image agent-card__image"
+      style={{ backgroundImage: `url(${LindaPic})` }}
+    >
+      <div />
+    </div>
+    <div className="image-card__content agent-card__content">
+      <p className="ibm-type-c">Your chat history, started at {time},
+        has been transferred to Lisa Dumbell.
+      </p>
     </div>
   </div>
 );
