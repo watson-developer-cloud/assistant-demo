@@ -11,10 +11,6 @@
         height: 53px;
         top: 3.125vw;
         left: 3.125vw;
-        // @include respond-to-max($breakpoint--md) {
-          // left: 3.125vw;
-          // top: 3.125vw;
-        // }
         @include respond-to-min($breakpoint--lg) {
           top: 1.51515vw;
           left: 1.51515vw;
