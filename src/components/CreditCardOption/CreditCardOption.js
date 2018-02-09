@@ -8,21 +8,24 @@ const CreditCardOption = ({
   description,
   isSelected,
 }) => {
-  const isSelectedClass = (isSelected) ? 'credit-card-option--selected' : '';
-  const classes = `ibm-type-b credit-card-option ${isSelectedClass}`;
+  const isSelectedClass = (isSelected) ? 'image-card--selected credit-card-option--selected' : '';
+  const classes = `credit-card-option image-card ${isSelectedClass}`;
 
   return (
     <button
       className={classes}
       onClick={() => { onUserInput(cardName); }}
     >
-      <div className="credit-card-option__image">
-        <img src={ccImageOne} alt={cardName} />
+      <div
+        className="image-card__image credit-card-option__image"
+        style={{ backgroundImage: `url(${ccImageOne})` }}
+      >
+        <div />
       </div>
-      <div className="credit-card-option__content">
-        <h2>{cardName}</h2>
-        <p>{description}</p>
-        <p className="credit-card-option__link">Learn More →</p>
+      <div className="image-card__content credit-card-option__content">
+        <p className="ibm-type-b ibm-type-semibold">{cardName}</p>
+        <p className="ibm-type-a">{description}</p>
+        <p className="ibm-type-a credit-card-option__link">Learn More →</p>
       </div>
     </button>
   );

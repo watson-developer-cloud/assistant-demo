@@ -106,3 +106,44 @@ svg {
     }
   }
 }
+
+// 2-col card styles, e.g. credit card and agent cards
+.image-card {
+  background: none;
+  display: flex;
+  align-items: normal;
+  margin-bottom: 1.51515vw;
+  width: 75%;
+  background: $duo-gray-10;
+  padding: 0;
+  @include respond-to-max($breakpoint--md) {
+    width: 100%;
+  }
+  .image-card__image {
+    position: relative;
+    width: 33%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      display: block;
+      padding-top: 100%;
+    }
+  }
+  .image-card__content {
+    color: $duo-gray-70;
+    text-align: left;
+    padding: 1.51515vw;
+    width: 66%;
+    .ibm-type-semibold {
+      color: $duo-gray-100;
+      margin: 0;
+    }
+  }
+  &.image-card--selected {
+
+  }
+}
