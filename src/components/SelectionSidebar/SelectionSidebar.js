@@ -41,9 +41,8 @@ class SelectionSidebar extends React.Component {
         />
         <div className="path-selection__description">
           <p className="ibm-type-c">{this.props.currentPath}/{this.props.paths.length}</p>
-          <p className="ibm-type-c duo-gray-50">This is where the path description is going to go.
-            It is typically about two sentences long.
-            Perhaps it will be three sentences, but who knows.
+          <p className="ibm-type-c duo-gray-50">
+            {this.props.paths[this.props.currentPath - 1].description}
           </p>
         </div>
       </div>
