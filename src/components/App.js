@@ -86,7 +86,7 @@ class App extends React.Component {
     if (outputObj.actions !== undefined && outputObj.actions.length > 0) {
       executeClientAction(outputObj.actions[0])
         .then((result) => {
-          if (outputObj.context.skip_user_input === false) {
+          if (!outputObj.context.skip_user_input) {
             this.sendMessageToConversation(result.result, this.state.lastMessageContext);
           }
         });
