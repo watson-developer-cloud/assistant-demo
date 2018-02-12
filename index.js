@@ -89,10 +89,10 @@ app.get('/bank/validate', (req, res) => {
   // if accountNum is in list of valid accounts
   if (isAccValid === true) {
     res.send({ result: 'acc123valid' });
+  } else {
+    // return invalid by default
+    res.send({ result: 'acc123invalid' });
   }
-
-  // return invalid by default
-  res.send({ result: 'acc123invalid' });
 });
 
 app.get('/bank/locate', (req, res) => {
