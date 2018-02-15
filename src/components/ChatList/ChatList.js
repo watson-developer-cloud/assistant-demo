@@ -5,6 +5,7 @@ import ChatOptionList from '../ChatOptionList/ChatOptionList';
 import BalanceCard from '../BalanceCard/BalanceCard';
 import ApptCard from '../ApptCard/ApptCard';
 import AgentCard from '../AgentCard/AgentCard';
+import StatementCard from '../StatementCard/StatementCard';
 import { IN_PROGRESS } from '../../constants';
 
 
@@ -52,6 +53,13 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
               <ChatOptionList
                 type="creditCard"
                 options={message.content}
+              />
+            );
+          case 'statement':
+            return (
+              <StatementCard
+                startDate="1/1/17"
+                endDate="1/30/17"
               />
             );
           default:

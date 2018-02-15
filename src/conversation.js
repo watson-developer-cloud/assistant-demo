@@ -132,6 +132,11 @@ const executeWorkspaceAction = (actionObj) => {
         },
       ],
     };
+  } else if (actionObj.statement_display) {
+    return {
+      type: 'statement',
+      content: 'ok',
+    };
   }
 };
 
