@@ -53,6 +53,14 @@ button {
       background-size: 600% 100%;
     }
   }
+  &:hover {
+    cursor: pointer;
+    svg {
+      #Icon {
+        fill: $duo-white;
+      }
+    }
+  }
 }
 
 svg {

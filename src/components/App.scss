@@ -4,7 +4,10 @@
   .App {
   	min-height: 50vh;
   	height: 80vh;
-  	padding: 0;
+  	// padding: 0;
+  	@include respond-to-max($breakpoint--lg) {
+  		height: 100vh;
+  	}
   }
 }
 
