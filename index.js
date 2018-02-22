@@ -100,7 +100,12 @@ app.get('/bank/locate', (req, res) => {
 });
 
 app.get('/bank/statement', (req, res) => {
-  res.send({ result: 'statement' });
+  const startingDate = new Date(req.query.value);
+  const endingDate = new Date(startingDate.getFullYear(), startingDate.getMonth() + 1, 0);
+  const startingDateString = startingDate.toLocaleDateString();
+  const endingDateString = endingDate.toLocaleDateString();
+
+  res.send({ result: 'statement', dates: { startingDate: startingDateString, endingDate: endingDateString } });
 });
 
 module.exports = app;

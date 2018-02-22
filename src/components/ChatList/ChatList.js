@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChatMessage from '../ChatMessage/ChatMessage';
-import ChatOptionList from '../ChatOptionList/ChatOptionList';
-import BalanceCard from '../BalanceCard/BalanceCard';
+import ChatOptionList from '../ChatOptionList/ChatOptionList'; import BalanceCard from '../BalanceCard/BalanceCard';
 import ApptCard from '../ApptCard/ApptCard';
 import AgentCard from '../AgentCard/AgentCard';
 import StatementCard from '../StatementCard/StatementCard';
@@ -58,8 +57,8 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
           case 'statement':
             return (
               <StatementCard
-                startDate="1/1/17"
-                endDate="1/30/17"
+                startDate={message.content.startingDate}
+                endDate={message.content.endingDate}
               />
             );
           default:

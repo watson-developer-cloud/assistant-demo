@@ -68,6 +68,8 @@
       width: 100%;
       border-bottom: 1px solid $duo-gray-50;
       padding-bottom: 10px;
+      color: $duo-white;
+      border-radius: 0; // for iOS mobile browsers
     }
   }
   @include respond-to-max($breakpoint--sm) {

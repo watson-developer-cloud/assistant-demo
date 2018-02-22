@@ -45,11 +45,13 @@ class App extends React.Component {
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // TODO: wrap in a settimeout of 0
     // this puts it within the event loop
     // so that rendering
-    this.sendMessageToConversation('');
+    setTimeout(() => {
+      this.routeToPath(this.state.paths[0]);
+    }, 0);
   }
 
   updateChatList(messageObj) {
@@ -86,11 +88,10 @@ class App extends React.Component {
     if (outputObj.actions !== undefined && outputObj.actions.length > 0) {
       executeClientAction(outputObj.actions[0])
         .then((result) => {
-          console.log(result);
           if (!outputObj.context.skip_user_input) {
             this.sendMessageToConversation(result.result, this.state.lastMessageContext);
           } else if (result.result === 'statement') {
-            const action = executeWorkspaceAction({ statement_display: 'yeah' });
+            const action = executeWorkspaceAction({ statement_display: result.dates });
             this.updateChatList(action);
           }
         });
@@ -141,7 +142,15 @@ class App extends React.Component {
   routeToPath(path) {
     this.setState({ messages: [] });
     this.setState({ currentPath: path.id });
-    this.sendMessageToConversation(path.path, this.state.lastMessageContext);
+    this.setState({ lastMessageContext: {} });
+    // send two requests to conversation chained together
+    // the fetchMessage call clears the existing context
+    // the sendMessageToConversation call sets the context to the selected
+    // path
+    fetchMessage('').then((data) => {
+      this.updateConversationContext(data.context);
+      this.sendMessageToConversation(path.path, this.state.lastMessageContext);
+    });
   }
 
   sendMessageToConversation(text, context = {}) {

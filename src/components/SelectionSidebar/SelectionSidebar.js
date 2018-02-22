@@ -40,10 +40,10 @@ class SelectionSidebar extends React.Component {
           onPathSelect={(path) => { this.onPathSelect(path); }}
         />
         <div className="path-selection__description">
-          <p className="ibm-type-c">{this.props.currentPath}/{this.props.paths.length}</p>
           <p className="ibm-type-c duo-gray-50">
             {this.props.paths[this.props.currentPath - 1].description}
           </p>
+          <p className="ibm-type-c">{this.props.currentPath}/{this.props.paths.length}</p>
         </div>
       </div>
     );
