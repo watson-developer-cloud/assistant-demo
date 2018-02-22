@@ -22,10 +22,11 @@ class ChatOptionList extends React.Component {
   }
 
   render() {
+    const options = (this.props.isLastMessage) ? this.state.options : [];
     if (this.props.type === 'creditCard') {
       return (
         <div>
-          {this.state.options.map(option => (
+          {options.map(option => (
             <CreditCardOption
               cardName={option.cardName}
               description={option.description}
@@ -38,7 +39,7 @@ class ChatOptionList extends React.Component {
 
     return (
       <div className="chat-option-list">
-        {this.state.options.map(option => (
+        {options.map(option => (
           <ChatOption
             key={option.value}
             option={option}
@@ -55,6 +56,7 @@ ChatOptionList.propTypes = {
   type: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   onUserInput: PropTypes.func.isRequired,
+  isLastMessage: PropTypes.bool.isRequired,
 };
 
 export default ChatOptionList;

@@ -15,7 +15,8 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
 
   return (
     <div id="chat-list" className={chatListClasses}>
-      {messages.map((message) => {
+      {messages.map((message, i) => {
+        const isLastMessage = (i === messages.length - 1);
         switch (message.type) {
           case 'option':
             return (
@@ -23,6 +24,7 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
                 type="button"
                 options={message.content}
                 onUserInput={onUserInput}
+                isLastMessage={isLastMessage}
               />
             );
           case 'balance':
@@ -52,6 +54,7 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
               <ChatOptionList
                 type="creditCard"
                 options={message.content}
+                isLastMessage={isLastMessage}
               />
             );
           case 'statement':
