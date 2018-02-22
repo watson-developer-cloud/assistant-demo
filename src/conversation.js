@@ -107,30 +107,35 @@ const executeWorkspaceAction = (actionObj) => {
       content: new Date().toLocaleTimeString('en-US'),
     };
   } else if (actionObj.cc_selecteddisplay) {
+    const triggeredCards = actionObj.cc_selecteddisplay.CardCriteria;
+    const cards = [
+      {
+        id: 0,
+        value: 'Travel Rewards',
+        cardName: 'Travel Rewards',
+        description: '$150 online cash rewards bonus offer',
+      },
+      {
+        id: 1,
+        value: 'Saving',
+        cardName: 'The Mega Saver',
+        description: 'Save on interest to help pay down your balance faster',
+      },
+      {
+        id: 2,
+        cardName: 'Explorer One',
+        description: '20,000 miles with purchase',
+      },
+      {
+        id: 3,
+        cardName: 'The Emma Card',
+        description: 'Ensures that margin is exactly to spec',
+      },
+    ];
+    const displayCards = cards.filter(card => triggeredCards.includes(card.value));
     return {
       type: 'creditCard',
-      content: [
-        {
-          id: 0,
-          cardName: 'Travel Rewards',
-          description: '$150 online cash rewards bonus offer',
-        },
-        {
-          id: 1,
-          cardName: 'World Premium',
-          description: 'Save on interest to help pay down your balance faster',
-        },
-        {
-          id: 2,
-          cardName: 'Explorer One',
-          description: '20,000 miles with purchase',
-        },
-        {
-          id: 3,
-          cardName: 'The Emma Card',
-          description: 'Ensures that margin is exactly to spec',
-        },
-      ],
+      content: displayCards,
     };
   } else if (actionObj.statement_display) {
     return {
