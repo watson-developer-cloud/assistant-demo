@@ -36,7 +36,7 @@ class App extends React.Component {
         },
         {
           id: 4,
-          label: 'Live Agent Integration',
+          label: 'Dispute a Charge',
           description: 'Transfer any query or dispute that can\'t be addressed by a bot to a live agent.',
           path: 'There\'s a problem with my credit card bill',
         },
