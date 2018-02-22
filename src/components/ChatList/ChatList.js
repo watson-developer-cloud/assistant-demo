@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChatMessage from '../ChatMessage/ChatMessage';
-import ChatOptionList from '../ChatOptionList/ChatOptionList';
-import BalanceCard from '../BalanceCard/BalanceCard';
+import ChatOptionList from '../ChatOptionList/ChatOptionList'; import BalanceCard from '../BalanceCard/BalanceCard';
 import ApptCard from '../ApptCard/ApptCard';
 import AgentCard from '../AgentCard/AgentCard';
 import StatementCard from '../StatementCard/StatementCard';
