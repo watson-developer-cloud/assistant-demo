@@ -55,6 +55,13 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
                 options={message.content}
               />
             );
+          case 'statement':
+            return (
+              <StatementCard
+                startDate={message.content.startingDate}
+                endDate={message.content.endingDate}
+              />
+            );
           default:
             return (
               <ChatMessage

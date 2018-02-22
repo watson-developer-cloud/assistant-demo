@@ -86,11 +86,10 @@ class App extends React.Component {
     if (outputObj.actions !== undefined && outputObj.actions.length > 0) {
       executeClientAction(outputObj.actions[0])
         .then((result) => {
-          console.log(result);
           if (!outputObj.context.skip_user_input) {
             this.sendMessageToConversation(result.result, this.state.lastMessageContext);
           } else if (result.result === 'statement') {
-            const action = executeWorkspaceAction({ statement_display: 'yeah' });
+            const action = executeWorkspaceAction({ statement_display: result.dates });
             this.updateChatList(action);
           }
         });

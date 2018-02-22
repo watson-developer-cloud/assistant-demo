@@ -54,7 +54,7 @@ const executeClientAction = (actionObj) => {
       break;
     case 'ShowStatement':
       endpoint = 'bank/statement';
-      value = actionObj.parameters.zip_value;
+      value = `"${actionObj.parameters.statement_date}"`;
       break;
     default:
       return null;
@@ -135,7 +135,7 @@ const executeWorkspaceAction = (actionObj) => {
   } else if (actionObj.statement_display) {
     return {
       type: 'statement',
-      content: 'ok',
+      content: actionObj.statement_display,
     };
   }
 };
