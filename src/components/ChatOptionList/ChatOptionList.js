@@ -22,7 +22,9 @@ class ChatOptionList extends React.Component {
   }
 
   render() {
-    const options = (this.props.isLastMessage) ? this.state.options : [];
+    const options = (this.props.isLastMessage || this.state.options[0].isSelected)
+      ? this.state.options
+      : [];
     if (this.props.type === 'creditCard') {
       return (
         <div>
