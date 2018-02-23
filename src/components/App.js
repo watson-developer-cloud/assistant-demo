@@ -196,7 +196,12 @@ class App extends React.Component {
           onUserInput={(type, text) => { this.userMessageHandler(type, text); }}
           botMessageStatus={this.state.botMessageStatus}
         />
-        <OptionsSidebar json={this.state.lastMessageJson} />
+        <OptionsSidebar
+          json={this.state.lastMessageJson}
+          paths={this.state.paths}
+          currentPath={this.state.currentPath}
+          onPathSelect={(path) => { this.routeToPath(path); }}
+        />
       </div>
     );
   }
