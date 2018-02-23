@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ArrowRight from '../../images/arrow-right.svg';
+import ArrowLeft from '../../images/arrow-left.svg';
 import CircleArrowRight from '../../images/circle-arrow-right.svg';
 import Code from '../../images/code.svg';
 import Grid from '../../images/grid.svg';
@@ -12,6 +13,8 @@ const Icon = ({ type, size }) => {
   switch (type) {
     case 'arrow-right':
       return (<ArrowRight width={size} height={size} />);
+    case 'arrow-left':
+      return (<ArrowLeft width={size} height={size} />);
     case 'circle-arrow-right':
       return (<CircleArrowRight width={size} height={size} />);
     case 'code':

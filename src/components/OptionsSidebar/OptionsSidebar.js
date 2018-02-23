@@ -15,8 +15,18 @@ class OptionsSidebar extends React.Component {
     };
   }
 
-  toggleJson() {
-    this.setState({ isJsonVisible: !this.state.isJsonVisible });
+  setValidPaths(currentPath) {
+    const validPaths = {};
+
+    if (this.props.paths[currentPath - 2] !== undefined) {
+      validPaths.back = this.props.paths[currentPath - 2];
+    }
+
+    if (this.props.paths[currentPath] !== undefined) {
+      validPaths.forward = this.props.paths[currentPath];
+    }
+
+    return validPaths;
   }
 
   closeNotification() {
@@ -27,7 +37,36 @@ class OptionsSidebar extends React.Component {
     this.setstate({ isNotificationVisible: true });
   }
 
+  toggleJson() {
+    this.setState({ isJsonVisible: !this.state.isJsonVisible });
+  }
+
   render() {
+    const currentPath = this.props.currentPath;
+    const nextPath = this.props.paths[currentPath];
+    const previousPath = this.props.paths[currentPath - 2];
+    const validPaths = this.setValidPaths(currentPath);
+    let backPath;
+    let forwardPath;
+
+    if (validPaths.back !== undefined) {
+      backPath = (
+        <DemoButton
+          icon="arrow-left"
+          onClick={() => { this.props.onPathSelect(previousPath); }}
+        />
+      );
+    }
+
+    if (validPaths.forward !== undefined) {
+      forwardPath = (
+        <DemoButton
+          icon="arrow-right"
+          onClick={() => { this.props.onPathSelect(nextPath); }}
+        />
+      );
+    }
+
     return (
       <div className="ibm-col-lg-4 options-sidebar">
         <div className="options-sidebar-container">
@@ -40,12 +79,14 @@ class OptionsSidebar extends React.Component {
             />
             <DemoButton
               icon="restart"
-              onClick={null}
+              onClick={() => { this.props.onPathSelect(this.props.paths[currentPath - 1]); }}
             />
             <DemoButton
               icon="share"
               onClick={null}
             />
+            {forwardPath}
+            {backPath}
           </div>
           <DemoNotification
             message="This is a test notification"
@@ -66,6 +107,9 @@ class OptionsSidebar extends React.Component {
 
 OptionsSidebar.propTypes = {
   json: PropTypes.string.isRequired,
+  paths: PropTypes.array.isRequired,
+  currentPath: PropTypes.number.isRequired,
+  onPathSelect: PropTypes.func.isRequired,
 };
 
 export default OptionsSidebar;
