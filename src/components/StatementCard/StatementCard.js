@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 const StatementCard = ({ startDate, endDate }) => (
   <div className="balance-card">
     <div className="balance-card__header">
-      <h3>Statement Period:</h3>
-      <h3>{startDate}-{endDate}</h3>
+      <p className="ibm-type-c ibm-type-semibold">Statement Period:</p>
+      <p className="ibm-type-c ibm-type-semibold">{startDate}-{endDate}</p>
     </div>
     <div className="balance-card__content">
       <div className="balance-card__item">

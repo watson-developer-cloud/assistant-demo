@@ -16,9 +16,9 @@ const BalanceCard = ({ balance, minPay, recPay }) => {
 
   return (
     <div className="balance-card">
-      <div className="balance-card__header">
-        <h3>Remaining Statement Balance</h3>
-        <h3>{formattedBalance}</h3>
+      <div className="balance-card__header ibm-padding">
+        <p className="ibm-type-c ibm-type-semibold">Remaining Statement Balance</p>
+        <p className="ibm-type-c ibm-type-semibold">{formattedBalance}</p>
       </div>
       <div className="balance-card__content">
         <div className="balance-card__item">

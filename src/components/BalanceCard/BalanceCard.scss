@@ -5,10 +5,10 @@
 }
 
 .balance-card__header {
-  padding: 0 5%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  padding: 5%;
+  p {
+    margin: 0;
+  }
 }
 
 .balance-card__content {
