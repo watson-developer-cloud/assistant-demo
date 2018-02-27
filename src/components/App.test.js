@@ -34,12 +34,12 @@ describe('App', () => {
     const setState = sandbox.spy(React.Component.prototype, 'setState');
     const component = shallow(<App />);
     component.instance().updateOptionsSidebar(mockSidebarJson);
-    expect(setState.calledTwice).toBe(true);
+    expect(setState.calledOnce).toBe(true);
   });
   it('updateConversationContext calls setState', () => {
     const setState = sandbox.spy(React.Component.prototype, 'setState');
     const component = shallow(<App />);
     component.instance().updateConversationContext(mockSidebarJson);
-    expect(setState.calledTwice).toBe(true);
+    expect(setState.calledOnce).toBe(true);
   });
 });

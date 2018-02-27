@@ -1,12 +1,12 @@
-<svg width="10px" height="10px" viewBox="0 0 10 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 48.2 (47327) - http://www.bohemiancoding.com/sketch -->
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="UI/-Big-Arrow/-Style-2/BLack" transform="translate(-7.000000, -7.000000)" fill="#ffffff" fill-rule="nonzero">
-            <g id="Arrow_Circle-right_32_Artboard-31">
-                <polygon id="Shape" points="12 7.325 10.8921429 8.43285714 13.6657143 11.2142857 7.325 11.2142857 7.325 12.7857143 13.6657143 12.7857143 10.8921429 15.5671429 12 16.675 16.675 12"></polygon>
-            </g>
+<svg width="16px" height="14px" viewBox="0 0 16 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs><style>.cls-1{fill:none;}</style></defs><title>icons</title>
+  <g id="VR-Demo----Desktop" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="1056_VR_Demo_Custom_Model_How-to-train-02.1">
+      <g id="arrow--right-copy-15">
+        <g id="Icon" fill="#d8d8d8" fill-rule="nonzero">
+            <polygon id="Shape" points="9.375 0 8.49375 0.88125 13.23125 5.625 0 5.625 0 6.875 13.23125 6.875 8.49375 11.61875 9.375 12.5 15.625 6.25"></polygon>
         </g>
+      </g>
     </g>
+  </g>
 </svg>

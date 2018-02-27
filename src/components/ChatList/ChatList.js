@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ChatMessage from '../ChatMessage/ChatMessage';
-import ChatOptionList from '../ChatOptionList/ChatOptionList';
-import BalanceCard from '../BalanceCard/BalanceCard';
+import ChatOptionList from '../ChatOptionList/ChatOptionList'; import BalanceCard from '../BalanceCard/BalanceCard';
 import ApptCard from '../ApptCard/ApptCard';
 import AgentCard from '../AgentCard/AgentCard';
 import StatementCard from '../StatementCard/StatementCard';
@@ -16,7 +15,8 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
 
   return (
     <div id="chat-list" className={chatListClasses}>
-      {messages.map((message) => {
+      {messages.map((message, i) => {
+        const isLastMessage = (i === messages.length - 1);
         switch (message.type) {
           case 'option':
             return (
@@ -24,6 +24,7 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
                 type="button"
                 options={message.content}
                 onUserInput={onUserInput}
+                isLastMessage={isLastMessage}
               />
             );
           case 'balance':
@@ -53,13 +54,14 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
               <ChatOptionList
                 type="creditCard"
                 options={message.content}
+                isLastMessage={isLastMessage}
               />
             );
           case 'statement':
             return (
               <StatementCard
-                startDate="1/1/17"
-                endDate="1/30/17"
+                startDate={message.content.startingDate}
+                endDate={message.content.endingDate}
               />
             );
           default:

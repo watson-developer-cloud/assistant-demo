@@ -19,7 +19,8 @@ describe('ChatOptionList', () => {
     const component = shallow(<ChatOptionList
       options={chatOptionStubData}
       onUserInput={onUserInputSpy}
+      isLastMessage
     />);
-    expect(component.find('div').children()).toHaveLength(3);
+    expect(component.find('ChatOption')).toHaveLength(chatOptionStubData.length);
   });
 });
