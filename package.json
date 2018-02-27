@@ -57,6 +57,7 @@
     "webpack-hot-middleware": "^2.21.0"
   },
   "devDependencies": {
+    "ajv": "^6.0.0",
     "babel-loader": "^7.1.2",
     "clean-webpack-plugin": "^0.1.17",
     "codecov": "^2.3.0",
