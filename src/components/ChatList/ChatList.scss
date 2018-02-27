@@ -14,7 +14,7 @@
 
 // cards, e.g. balance/appointment cards
 %card-length {
-  width: 55%;
+  width: 60%;
   @include respond-to-max($breakpoint--md) {
     width: 100%;
   }
