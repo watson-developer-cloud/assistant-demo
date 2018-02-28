@@ -43,6 +43,10 @@
     @include respond-to-max($breakpoint--lg) {
       min-height: 55px;
       align-items: center;
+      padding-left: 3.125vw;
+    }
+    @include respond-to-max($breakpoint--md) {
+      padding-left: 6.25vw;
     }
   }
   // set flex-direction to reverse the scroll direction
