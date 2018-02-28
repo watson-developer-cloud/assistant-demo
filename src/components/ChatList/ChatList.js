@@ -32,6 +32,7 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
               <BalanceCard
                 balance={message.content['Total Balance']}
                 recPay={message.content['Payment Amount']}
+                accountId={message.content.Account}
               />
             );
           case 'appointment':

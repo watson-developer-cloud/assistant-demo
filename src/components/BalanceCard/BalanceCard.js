@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const BalanceCard = ({ balance, minPay, recPay }) => {
+const BalanceCard = ({
+  balance,
+  minPay,
+  recPay,
+  accountId,
+}) => {
   // generate currency formatter
   const currencyFormatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -22,6 +27,9 @@ const BalanceCard = ({ balance, minPay, recPay }) => {
       </div>
       <div className="balance-card__content">
         <div className="balance-card__item">
+          <p>Account ending in {accountId}</p>
+        </div>
+        <div className="balance-card__item">
           <p>Minimum payment due</p>
           <p>{formattedMinPayment}</p>
         </div>
@@ -38,6 +46,7 @@ const BalanceCard = ({ balance, minPay, recPay }) => {
 BalanceCard.propTypes = {
   balance: PropTypes.number.isRequired,
   recPay: PropTypes.number.isRequired,
+  accountId: PropTypes.string.isRequired,
   minPay: PropTypes.number,
 };
 
