@@ -123,13 +123,21 @@ const executeWorkspaceAction = (actionObj) => {
       },
       {
         id: 2,
-        cardName: 'Explorer One',
-        description: '20,000 miles with purchase',
+        value: 'Credit Level',
+        cardName: 'Mega Credit Card',
+        description: 'For users with good credit.',
       },
       {
         id: 3,
-        cardName: 'The Emma Card',
-        description: 'Ensures that margin is exactly to spec',
+        value: 'Cash Rewards',
+        cardName: 'The Ultimate Cash Back Card',
+        description: 'Get the most cash back for your purchases',
+      },
+      {
+        id: 4,
+        value: 'General Rewards',
+        cardName: 'The Balanced Rewards Card',
+        description: 'Just the right amount of all rewards',
       },
     ];
     const displayCards = cards.filter(card => triggeredCards.includes(card.value));
