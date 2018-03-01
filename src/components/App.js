@@ -55,10 +55,14 @@ class App extends React.Component {
   }
 
   updateChatList(messageObj) {
-    const chatBottom = document.getElementById('chat-list-bottom');
+    const chatList = document.getElementById('chat-list');
     this.setState({ messages: [...this.state.messages, messageObj] });
+
     // scroll to bottom of #chat-list on each update
-    chatBottom.scrollIntoView({ behavior: 'smooth' });
+    chatList.scroll({ top: chatList.scrollHeight, behavior: 'smooth' });
+    // IBM Firefox ignores previous scroll()
+    // this works. uses scroll-behavior: smooth in css for smooth scrolling
+    chatList.scrollTop = chatList.scrollHeight;
   }
 
   updateOptionsSidebar(lastMessageJson) {
