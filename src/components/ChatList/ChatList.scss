@@ -24,13 +24,11 @@
   position: relative;
   z-index: 3;
   scroll-behavior: smooth;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden; // for Edge
   // scrolling chat window will not scroll page behind it
   // latest chrome feature only - experimental
-  overscroll-behavior-y: contain;
-  #chat-list-bottom {
-
-  }
+  // overscroll-behavior-y: contain;
   .chat-list__loader {
     display: none;
     p {
