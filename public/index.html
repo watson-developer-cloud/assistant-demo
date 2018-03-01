@@ -7,14 +7,5 @@
   </head>
   <body>
     <div id="root"></div>
-
-    <script type="text/javascript">
-      const iframeSizer = () => {
-        window.parent.postMessage(document.body.scrollHeight, "*");
-      }
-      window.onload = iframeSizer;
-      window.onresize = iframeSizer;
-    </script>
-
   </body>
 </html>
