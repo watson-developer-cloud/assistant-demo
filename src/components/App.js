@@ -34,12 +34,15 @@ class App extends React.Component {
           description: 'Describe your ideal credit card and receive a recommendation tailored to your preferences.',
           path: 'Can you help me choose a credit card?',
         },
+        /*
         {
           id: 4,
           label: 'Dispute a Charge',
-          description: 'Transfer any query or dispute that can\'t be addressed by a bot to a live agent.',
+          description: 'Transfer any query or dispute that can\'t
+          be addressed by a bot to a live agent.',
           path: 'There\'s a problem with my credit card bill',
         },
+        */
       ],
       currentPath: 1,
     };
