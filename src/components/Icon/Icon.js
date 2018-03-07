@@ -8,6 +8,7 @@ import Grid from '../../images/grid.svg';
 import Restart from '../../images/restart.svg';
 import Share from '../../images/share.svg';
 import Calendar from '../../images/calendar.svg';
+import CreditCard from '../../images/credit-card.svg';
 
 const Icon = ({ type, size }) => {
   switch (type) {
@@ -27,6 +28,8 @@ const Icon = ({ type, size }) => {
       return (<Share width={size} height={size} />);
     case 'calendar':
       return (<Calendar width={size} height={size} />);
+    case 'credit-card':
+      return (<CreditCard width={size} height={size} />);
     default:
       return (<Code width={size} height={size} />);
   }
