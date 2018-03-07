@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ccImageOne from '../../images/cc1.png';
+import Icon from '../Icon/Icon';
 
 const CreditCardOption = ({
   onUserInput,
@@ -16,10 +16,8 @@ const CreditCardOption = ({
       className={classes}
       onClick={() => { onUserInput(cardName); }}
     >
-      <div
-        className="image-card__image credit-card-option__image"
-        style={{ backgroundImage: `url(${ccImageOne})` }}
-      >
+      <div className="credit-card-option__image">
+        <Icon size={120} type="credit-card" />
         <div />
       </div>
       <div className="image-card__content credit-card-option__content">
