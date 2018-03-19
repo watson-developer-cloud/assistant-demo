@@ -15,6 +15,12 @@ class OptionsSidebar extends React.Component {
     };
   }
 
+  componentWillUpdate(newProps) {
+    if (newProps.notificationText !== this.props.notificationText) {
+      this.updateNotificationVisibility(true);
+    }
+  }
+
   setValidPaths(currentPath) {
     const validPaths = {};
 
@@ -29,12 +35,16 @@ class OptionsSidebar extends React.Component {
     return validPaths;
   }
 
+  updateNotificationVisibility(status) {
+    this.setState({ isNotificationVisible: status });
+  }
+
   closeNotification() {
     this.setState({ isNotificationVisible: false });
   }
 
   openNotification() {
-    this.setstate({ isNotificationVisible: true });
+    this.setState({ isNotificationVisible: true });
   }
 
   toggleJson() {
@@ -89,7 +99,7 @@ class OptionsSidebar extends React.Component {
             {backPath}
           </div>
           <DemoNotification
-            message="This is a test notification"
+            message={this.props.notificationText}
             notificationLink="#"
             isVisible={this.state.isNotificationVisible}
             onEnter={() => { this.openNotification(); }}
@@ -110,6 +120,7 @@ OptionsSidebar.propTypes = {
   paths: PropTypes.array.isRequired,
   currentPath: PropTypes.number.isRequired,
   onPathSelect: PropTypes.func.isRequired,
+  notificationText: PropTypes.string.isRequired,
 };
 
 export default OptionsSidebar;
