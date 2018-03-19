@@ -45,6 +45,7 @@ class App extends React.Component {
         */
       ],
       currentPath: 1,
+      notificationText: '',
     };
   }
 
@@ -55,6 +56,10 @@ class App extends React.Component {
     setTimeout(() => {
       this.routeToPath(this.state.paths[0]);
     }, 0);
+  }
+
+  displayNotification(notificationText) {
+    this.setState({ notificationText });
   }
 
   updateChatList(messageObj) {
@@ -107,7 +112,11 @@ class App extends React.Component {
     // execute standard workspace actions if they exist
     if (outputObj.output.action !== undefined) {
       const action = executeWorkspaceAction(outputObj.output.action);
-      this.updateChatList(action);
+      if (action.type !== 'notification') {
+        this.updateChatList(action);
+      } else {
+        this.displayNotification(action.text);
+      }
     }
 
     // check for chat options in generic options object
@@ -183,7 +192,7 @@ class App extends React.Component {
 
         this.updateChatList({
           type: 'bot',
-          content: 'Could not connect to Watson Conversation',
+          content: 'Could not connect to Watson Assistant',
         });
         throw new Error(err);
       });
@@ -208,6 +217,7 @@ class App extends React.Component {
           paths={this.state.paths}
           currentPath={this.state.currentPath}
           onPathSelect={(path) => { this.routeToPath(path); }}
+          notificationText={this.state.notificationText}
         />
       </div>
     );

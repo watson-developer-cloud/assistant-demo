@@ -150,6 +150,11 @@ const executeWorkspaceAction = (actionObj) => {
       type: 'statement',
       content: actionObj.statement_display,
     };
+  } else if (actionObj.notification_display) {
+    return {
+      type: 'notification',
+      text: actionObj.notification_display.DisplayText,
+    };
   }
 };
 
