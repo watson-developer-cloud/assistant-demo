@@ -21,19 +21,6 @@ class OptionsSidebar extends React.Component {
     }
   }
 
-  setValidPaths(currentPath) {
-    const validPaths = {};
-
-    if (this.props.paths[currentPath - 2] !== undefined) {
-      validPaths.back = this.props.paths[currentPath - 2];
-    }
-
-    if (this.props.paths[currentPath] !== undefined) {
-      validPaths.forward = this.props.paths[currentPath];
-    }
-
-    return validPaths;
-  }
 
   updateNotificationVisibility(status) {
     this.setState({ isNotificationVisible: status });
@@ -53,30 +40,6 @@ class OptionsSidebar extends React.Component {
 
   render() {
     const currentPath = this.props.currentPath;
-    const nextPath = this.props.paths[currentPath];
-    const previousPath = this.props.paths[currentPath - 2];
-    const validPaths = this.setValidPaths(currentPath);
-    let backPath;
-    let forwardPath;
-
-    if (validPaths.back !== undefined) {
-      backPath = (
-        <DemoButton
-          icon="arrow-left"
-          onClick={() => { this.props.onPathSelect(previousPath); }}
-        />
-      );
-    }
-
-    if (validPaths.forward !== undefined) {
-      forwardPath = (
-        <DemoButton
-          icon="arrow-right"
-          onClick={() => { this.props.onPathSelect(nextPath); }}
-        />
-      );
-    }
-
     return (
       <div className="ibm-col-lg-4 options-sidebar">
         <div className="options-sidebar-container">
@@ -95,8 +58,6 @@ class OptionsSidebar extends React.Component {
               icon="share"
               onClick={null}
             />
-            {forwardPath}
-            {backPath}
           </div>
           <DemoNotification
             message={this.props.notificationText}
