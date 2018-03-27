@@ -2,18 +2,47 @@
   @include respond-to-min($breakpoint--md) {
     display: flex !important;
     flex-direction: column;
+    position: relative;
     .demo-button {
       align-self: flex-start;
+      background: none;
+      &.has-active {
+        &:active {
+          background: transparent;
+        }
+      }
+    }
+    .path-selection__path-header {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      p {
+        margin: 0;
+      }
+      .demo-button {
+        padding: 0 1.3em 0 0;
+      }
     }
     .path-selection__description {
-      margin-top: auto;
+        position: fixed;
+        bottom: 3.125vw;
+        width: calc(25vw - 6.25vw);
+        max-width: 350px;
+        @media screen and (max-width: 767px) and (orientation: landscape) {
+          position: static;
+          padding-top: 6.25vw;
+        }
       p {
         &.duo-gray-50 {
           color: $duo-gray-50;
         }
-        &:last-of-type {
-          margin-bottom: 0;
-        }
+      }
+    }
+    .path-selection__nav-buttons {
+      button {
+        margin: 1px;
+        background: $duo-blue-60;
       }
     }
   }
