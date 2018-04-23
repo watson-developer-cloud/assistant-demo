@@ -155,6 +155,9 @@ const executeWorkspaceAction = (actionObj) => {
       return {
         type: 'notification',
         text: actionObj.notification_display.DisplayText,
+        link: (actionObj.notification_display.DisplayURL)
+          ? actionObj.notification_display.DisplayURL
+          : null,
       };
     }
     return null;
