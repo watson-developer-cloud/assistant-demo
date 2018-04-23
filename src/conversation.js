@@ -91,71 +91,76 @@ const executeClientAction = (actionObj) => {
  * content of the response to be added to the ChatList
  */
 const executeWorkspaceAction = (actionObj) => {
-  if (actionObj.cc_displaystatement) {
-    return {
-      type: 'balance',
-      content: actionObj.cc_displaystatement,
-    };
-  } else if (actionObj.appointment_display) {
-    return {
-      type: 'appointment',
-      content: actionObj.appointment_display,
-    };
-  } else if (actionObj.connect_agent) {
-    return {
-      type: 'agent',
-      content: new Date().toLocaleTimeString('en-US'),
-    };
-  } else if (actionObj.cc_selecteddisplay) {
-    const triggeredCards = actionObj.cc_selecteddisplay.CardCriteria;
-    const cards = [
-      {
-        id: 0,
-        value: 'Travel Rewards',
-        cardName: 'Travel Rewards',
-        description: '$150 online cash rewards bonus offer',
-      },
-      {
-        id: 1,
-        value: 'Saving',
-        cardName: 'The Mega Saver',
-        description: 'Save on interest to help pay down your balance faster',
-      },
-      {
-        id: 2,
-        value: 'Credit Level',
-        cardName: 'Mega Credit Card',
-        description: 'For users with good credit.',
-      },
-      {
-        id: 3,
-        value: 'Cash Rewards',
-        cardName: 'The Ultimate Cash Back Card',
-        description: 'Get the most cash back for your purchases',
-      },
-      {
-        id: 4,
-        value: 'General Rewards',
-        cardName: 'The Balanced Rewards Card',
-        description: 'Just the right amount of all rewards',
-      },
-    ];
-    const displayCards = cards.filter(card => triggeredCards.includes(card.value));
-    return {
-      type: 'creditCard',
-      content: displayCards,
-    };
-  } else if (actionObj.statement_display) {
-    return {
-      type: 'statement',
-      content: actionObj.statement_display,
-    };
-  } else if (actionObj.notification_display) {
-    return {
-      type: 'notification',
-      text: actionObj.notification_display.DisplayText,
-    };
-  }
+  const actionResponseArray = Object.keys(actionObj).map((action) => {
+    if (action === 'cc_displaystatement') {
+      return {
+        type: 'balance',
+        content: actionObj.cc_displaystatement,
+      };
+    } else if (action === 'appointment_display') {
+      return {
+        type: 'appointment',
+        content: actionObj.appointment_display,
+      };
+    } else if (action === 'connect_agent') {
+      return {
+        type: 'agent',
+        content: new Date().toLocaleTimeString('en-US'),
+      };
+    } else if (action === 'cc_selecteddisplay') {
+      const triggeredCards = actionObj.cc_selecteddisplay.CardCriteria;
+      const cards = [
+        {
+          id: 0,
+          value: 'Travel Rewards',
+          cardName: 'Travel Rewards',
+          description: '$150 online cash rewards bonus offer',
+        },
+        {
+          id: 1,
+          value: 'Saving',
+          cardName: 'The Mega Saver',
+          description: 'Save on interest to help pay down your balance faster',
+        },
+        {
+          id: 2,
+          value: 'Credit Level',
+          cardName: 'Mega Credit Card',
+          description: 'For users with good credit.',
+        },
+        {
+          id: 3,
+          value: 'Cash Rewards',
+          cardName: 'The Ultimate Cash Back Card',
+          description: 'Get the most cash back for your purchases',
+        },
+        {
+          id: 4,
+          value: 'General Rewards',
+          cardName: 'The Balanced Rewards Card',
+          description: 'Just the right amount of all rewards',
+        },
+      ];
+      const displayCards = cards.filter(card => triggeredCards.includes(card.value));
+      return {
+        type: 'creditCard',
+        content: displayCards,
+      };
+    } else if (action === 'statement_display') {
+      return {
+        type: 'statement',
+        content: actionObj.statement_display,
+      };
+    } else if (action === 'notification_display') {
+      return {
+        type: 'notification',
+        text: actionObj.notification_display.DisplayText,
+      };
+    }
+    return null;
+  });
+
+  return actionResponseArray;
 };
 
 export { fetchMessage, executeClientAction, executeWorkspaceAction };
