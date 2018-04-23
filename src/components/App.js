@@ -46,6 +46,7 @@ class App extends React.Component {
       ],
       currentPath: 1,
       notificationText: '',
+      notificationLink: null,
     };
   }
 
@@ -58,8 +59,9 @@ class App extends React.Component {
     }, 0);
   }
 
-  displayNotification(notificationText) {
+  displayNotification(notificationText, notificationLink = null) {
     this.setState({ notificationText });
+    this.setState({ notificationLink });
   }
 
   updateChatList(messageObj) {
@@ -117,7 +119,7 @@ class App extends React.Component {
         if (actionResponse.type !== 'notification') {
           this.updateChatList(actionResponse);
         } else {
-          this.displayNotification(actionResponse.text);
+          this.displayNotification(actionResponse.text, actionResponse.link);
         }
       });
     }
@@ -228,6 +230,7 @@ class App extends React.Component {
           currentPath={this.state.currentPath}
           onPathSelect={(path) => { this.routeToPath(path); }}
           notificationText={this.state.notificationText}
+          notificationLink={this.state.notificationLink}
         />
       </div>
     );
