@@ -126,6 +126,11 @@ class App extends React.Component {
     if (outputObj.output.generic !== undefined) {
       this.botMessageOptionsHandler(outputObj.output.generic);
     }
+
+    // serve notification if digression occured
+    if ('context' in outputObj && 'system' in outputObj.context && 'digressed' in outputObj.context.system) {
+      this.displayNotification('The virtual assistant is able to answer an unrelated question and return back to the original flow using the Digressions feature.');
+    }
   }
 
   botMessageOptionsHandler(genericObj) {
