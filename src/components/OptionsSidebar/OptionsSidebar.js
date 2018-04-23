@@ -61,7 +61,7 @@ class OptionsSidebar extends React.Component {
           </div>
           <DemoNotification
             message={this.props.notificationText}
-            notificationLink="#"
+            link={this.props.notificationLink}
             isVisible={this.state.isNotificationVisible}
             onEnter={() => { this.openNotification(); }}
             onExit={() => { this.closeNotification(); }}
@@ -82,6 +82,7 @@ OptionsSidebar.propTypes = {
   currentPath: PropTypes.number.isRequired,
   onPathSelect: PropTypes.func.isRequired,
   notificationText: PropTypes.string.isRequired,
+  notificationLink: PropTypes.string.isRequired,
 };
 
 export default OptionsSidebar;

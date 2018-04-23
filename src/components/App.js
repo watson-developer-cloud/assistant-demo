@@ -46,6 +46,7 @@ class App extends React.Component {
       ],
       currentPath: 1,
       notificationText: '',
+      notificationLink: null,
     };
   }
 
@@ -58,8 +59,9 @@ class App extends React.Component {
     }, 0);
   }
 
-  displayNotification(notificationText) {
+  displayNotification(notificationText, notificationLink = null) {
     this.setState({ notificationText });
+    this.setState({ notificationLink });
   }
 
   updateChatList(messageObj) {
@@ -111,17 +113,25 @@ class App extends React.Component {
 
     // execute standard workspace actions if they exist
     if (outputObj.output.action !== undefined) {
-      const action = executeWorkspaceAction(outputObj.output.action);
-      if (action.type !== 'notification') {
-        this.updateChatList(action);
-      } else {
-        this.displayNotification(action.text);
-      }
+      const actionResponseArray = executeWorkspaceAction(outputObj.output.action);
+
+      actionResponseArray.forEach((actionResponse) => {
+        if (actionResponse.type !== 'notification') {
+          this.updateChatList(actionResponse);
+        } else {
+          this.displayNotification(actionResponse.text, actionResponse.link);
+        }
+      });
     }
 
     // check for chat options in generic options object
     if (outputObj.output.generic !== undefined) {
       this.botMessageOptionsHandler(outputObj.output.generic);
+    }
+
+    // serve notification if digression occured
+    if ('context' in outputObj && 'system' in outputObj.context && 'digressed' in outputObj.context.system) {
+      this.displayNotification('The virtual assistant is able to answer an unrelated question and return back to the original flow using the Digressions feature.');
     }
   }
 
@@ -194,6 +204,8 @@ class App extends React.Component {
           type: 'bot',
           content: 'Could not connect to Watson Assistant',
         });
+
+        console.log(err);
         throw new Error(err);
       });
   }
@@ -218,6 +230,7 @@ class App extends React.Component {
           currentPath={this.state.currentPath}
           onPathSelect={(path) => { this.routeToPath(path); }}
           notificationText={this.state.notificationText}
+          notificationLink={this.state.notificationLink}
         />
       </div>
     );

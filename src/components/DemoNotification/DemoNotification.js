@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 const DemoNotification = ({
   message,
+  link,
   isVisible,
   onExit,
   onEnter,
@@ -22,15 +23,27 @@ const DemoNotification = ({
           <div className="demo-notification__notification">
             <p className="ibm-type-b">{message}</p>
           </div>
+          {
+            (link)
+              ? (
+                <a
+                  className="demo-notification__cta ibm-type-b"
+                  href={link}
+                  target="_blank"
+                >
+                  Click here for more info
+                </a>
+              ) : null
+          }
         </div>
       </Modal>
     </div>
-
   );
 };
 
 DemoNotification.propTypes = {
   message: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
   isVisible: PropTypes.bool.isRequired,
   onExit: PropTypes.func.isRequired,
   onEnter: PropTypes.func.isRequired,
