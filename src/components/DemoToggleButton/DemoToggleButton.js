@@ -17,7 +17,7 @@ const DemoToggleButton = ({
     >
       <Icon
         type={icon}
-        size={24}
+        size={20}
       />
     </button>
   );

@@ -7,7 +7,7 @@ const DemoButton = ({ icon, onClick }) => (
     className="demo-button"
     onClick={() => { onClick(); }}
   >
-    <Icon type={icon} size={24} />
+    <Icon type={icon} size={20} />
   </button>
 );
 
