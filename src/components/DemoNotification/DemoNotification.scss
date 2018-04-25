@@ -40,6 +40,11 @@
             }
           }
         }
+        > .demo-notification__notification {
+          > p {
+            margin-right: 5%;
+          }
+        }
       }
       .modal--x {
         top: 1.3vw;
