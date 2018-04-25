@@ -7,6 +7,13 @@ import { IDLE, IN_PROGRESS, COMPLETED, FAILED } from '../constants';
 require('smoothscroll-polyfill').polyfill();
 
 class App extends React.Component {
+  static scrollChatList() {
+    const chatList = document.getElementById('chat-list');
+    setTimeout(() => {
+      chatList.scrollTop = chatList.scrollHeight - chatList.clientHeight;
+    }, 1000);
+  }
+
   constructor(props) {
     super(props);
 
@@ -65,14 +72,12 @@ class App extends React.Component {
   }
 
   updateChatList(messageObj) {
-    const chatList = document.getElementById('chat-list');
-    this.setState({ messages: [...this.state.messages, messageObj] });
-
-    // scroll to bottom of #chat-list on each update
-    chatList.scroll({ top: chatList.scrollHeight, behavior: 'smooth' });
-    // IBM Firefox ignores previous scroll()
-    // this works. uses scroll-behavior: smooth in css for smooth scrolling
-    chatList.scrollTop = chatList.scrollHeight;
+    this.setState(
+      {
+        messages: [...this.state.messages, messageObj],
+      },
+      App.scrollChatList(),
+    );
   }
 
   updateOptionsSidebar(lastMessageJson) {
