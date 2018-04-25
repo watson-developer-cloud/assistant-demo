@@ -79,7 +79,13 @@ app.post('/api/message', (req, res) => {
       // status code
       return res.status(500);
     }
-    return res.json(data);
+
+    // TODO: temporary hack to hide function creds... fix later
+    const maskedData = Object.assign({}, data);
+    maskedData.context.private.function_creds.user = '****';
+    maskedData.context.private.function_creds.password = '****';
+
+    return res.json(maskedData);
   });
 });
 
