@@ -1,28 +1,28 @@
-// token is a shared class for all JSON tokens
 .token {
   font-size: 0.9em;
 }
 
 .property {
-  color: $duo-teal-30;
+  color: $duo-teal-20;
 }
 
 .string {
-  color: $duo-blue-50;
+  color: $duo-purple-30;
 }
 
 .number {
-  color: $duo-magenta-40;
+  color: $duo-purple-30;
 }
 
 .boolean {
-  color: $duo-alert-orange;
+  color: $duo-purple-30;
 }
+
 // end JSON format styles
 
 .json-pane {
   position: absolute;
-  background: $duo-black;
+  background: $duo-gray-100;
   width: 200%;
   height: 100%;
   top: 0;
