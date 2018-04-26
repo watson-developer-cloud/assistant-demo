@@ -7,13 +7,6 @@ import { IDLE, IN_PROGRESS, COMPLETED, FAILED } from '../constants';
 require('smoothscroll-polyfill').polyfill();
 
 class App extends React.Component {
-  static scrollChatList() {
-    const chatList = document.getElementById('chat-list');
-    setTimeout(() => {
-      chatList.scrollTop = chatList.scrollHeight - chatList.clientHeight;
-    }, 1000);
-  }
-
   constructor(props) {
     super(props);
 
@@ -72,12 +65,19 @@ class App extends React.Component {
   }
 
   updateChatList(messageObj) {
-    this.setState(
-      {
-        messages: [...this.state.messages, messageObj],
-      },
-      App.scrollChatList(),
-    );
+    const chatList = document.getElementById('chat-list');
+    this.setState({ messages: [...this.state.messages, messageObj] }, () => {
+      // only scroll when watson responds
+      if (messageObj.type !== 'user') {
+        setTimeout(() => {
+          // scroll to bottom of #chat-list on each update
+          chatList.scroll({ top: chatList.scrollHeight, behavior: 'smooth' });
+          // IBM Firefox ignores previous scroll()
+          // this works. uses scroll-behavior: smooth in css for smooth scrolling
+          chatList.scrollTop = chatList.scrollHeight - chatList.clientHeight;
+        }, 100);
+      }
+    });
   }
 
   updateOptionsSidebar(lastMessageJson) {
@@ -93,6 +93,8 @@ class App extends React.Component {
   }
 
   botMessageHandler(outputObj) {
+    let isNotificationPresent = false;
+
     // always read the text from output
     outputObj.output.text.forEach((response) => {
       if (response !== '') {
@@ -124,6 +126,7 @@ class App extends React.Component {
         if (actionResponse.type !== 'notification') {
           this.updateChatList(actionResponse);
         } else {
+          isNotificationPresent = true;
           this.displayNotification(actionResponse.text, actionResponse.link);
         }
       });
@@ -135,7 +138,7 @@ class App extends React.Component {
     }
 
     // serve notification if digression occured
-    if ('context' in outputObj && 'system' in outputObj.context && 'digressed' in outputObj.context.system) {
+    if (!isNotificationPresent && 'context' in outputObj && 'system' in outputObj.context && 'digressed' in outputObj.context.system) {
       this.displayNotification('The virtual assistant is able to answer an unrelated question and return back to the original flow using the Digressions feature.');
     }
   }
