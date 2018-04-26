@@ -93,6 +93,8 @@ class App extends React.Component {
   }
 
   botMessageHandler(outputObj) {
+    let isNotificationPresent = false;
+
     // always read the text from output
     outputObj.output.text.forEach((response) => {
       if (response !== '') {
@@ -124,6 +126,7 @@ class App extends React.Component {
         if (actionResponse.type !== 'notification') {
           this.updateChatList(actionResponse);
         } else {
+          isNotificationPresent = true;
           this.displayNotification(actionResponse.text, actionResponse.link);
         }
       });
@@ -135,7 +138,7 @@ class App extends React.Component {
     }
 
     // serve notification if digression occured
-    if ('context' in outputObj && 'system' in outputObj.context && 'digressed' in outputObj.context.system) {
+    if (!isNotificationPresent && 'context' in outputObj && 'system' in outputObj.context && 'digressed' in outputObj.context.system) {
       this.displayNotification('The virtual assistant is able to answer an unrelated question and return back to the original flow using the Digressions feature.');
     }
   }
