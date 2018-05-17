@@ -46,9 +46,6 @@ const accountData = {
 };
 
 app.get('/', (req, res) => {
-  res.render('use', {
-    bluemixAnalytics: !!process.env.BLUEMIX_ANALYTICS,
-  });
   res.render('./dist/index.html');
 });
 
