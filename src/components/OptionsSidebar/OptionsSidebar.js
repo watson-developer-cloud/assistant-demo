@@ -54,10 +54,6 @@ class OptionsSidebar extends React.Component {
               icon="restart"
               onClick={() => { this.props.onPathSelect(this.props.paths[currentPath - 1]); }}
             />
-            <DemoButton
-              icon="share"
-              onClick={null}
-            />
           </div>
           <DemoNotification
             message={this.props.notificationText}
