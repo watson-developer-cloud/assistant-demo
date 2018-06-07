@@ -25,7 +25,7 @@ const bank = require('./lib/bankFunctions');
 const conversation = new Conversation({
   username: process.env.CONVERSATION_USERNAME,
   password: process.env.CONVERSATION_PASSWORD,
-  version_date: '2017-05-26',
+  version_date: '2018-06-12',
 });
 
 const accountData = {
