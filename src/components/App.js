@@ -145,7 +145,7 @@ class App extends React.Component {
 
   botMessageOptionsHandler(genericObj) {
     genericObj.forEach((response) => {
-      if (response.response_type === 'text') {
+      if (response.response_type === 'title') {
         this.updateChatList({
           type: 'bot',
           content: response.text,
