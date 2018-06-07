@@ -18,7 +18,7 @@ class ChatOptionList extends React.Component {
 
   optionSelect(option) {
     this.setState({ options: [Object.assign(option, { isSelected: true })] });
-    this.props.onUserInput('option', option.value);
+    this.props.onUserInput('option', option.value.input.text);
   }
 
   render() {
@@ -43,7 +43,7 @@ class ChatOptionList extends React.Component {
       <div className="chat-option-list">
         {options.map(option => (
           <ChatOption
-            key={option.value}
+            key={option.value.input.text}
             option={option}
             onUserInput={(selectedOption) => { this.optionSelect(selectedOption); }}
             isSelected={option.isSelected}

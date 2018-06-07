@@ -6,9 +6,9 @@ import ChatOptionList from './ChatOptionList';
 const sandbox = sinon.createSandbox();
 const onUserInputSpy = sinon.spy();
 const chatOptionStubData = [
-  { label: 'Texas', value: 'texas' },
-  { label: 'New York', value: 'newyork' },
-  { label: 'California', value: 'california' },
+  { label: 'Texas', value: { input: { text: 'texas' } } },
+  { label: 'NYC', value: { input: { text: 'nyc' } } },
+  { label: 'Chicago', value: { input: { text: 'chicago' } } },
 ];
 
 describe('ChatOptionList', () => {
