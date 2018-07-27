@@ -30,6 +30,7 @@ const DemoNotification = ({
                   className="demo-notification__cta ibm-type-b"
                   href={link}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Click here for more info
                 </a>
