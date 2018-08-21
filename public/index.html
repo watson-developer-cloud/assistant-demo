@@ -7,27 +7,6 @@
   </head>
   <body>
     <div id="root"></div>
-    <!-- Tealium analytics -->
-    <script type="text/javascript">
-      var digitalData = {
-        page: {
-          pageInfo: {
-            analytics: {
-              category: 'Demo (Watson Platform)',
-            }
-          }
-        }
-      };
-
-      function loadAnalytics() {
-        var idaScript = document.createElement('script');
-        idaScript.src = '//www.ibm.com/common/stats/ida_stats.js';
-        document.head.appendChild(idaScript);
-      }
-
-      if (window.location.href.indexOf('.bluemix.net') !== -1) {
-        window.addEventListener('load', loadAnalytics);
-      }
-    </script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/watson-developer-cloud/watson-developer-cloud.github.io/master/analytics.js"></script>
   </body>
 </html>
