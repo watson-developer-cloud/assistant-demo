@@ -4,7 +4,9 @@ import SelectionSidebar from './SelectionSidebar/SelectionSidebar';
 import OptionsSidebar from './OptionsSidebar/OptionsSidebar';
 import { fetchMessage, executeClientAction, executeWorkspaceAction } from '../conversation';
 import { IDLE, IN_PROGRESS, COMPLETED, FAILED } from '../constants';
+import trackEvent from '../utils';
 require('smoothscroll-polyfill').polyfill();
+
 
 class App extends React.Component {
   constructor(props) {
@@ -160,6 +162,7 @@ class App extends React.Component {
   }
 
   userMessageHandler(type, text) {
+    trackEvent('Sent Message', 'TextInput', 'Chat TextInput');
     // do not accept empty inputs
     if (text.trim() !== '') {
       // add user message to state
@@ -174,6 +177,7 @@ class App extends React.Component {
   }
 
   routeToPath(path) {
+    trackEvent('Navigated to Panel', 'Button', 'NavButton');
     this.setState({ messages: [] });
     this.setState({ currentPath: path.id });
     this.setState({ lastMessageContext: {} });
