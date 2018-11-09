@@ -1,7 +1,7 @@
 ---
 applications:
-- name: watson-conversation-duo-dev
-  path: .
+- name: watson-assistant-duo
+- path: .
   command: npm start
   env:
     NODE_ENV: production

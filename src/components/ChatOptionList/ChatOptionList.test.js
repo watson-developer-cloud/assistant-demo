@@ -17,6 +17,7 @@ describe('ChatOptionList', () => {
 
   it('renders the correct number of ChatOptions', () => {
     const component = shallow(<ChatOptionList
+      type="button"
       options={chatOptionStubData}
       onUserInput={onUserInputSpy}
       isLastMessage
