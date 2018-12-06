@@ -17,6 +17,7 @@ const ChatUnorderedList = ({ options, onUserInput, isSelected }) => {
       {options.map(option => (
         <li
           className="chat-option-item"
+          role="presentation"
           onClick={() => { onUserInput(option); }}
         >{option.label}
         </li>

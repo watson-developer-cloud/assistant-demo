@@ -1,7 +1,8 @@
 process.env.NODE_ENV = 'production';
+const request = require('supertest');
 require('dotenv').config({ silent: true });
 const app = require('../../index');
-const request = require('supertest');
+
 
 describe('express', () => {
   it('should load home page when GET /', (done) => {
@@ -9,14 +10,14 @@ describe('express', () => {
       .get('/')
       .expect(200, done);
   });
-  /*
   it('should respond with JSON when GET /api/message', (done) => {
-    request(app)
-      .post('/api/message')
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(200, done);
+    if (process.env.WATSON_ASSISTANT_APIKEY) {
+      return request(app)
+        .post('/api/message')
+        .set('Accept', 'application/json')
+        .expect('Content-Type', /json/)
+        .expect(200, done);
+    }
+    done();
   });
-  */
 });
-

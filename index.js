@@ -18,14 +18,12 @@ const express = require('express');
 
 const app = express();
 require('./config/express')(app);
-const Conversation = require('watson-developer-cloud/conversation/v1');
+const Assistant = require('watson-developer-cloud/assistant/v1');
 const bank = require('./lib/bankFunctions');
 
-// declare Watson Conversation service
-const conversation = new Conversation({
-  username: process.env.CONVERSATION_USERNAME,
-  password: process.env.CONVERSATION_PASSWORD,
-  version_date: '2018-07-10',
+// declare Watson Assistant service
+const assistant = new Assistant({
+  version: '2018-07-10',
 });
 
 const nextMonth = ((new Date().getMonth() + 1) % 12) + 1;
@@ -52,11 +50,11 @@ app.get('/', (req, res) => {
 
 app.post('/api/message', (req, res) => {
   // check for workspace id and handle null workspace env variable
-  const workspace = process.env.CONVERSATION_WORKSPACE || '<workspace-id>';
+  const workspace = process.env.ASSISTANT_WORKSPACE_ID || '<workspace-id>';
   if (!workspace || workspace === '<workspace-id>') {
     return res.json({
       output: {
-        text: 'The app has not been configured with a WORKSPACE_ID environment variable.',
+        text: 'The app has not been configured with a ASSISTANT_WORKSPACE_ID environment variable.',
       },
     });
   }
@@ -71,11 +69,11 @@ app.post('/api/message', (req, res) => {
   };
 
   // send payload to Conversation and return result
-  conversation.message(payload, (err, data) => {
+  assistant.message(payload, (err, data) => {
     if (err) {
       // TODO: return error from service, currently service returns non-legal
       // status code
-      return res.status(500);
+      return res.status(500).jsonp(err);
     }
 
     // TODO: temporary hack to hide function creds... fix later

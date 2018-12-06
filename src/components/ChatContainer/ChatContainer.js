@@ -32,10 +32,14 @@ const ChatContainer = ({
   </div>
 );
 
+ChatContainer.defaultProps = {
+  botMessageStatus: null,
+};
+
 ChatContainer.propTypes = {
   messages: PropTypes.array.isRequired,
   onUserInput: PropTypes.func.isRequired,
-  botMessageStatus: PropTypes.string.isRequired,
+  botMessageStatus: PropTypes.string,
 };
 
 export default ChatContainer;
