@@ -21,6 +21,7 @@ const ChatContainer = ({
     </div>
     <div className="ibm-lg-col-4 ibm-padding chat-container__input">
       <InputWithButton
+        id="input_field"
         onSubmit={(e) => {
           onUserInput('user', e.target.value);
           e.target.value = '';

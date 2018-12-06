@@ -45,3 +45,6 @@ dist/
 
 # environment variables
 *.env
+
+# Mac DS_Store
+.DS_Store

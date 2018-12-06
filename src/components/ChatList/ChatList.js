@@ -6,25 +6,44 @@ import ApptCard from '../ApptCard/ApptCard';
 import AgentCard from '../AgentCard/AgentCard';
 import StatementCard from '../StatementCard/StatementCard';
 import { IN_PROGRESS } from '../../constants';
+import ImageOption from '../ImageOption/ImageOption';
 
+function lastBotMessage(i, messages) {
+  let isLastBotMessage = true;
+  // look forward to see if there is a user message
+  for (let x = i; x < messages.length && isLastBotMessage === true; x += 1) {
+    if (messages[x].type === 'user') {
+      isLastBotMessage = false;
+    }
+  }
+  return isLastBotMessage;
+}
 
 const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
   // eslint-disable-next-line
   const isBotLoading = (botMessageStatus === IN_PROGRESS);
   const chatListClasses = isBotLoading ? 'ibm-lg-col-4 ibm-padding chat-list chat-list--loading' : 'ibm-lg-col-4 ibm-padding chat-list';
-
   return (
     <div id="chat-list" className={chatListClasses}>
       {messages.map((message, i) => {
-        const isLastMessage = (i === messages.length - 1);
         switch (message.type) {
           case 'option':
+            if (message.display === 'list') {
+              return (
+                <ChatOptionList
+                  type="list"
+                  options={message.content}
+                  onUserInput={onUserInput}
+                  isLastMessage={lastBotMessage(i, messages)}
+                />
+              );
+            }
             return (
               <ChatOptionList
                 type="button"
                 options={message.content}
                 onUserInput={onUserInput}
-                isLastMessage={isLastMessage}
+                isLastMessage={lastBotMessage(i, messages)}
               />
             );
           case 'balance':
@@ -55,7 +74,7 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
               <ChatOptionList
                 type="creditCard"
                 options={message.content}
-                isLastMessage={isLastMessage}
+                isLastMessage={lastBotMessage(i, messages)}
               />
             );
           case 'statement':
@@ -63,6 +82,12 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
               <StatementCard
                 startDate={message.content.startingDate}
                 endDate={message.content.endingDate}
+              />
+            );
+          case 'image':
+            return (
+              <ImageOption
+                url={message.content}
               />
             );
           default:
@@ -74,6 +99,7 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
             );
         }
       })}
+
       <div className="chat-list__loader">
         <p className="ibm-type-c">
           &nbsp;
