@@ -1,6 +1,6 @@
 ---
 applications:
-- name: watson-assistant-duo-test
+- name: watson-assistant-duo
 - path: .
   command: npm start
   env:
