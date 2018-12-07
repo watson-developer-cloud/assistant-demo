@@ -2,7 +2,9 @@ language: node_js
 dist: trusty
 sudo: required
 node_js: "8"
-script: npm test
+script:
+- npm run build
+- npm test
 cache:
   directories:
   - node_modules
@@ -15,7 +17,6 @@ env:
   - B_DOMAIN=ng.bluemix.net
 before_deploy:
 - npm install -g bx-blue-green
-- npm run build
 deploy:
 - provider: script
   script: bx-blue-green-travis
