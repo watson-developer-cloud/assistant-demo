@@ -21,6 +21,7 @@ const ChatContainer = ({
     </div>
     <div className="ibm-lg-col-4 ibm-padding chat-container__input">
       <InputWithButton
+        id="input_field"
         onSubmit={(e) => {
           onUserInput('user', e.target.value);
           e.target.value = '';
@@ -31,10 +32,14 @@ const ChatContainer = ({
   </div>
 );
 
+ChatContainer.defaultProps = {
+  botMessageStatus: null,
+};
+
 ChatContainer.propTypes = {
   messages: PropTypes.array.isRequired,
   onUserInput: PropTypes.func.isRequired,
-  botMessageStatus: PropTypes.string.isRequired,
+  botMessageStatus: PropTypes.string,
 };
 
 export default ChatContainer;

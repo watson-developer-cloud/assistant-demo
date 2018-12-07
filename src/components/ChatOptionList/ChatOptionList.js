@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ChatOption from '../ChatOption/ChatOption';
 import CreditCardOption from '../CreditCardOption/CreditCardOption';
+import ChatUnorderedList from '../ChatUnorderedList/ChatUnorderedList';
 
 class ChatOptionList extends React.Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class ChatOptionList extends React.Component {
     const options = (this.props.isLastMessage || this.state.options[0].isSelected)
       ? this.state.options
       : [];
+
     if (this.props.type === 'creditCard') {
       return (
         <div>
@@ -37,20 +39,30 @@ class ChatOptionList extends React.Component {
           ))}
         </div>
       );
-    }
-
-    return (
-      <div className="chat-option-list">
-        {options.map(option => (
-          <ChatOption
-            key={option.value.input.text}
-            option={option}
+    } else if (this.props.type === 'button') {
+      return (
+        <div className="chat-option-list">
+          {options.map(option => (
+            <ChatOption
+              key={option.value.input.text}
+              option={option}
+              onUserInput={(selectedOption) => { this.optionSelect(selectedOption); }}
+              isSelected={option.isSelected}
+            />
+          ))}
+        </div>
+      );
+    } else if (this.props.type === 'list') {
+      return (
+        <div className="chat-option-list">
+          <ChatUnorderedList
+            options={options}
             onUserInput={(selectedOption) => { this.optionSelect(selectedOption); }}
-            isSelected={option.isSelected}
+            isSelected={this.state.options[0].isSelected}
           />
-        ))}
-      </div>
-    );
+        </div>
+      );
+    }
   }
 }
 

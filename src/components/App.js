@@ -5,8 +5,61 @@ import OptionsSidebar from './OptionsSidebar/OptionsSidebar';
 import { fetchMessage, executeClientAction, executeWorkspaceAction } from '../conversation';
 import { IDLE, IN_PROGRESS, COMPLETED, FAILED } from '../constants';
 import trackEvent from '../utils';
+
 require('smoothscroll-polyfill').polyfill();
 
+
+const parseNonGenericResponsesFromBotOutput = (genericObj) => {
+  const responses = [];
+  genericObj.forEach((response) => {
+    if (response.response_type === 'title') {
+      responses.push({
+        type: 'bot',
+        content: response.text,
+      });
+    } else if (response.response_type === 'option') {
+      responses.push({
+        type: 'bot',
+        content: response.title,
+      });
+
+      let preference = 'text';
+      if (response.preference !== undefined) {
+        preference = response.preference;
+      }
+
+      const res = {
+        type: 'option',
+        display: 'list',
+        content: response.options,
+      };
+
+      if (preference === 'button') {
+        res.display = 'button';
+      }
+      responses.push(res);
+    } else if (response.response_type === 'pause') {
+      responses.push({
+        type: response.response_type,
+        time: response.time,
+        typing: response.typing,
+      });
+    } else if (response.response_type === 'text') {
+      if (response.text !== '') {
+        responses.push({
+          type: 'bot',
+          content: response.text,
+        });
+      }
+    } else if (response.response_type === 'image') {
+      responses.push({
+        type: 'image',
+        content: response.source,
+      });
+    }
+  });
+  return responses;
+};
 
 class App extends React.Component {
   constructor(props) {
@@ -36,15 +89,6 @@ class App extends React.Component {
           description: 'Describe your ideal credit card and receive a recommendation tailored to your preferences.',
           path: 'Can you help me choose a credit card?',
         },
-        /*
-        {
-          id: 4,
-          label: 'Dispute a Charge',
-          description: 'Transfer any query or dispute that can\'t
-          be addressed by a bot to a live agent.',
-          path: 'There\'s a problem with my credit card bill',
-        },
-        */
       ],
       currentPath: 1,
       notificationText: '',
@@ -82,6 +126,25 @@ class App extends React.Component {
     });
   }
 
+  iterateResponese(responses, index) {
+    if (index < responses.length) {
+      const res = responses[index];
+      if (res.type !== 'pause') {
+        this.updateChatList(res);
+        this.iterateResponese(responses, index + 1);
+      } else {
+        const inputField = document.getElementById('input_field');
+        if (res.typing) {
+          inputField.placeholder = 'Watson is typing...';
+        }
+        setTimeout(() => {
+          inputField.placeholder = 'Type here...';
+          this.iterateResponese(responses, index + 1);
+        }, res.time);
+      }
+    }
+  }
+
   updateOptionsSidebar(lastMessageJson) {
     this.setState({ lastMessageJson });
   }
@@ -96,16 +159,11 @@ class App extends React.Component {
 
   botMessageHandler(outputObj) {
     let isNotificationPresent = false;
-
-    // always read the text from output
-    outputObj.output.text.forEach((response) => {
-      if (response !== '') {
-        this.updateChatList({
-          type: 'bot',
-          content: response,
-        });
-      }
-    });
+    let responses = [];
+    // check for chat options in generic options object
+    if (outputObj.output.generic !== undefined) {
+      responses = responses.concat(parseNonGenericResponsesFromBotOutput(outputObj.output.generic));
+    }
 
     // execute client programmatic actions if they exist
     if (outputObj.actions !== undefined && outputObj.actions.length > 0) {
@@ -115,7 +173,7 @@ class App extends React.Component {
             this.sendMessageToConversation(result.result, this.state.lastMessageContext);
           } else if (result.result === 'statement') {
             const action = executeWorkspaceAction({ statement_display: result.dates });
-            this.updateChatList(action);
+            responses.push(action);
           }
         });
     }
@@ -126,7 +184,7 @@ class App extends React.Component {
 
       actionResponseArray.forEach((actionResponse) => {
         if (actionResponse.type !== 'notification') {
-          this.updateChatList(actionResponse);
+          responses.push(actionResponse);
         } else {
           isNotificationPresent = true;
           this.displayNotification(actionResponse.text, actionResponse.link);
@@ -134,31 +192,26 @@ class App extends React.Component {
       });
     }
 
-    // check for chat options in generic options object
-    if (outputObj.output.generic !== undefined) {
-      this.botMessageOptionsHandler(outputObj.output.generic);
-    }
+    // execute standard workspace UI Action if they exist
+    if (outputObj.output.ui_action !== undefined) {
+      const actionResponseArray = executeWorkspaceAction(outputObj.output.ui_action);
 
+      actionResponseArray.forEach((actionResponse) => {
+        if (actionResponse.type !== 'notification') {
+          console.log(JSON.stringify(actionResponse));
+          responses.push(actionResponse);
+        } else {
+          isNotificationPresent = true;
+          this.displayNotification(actionResponse.text, actionResponse.link);
+        }
+      });
+    }
     // serve notification if digression occured
     if (!isNotificationPresent && 'context' in outputObj && 'system' in outputObj.context && 'digressed' in outputObj.context.system) {
       this.displayNotification('The virtual assistant is able to answer an unrelated question and return back to the original flow using the Digressions feature.');
     }
-  }
 
-  botMessageOptionsHandler(genericObj) {
-    genericObj.forEach((response) => {
-      if (response.response_type === 'title') {
-        this.updateChatList({
-          type: 'bot',
-          content: response.text,
-        });
-      } else if (response.response_type === 'option') {
-        this.updateChatList({
-          type: 'option',
-          content: response.options,
-        });
-      }
-    });
+    this.iterateResponese(responses, 0);
   }
 
   userMessageHandler(type, text) {
