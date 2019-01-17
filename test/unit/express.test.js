@@ -9,7 +9,7 @@ describe('express', () => {
   });
 
   it('should respond with JSON when GET /api/message', (done) => {
-    if (process.env.WATSON_ASSISTANT_APIKEY) {
+    if (process.env.ASSISTANT_USERNAME) {
       return request(app)
         .post('/api/message')
         .set('Accept', 'application/json')

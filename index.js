@@ -24,6 +24,8 @@ const bank = require('./lib/bankFunctions');
 // declare Watson Assistant service
 const assistant = new Assistant({
   version: '2018-07-10',
+  username: process.env.ASSISTANT_USERNAME || '<username>',
+  password: process.env.ASSISTANT_PASSWORD || '<password>',
 });
 
 const date = new Date();
@@ -37,12 +39,6 @@ const accountData = {
     5893,
     9225,
   ],
-  private: {
-    function_creds: {
-      user: process.env.CLOUD_FUNCTION_USER,
-      password: process.env.CLOUD_FUNCTION_PASS,
-    },
-  },
 };
 
 app.get('/', (req, res) => {
@@ -77,12 +73,7 @@ app.post('/api/message', (req, res) => {
       return res.status(500).jsonp(err);
     }
 
-    // TODO: temporary hack to hide function creds... fix later
-    const maskedData = Object.assign({}, data);
-    maskedData.context.private.function_creds.user = '****';
-    maskedData.context.private.function_creds.password = '****';
-
-    return res.json(maskedData);
+    return res.json(data);
   });
 });
 
