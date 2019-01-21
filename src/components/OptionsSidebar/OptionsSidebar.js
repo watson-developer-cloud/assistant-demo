@@ -78,7 +78,11 @@ OptionsSidebar.propTypes = {
   currentPath: PropTypes.number.isRequired,
   onPathSelect: PropTypes.func.isRequired,
   notificationText: PropTypes.string.isRequired,
-  notificationLink: PropTypes.string.isRequired,
+  notificationLink: PropTypes.string,
+};
+
+OptionsSidebar.defaultProps = {
+  notificationLink: null,
 };
 
 export default OptionsSidebar;

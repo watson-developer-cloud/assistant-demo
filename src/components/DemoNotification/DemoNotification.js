@@ -44,10 +44,14 @@ const DemoNotification = ({
 
 DemoNotification.propTypes = {
   message: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
+  link: PropTypes.string,
   isVisible: PropTypes.bool.isRequired,
   onExit: PropTypes.func.isRequired,
   onEnter: PropTypes.func.isRequired,
+};
+
+DemoNotification.defaultProps = {
+  link: null,
 };
 
 export default DemoNotification;

@@ -166,21 +166,27 @@ class App extends React.Component {
     }
 
     // execute client programmatic actions if they exist
-    if (outputObj.actions !== undefined && outputObj.actions.length > 0) {
-      executeClientAction(outputObj.actions[0])
-        .then((result) => {
-          if (!outputObj.context.skip_user_input) {
-            this.sendMessageToConversation(result.result, this.state.lastMessageContext);
-          } else if (result.result === 'statement') {
-            const action = executeWorkspaceAction({ statement_display: result.dates });
-            responses.push(action);
-          }
-        });
+    if (outputObj.output.actions
+      && outputObj.output.actions.length > 0) {
+      console.log(JSON.stringify(outputObj.actions, null, 2));
+      const actions = outputObj.output.actions;
+      actions.forEach((act) => {
+        executeClientAction(act)
+          .then((result) => {
+            if (!outputObj.context.skip_user_input) {
+              this.sendMessageToConversation(result.result, this.state.lastMessageContext);
+            } else if (result.result === 'statement') {
+              const action = executeWorkspaceAction({ statement_display: result.dates });
+              responses.push(action);
+            }
+          });
+      });
     }
 
     // execute standard workspace actions if they exist
-    if (outputObj.output.action !== undefined) {
-      const actionResponseArray = executeWorkspaceAction(outputObj.output.action);
+    if (outputObj.output.user_defined !== undefined
+      && outputObj.output.user_defined.action !== undefined) {
+      const actionResponseArray = executeWorkspaceAction(outputObj.output.user_defined.action);
 
       actionResponseArray.forEach((actionResponse) => {
         if (actionResponse.type !== 'notification') {
@@ -193,8 +199,9 @@ class App extends React.Component {
     }
 
     // execute standard workspace UI Action if they exist
-    if (outputObj.output.ui_action !== undefined) {
-      const actionResponseArray = executeWorkspaceAction(outputObj.output.ui_action);
+    if (outputObj.output.user_defined !== undefined
+      && outputObj.output.user_defined.ui_action !== undefined) {
+      const actionResponseArray = executeWorkspaceAction(outputObj.output.user_defined.ui_action);
 
       actionResponseArray.forEach((actionResponse) => {
         if (actionResponse.type !== 'notification') {
@@ -238,31 +245,20 @@ class App extends React.Component {
     // the fetchMessage call clears the existing context
     // the sendMessageToConversation call sets the context to the selected
     // path
-    fetchMessage('').then((data) => {
-      this.updateConversationContext(data.context);
-      this.sendMessageToConversation(path.path, this.state.lastMessageContext);
+    fetchMessage('', null, (err, data) => {
+      if (data) {
+        this.updateConversationContext(data.context);
+        this.sendMessageToConversation(path.path, this.state.lastMessageContext);
+      }
     });
   }
 
-  sendMessageToConversation(text, context = {}) {
+
+  sendMessageToConversation(text, context = null) {
     this.updateMessageStatus(IN_PROGRESS);
 
-    fetchMessage(text, context)
-      .then((data) => {
-        // update message status
-        this.updateMessageStatus(COMPLETED);
-
-        // render appropriate data
-        this.botMessageHandler(data);
-
-        // send stringified JSON to sidebar
-        this.updateOptionsSidebar(JSON.stringify(data));
-
-        // update context
-        this.updateConversationContext(data.context);
-      })
-      .catch((err) => {
-        // update message status
+    fetchMessage(text, context, (err, data) => {
+      if (err) {
         this.updateMessageStatus(FAILED);
 
         this.updateChatList({
@@ -272,7 +268,19 @@ class App extends React.Component {
 
         console.log(err);
         throw new Error(err);
-      });
+      }
+      // update message status
+      this.updateMessageStatus(COMPLETED);
+
+      // render appropriate data
+      this.botMessageHandler(data);
+
+      // send stringified JSON to sidebar
+      this.updateOptionsSidebar(JSON.stringify(data));
+
+      // update context
+      this.updateConversationContext(data.context);
+    });
   }
 
   render() {

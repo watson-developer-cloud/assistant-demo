@@ -1,35 +1,75 @@
-/* makes a POST request to the message endpoint on the backend
- *
- * @param {String} text - the inputted text from the user
- * @param {Object} context - the current context object for the conversation
- * @return {Promise} - promise that resolves into the service output object
- */
-const fetchMessage = (text, context) => {
+let sessionId = null;
+
+function getMessage(text, context, callback) {
   const payload = {
+    session_id: sessionId,
     input: { text },
     context,
   };
 
-  return new Promise((resolve, reject) => {
-    fetch('/api/message', {
-      method: 'POST',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
+  fetch('/api/message', {
+    method: 'POST',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((data) => {
+      data.json()
+        .then((json) => {
+          callback(null, json);
+        });
     })
-      .then((data) => {
-        data.json()
-          .then((json) => {
-            resolve(json);
-          });
-      })
-      .catch((err) => {
-        reject(new Error(err));
-      });
-  });
+    .catch((err) => {
+      callback(err);
+    });
+}
+
+function getSessionId(callback) {
+  fetch('/api/session', {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((data) => {
+      data.json()
+        .then((json) => {
+          if (json.code) {
+            callback(json);
+          } else {
+            sessionId = json.session_id;
+            callback(null);
+          }
+        });
+    })
+    .catch((err) => {
+      callback(err);
+    });
+}
+
+
+/* makes a POST request to the message endpoint on the backend
+ *
+ * @param {String} text - the inputted text from the user
+ * @param {Object} context - the current context object for the conversation
+ */
+const fetchMessage = (text, context, callback) => {
+  if (sessionId === null) {
+    getSessionId((err) => {
+      if (err) {
+        console.log(`ERROR ${JSON.stringify(err)}`);
+        callback(err);
+      }
+      getMessage(text, context, callback);
+    });
+  } else {
+    getMessage(text, context, callback);
+  }
 };
+
 
 /* executes programmatic calls to the backend
  *
