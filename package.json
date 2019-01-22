@@ -39,7 +39,7 @@
     "express-rate-limit": "^3.3.2",
     "express": "^4.16.4",
     "helmet": "^3.15.0",
-    "watson-developer-cloud": "^3.14.0",
+    "watson-developer-cloud": "^3.16.1",
     "webpack-dev-middleware": "^1.12.2",
     "webpack-hot-middleware": "^2.24.3",
     "webpack": "^3.12.0"

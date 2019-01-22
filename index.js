@@ -18,27 +18,38 @@ const express = require('express');
 
 const app = express();
 require('./config/express')(app);
-const Assistant = require('watson-developer-cloud/assistant/v1');
+const AssistantV2 = require('watson-developer-cloud/assistant/v2');
 const bank = require('./lib/bankFunctions');
 
 // declare Watson Assistant service
-const assistant = new Assistant({
-  version: '2018-07-10',
+const assistant = new AssistantV2({
+  version: '2018-11-08',
   username: process.env.ASSISTANT_USERNAME || '<username>',
   password: process.env.ASSISTANT_PASSWORD || '<password>',
 });
 
 const date = new Date();
 date.setMonth(date.getMonth() + 1);
-const accountData = {
-  acc_minamt: 50,
-  acc_currbal: 430,
-  acc_paydue: `${date.getFullYear()}-${date.getMonth() + 1}-26 12:00:00`,
-  accnames: [
-    5624,
-    5893,
-    9225,
-  ],
+const newContext = {
+  global: {
+    system: {
+      turn_count: 1,
+    },
+  },
+  skills: {
+    'main skill': {
+      user_defined: {
+        acc_minamt: 50,
+        acc_currbal: 430,
+        acc_paydue: `${date.getFullYear()}-${date.getMonth() + 1}-26 12:00:00`,
+        accnames: [
+          5624,
+          5893,
+          9225,
+        ],
+      },
+    },
+  },
 };
 
 app.get('/', (req, res) => {
@@ -47,22 +58,39 @@ app.get('/', (req, res) => {
 
 app.post('/api/message', (req, res) => {
   // check for workspace id and handle null workspace env variable
-  const workspace = process.env.ASSISTANT_WORKSPACE_ID || '<workspace-id>';
-  if (!workspace || workspace === '<workspace-id>') {
+  const assistantId = process.env.ASSISTANT_ID || '<workspace-id>';
+  if (!assistantId || assistantId === '<workspace-id>') {
     return res.json({
       output: {
-        text: 'The app has not been configured with a ASSISTANT_WORKSPACE_ID environment variable.',
+        text: 'The app has not been configured with a ASSISTANT_ID environment variable.',
       },
     });
   }
 
-  const contextWithAcc = Object.assign({}, req.body.context, accountData);
+  const contextWithAcc = (req.body.context) ? req.body.context : newContext;
 
-  // assemble conversation payload
+  if (req.body.context) {
+    contextWithAcc.global.system.turn_count += 1;
+  }
+
+  let textIn = '';
+
+  if (req.body.input) {
+    textIn = req.body.input.text;
+  }
+
+  // assemble assistant payload
   const payload = {
-    workspace_id: workspace,
-    context: contextWithAcc || {},
-    input: req.body.input || {},
+    assistant_id: assistantId,
+    session_id: req.body.session_id,
+    context: contextWithAcc,
+    input: {
+      message_type: 'text',
+      text: textIn,
+      options: {
+        return_context: true,
+      },
+    },
   };
 
   // send payload to Conversation and return result
@@ -100,6 +128,17 @@ app.get('/bank/statement', (req, res) => {
   const endingDateString = endingDate.toLocaleDateString();
 
   res.send({ result: 'statement', dates: { startingDate: startingDateString, endingDate: endingDateString } });
+});
+
+app.get('/api/session', (req, res) => {
+  assistant.createSession({
+    assistant_id: process.env.ASSISTANT_ID || '{assistant_id}',
+  }, (error, response) => {
+    if (error) {
+      return res.send(error);
+    }
+    return res.send(response);
+  });
 });
 
 module.exports = app;
