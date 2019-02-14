@@ -1,5 +1,4 @@
 
 ## Reporting a bug
 
-If you encounter a bug with this application, you can post an issue with the `bug` label in this repository. Please fill out the issue template and include as much detail as you can about the nature of the bug.
-
+If you encounter an issue with the Node.js library, you are welcome to submit a bug report. Before that, please search for similar issues. It's possible somebody has already encountered this issue.
