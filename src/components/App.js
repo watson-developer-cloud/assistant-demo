@@ -8,7 +8,6 @@ import trackEvent from '../utils';
 
 require('smoothscroll-polyfill').polyfill();
 
-
 const parseNonGenericResponsesFromBotOutput = (genericObj) => {
   const responses = [];
   genericObj.forEach((response) => {
@@ -55,6 +54,15 @@ const parseNonGenericResponsesFromBotOutput = (genericObj) => {
       responses.push({
         type: 'image',
         content: response.source,
+      });
+    } else if (response.response_type === 'search') {
+      responses.push({
+        type: 'bot',
+        content: response.header,
+      });
+      responses.push({
+        type: response.response_type,
+        content: response.results,
       });
     }
   });
