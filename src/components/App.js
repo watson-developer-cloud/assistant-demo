@@ -258,16 +258,18 @@ class App extends React.Component {
     this.updateMessageStatus(IN_PROGRESS);
 
     fetchMessage(text, context, (err, data) => {
-      if (err) {
+      // data.code is set for an error response
+      if (err || data.code !== undefined) {
         this.updateMessageStatus(FAILED);
 
         this.updateChatList({
           type: 'bot',
-          content: 'Could not connect to Watson Assistant',
+          content: 'I\'m having trouble connecting to the server, please refresh the page.',
         });
 
-        console.log(err);
-        throw new Error(err);
+        const errorMsg = (err) || data;
+
+        throw new Error(errorMsg);
       }
       // update message status
       this.updateMessageStatus(COMPLETED);
