@@ -1,6 +1,7 @@
 <h1 align="center" style="border-bottom: none;">🚀 Watson Assistant (formerly Conversation) Demo Sample Application</h1>
 <h3>This app demonstrates the Watson Assistant service via a complete, complex interface which engages in simulated banking tasks.<br><br>It utilises features such as:<ul><li>Cloud Functions</li><li>Actions and UI Actions</li><li>Slots</li><li>Multi-Conditional Responses</li><li>Multi-Modal Responses</li></h3>
 
+![Demo](readme_images/demo.gif)
 
 You can view a [demo][demo_url] of this app.
 
@@ -33,7 +34,7 @@ Please note this app uses the [Watson Assistant V2 API](https://console.bluemix.
 
 5. Click the ![Copy](readme_images/copy_icon.png) icon to copy the workspace ID to the clipboard.
 
-    ![Steps to get credentials](readme_images/assistant-intermediate.gif)
+    ![Steps to get credentials](readme_images/assistant-demo.gif)
 
 6. In the application folder, copy the *.env.example* file and create a file called *.env*
 
