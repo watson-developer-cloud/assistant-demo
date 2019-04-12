@@ -3,7 +3,8 @@ const request = require('supertest');
 require('dotenv').config({ silent: true });
 const app = require('../../index');
 
-describe('express', () => {
+const describeOrSkip = process.env.ASSISTANT_ID ? describe : describe.skip;
+describeOrSkip('express', () => {
   it('should load home page when GET /', (done) => {
     request(app).get('/').expect(200, done);
   });
