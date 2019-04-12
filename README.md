@@ -4,8 +4,15 @@
 
 In this sample application, you're engaging with a banking virtual assistant. The assistant simulates a few scenarios, such as making a credit card payment, booking an appointment with a banker and choosing a credit card. Watson can understand your entries and respond accordingly.
 
+This app demonstrates the Watson Assistant service via a complete, complex interface which engages in simulated banking tasks. It utilises features such as:
+ * Cloud Functions
+ * Actions and UI Actions
+ * Slots
+ * Multi-Conditional Responses
+ * Multi-Modal Responses
 
-[![Demo](./demo.gif)](https://watson-assistant-demo.ng.bluemix.net)
+
+[![Demo](./readme_images/demo.gif)](https://watson-assistant-demo.ng.bluemix.net)
 
 
 
@@ -23,19 +30,39 @@ In this sample application, you're engaging with a banking virtual assistant. Th
 
 ## Configuring the application
 
+1. In your IBM Cloud console, open the Watson Assistant service instance
+
+1. Click the **Import workspace** icon in the Watson Assistant service tool. Specify the location of the workspace JSON file in your local copy of the app project:
+
+    `<project_root>/training/banking_workspace.json`
+
+1. Select **Everything (Intents, Entities, and Dialog)** and then click **Import**. The car dashboard workspace is created.
+
+1. Click the menu icon in the upper-right corner of the workspace tile, and then select **View details**.
+
+1. Click the ![Copy](readme_images/copy_icon.png) icon to copy the workspace ID to the clipboard.
+
+    ![Steps to get credentials](readme_images/assistant-demo.gif)
+
 1. In the application folder, copy the *.env.example* file and create a file called *.env*
 
     ```
     cp .env.example .env
     ```
 
-2. Open the *.env* file and add the service credentials that you obtained in the previous step.
+1. Open the *.env* file and add the service credentials that you obtained in the previous step.
 
     Example *.env* file that configures the `apikey` and `url` for a Watson Assistant service instance hosted in the US East region:
 
     ```
     ASSISTANT_IAM_APIKEY=X4rbi8vwZmKpXfowaS3GAsA7vdy17Qh7km5D6EzKLHL2
     ASSISTANT_URL=https://gateway-wdc.watsonplatform.net/assistant/api
+    ```
+
+1. Add the `ASSISTANT_ID` to the previous properties
+
+    ```
+    ASSISTANT_ID=522be-7b41-ab44-dec3-g1eab2ha73c6
     ```
 
 ## Running locally
@@ -56,7 +83,7 @@ In this sample application, you're engaging with a banking virtual assistant. Th
 
 ## Deploying to IBM Cloud as a Cloud Foundry Application
 
-1. Login to IBM Cloud with the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli/index.html#overview)
+1. Login to IBM Cloud with the [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-ibmcloud-cli#overview)
 
     ```
     ibmcloud login
@@ -80,32 +107,6 @@ In this sample application, you're engaging with a banking virtual assistant. Th
 For example: https://my-app-name.mybluemix.net
 
 
-## Codebase Structure
-
-```s
-Root
-  /src
-    index.js (React frontend index)
-    /components
-      /ExampleComponentDirectory
-        ExampleComponent.js
-        ExampleComponent.test.js
-  /public
-    index.html (served at the root route)
-    /styles
-      duo-grid.min.css (Duo grid styles)
-    /js
-      bundle.js (imports the root react component)
-   /config
-    Configuration files for Express backend
-   /test
-    Backend unit and integration tests
-index.js (express backend)
-server.js (main backend entry point)
-.config files
-package.json
-```
-
 ## License
 
 This sample code is licensed under Apache 2.0.  
@@ -122,3 +123,6 @@ Find more open source projects on the
 
 [service_url]: https://www.ibm.com/cloud/watson-assistant/
 [docs]: https://cloud.ibm.com/docs/services/assistant/index.html#about
+[demo_url]: http://assistant-demo.ng.bluemix.net/
+[doc_intents]: (https://cloud.ibm.com/docs/services/assistant?topic=assistant-intents#intents)
+[docs_landing]: (https://cloud.ibm.com/docs/services/assistant?topic=assistant-getting-started#getting-started)
