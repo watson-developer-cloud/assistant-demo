@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 
 const distDir = path.resolve(__dirname, '..', 'dist');
@@ -60,11 +59,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin([distDir], {
-      root: path.resolve(__dirname, '..'),
-      verbose: true,
-      dry: false,
-    }),
     new HtmlWebpackPlugin({
       title: 'Production',
       template: 'public/index.html',

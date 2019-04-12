@@ -23,9 +23,7 @@ const bank = require('./lib/bankFunctions');
 
 // declare Watson Assistant service
 const assistant = new AssistantV2({
-  version: '2018-11-08',
-  username: process.env.ASSISTANT_USERNAME || '<username>',
-  password: process.env.ASSISTANT_PASSWORD || '<password>',
+  version: '2019-01-01',
 });
 
 const date = new Date();
@@ -57,9 +55,9 @@ app.get('/', (req, res) => {
 });
 
 app.post('/api/message', (req, res) => {
-  // check for workspace id and handle null workspace env variable
-  const assistantId = process.env.ASSISTANT_ID || '<workspace-id>';
-  if (!assistantId || assistantId === '<workspace-id>') {
+  // check for assistant id and handle null assistant env variable
+  const assistantId = process.env.ASSISTANT_ID || '<assistant-id>';
+  if (!assistantId || assistantId === '<assistant-id>') {
     return res.json({
       output: {
         text: 'The app has not been configured with a ASSISTANT_ID environment variable.',
@@ -96,9 +94,10 @@ app.post('/api/message', (req, res) => {
   // send payload to Conversation and return result
   assistant.message(payload, (err, data) => {
     if (err) {
+      console.log(err);
       // TODO: return error from service, currently service returns non-legal
       // status code
-      return res.status(500).jsonp(err);
+      return res.status(err.code || 500).json(err);
     }
 
     return res.json(data);
@@ -135,7 +134,7 @@ app.get('/api/session', (req, res) => {
     assistant_id: process.env.ASSISTANT_ID || '{assistant_id}',
   }, (error, response) => {
     if (error) {
-      return res.send(error);
+      return res.status(error.code || 500).send(error);
     }
     return res.send(response);
   });
