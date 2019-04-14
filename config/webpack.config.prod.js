@@ -1,9 +1,13 @@
 const webpack = require('webpack');
+const path = require('path');
 const merge = require('webpack-merge');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const common = require('./webpack.config.common');
+
+const distDir = path.resolve(__dirname, '..', 'dist');
 
 const extractSass = new ExtractTextPlugin({
   filename: '[name].[contenthash].css',
@@ -33,6 +37,11 @@ module.exports = merge.smart(common, {
   },
 
   plugins: [
+    new CleanWebpackPlugin([distDir], {
+      root: path.resolve(__dirname, '..'),
+      verbose: true,
+      dry: false,
+    }),
     new UglifyJSPlugin({
       sourceMap: true,
       uglifyOptions: { ecma: 8 },

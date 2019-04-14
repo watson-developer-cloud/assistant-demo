@@ -1,10 +1,6 @@
 language: node_js
-dist: trusty
-sudo: required
-node_js: "8"
-script:
-- npm run build
-- npm test
+dist: xenial
+node_js: "10"
 cache:
   directories:
   - node_modules
@@ -15,6 +11,10 @@ env:
   - BX_ORGANIZATION=WatsonPlatformServices
   - BX_SPACE=demos
   - B_DOMAIN=ng.bluemix.net
+script:
+- npm run build
+- npm test
+
 before_deploy:
 - npm install -g bx-blue-green
 deploy:
@@ -22,11 +22,8 @@ deploy:
   script: bx-blue-green-travis
   on:
     branch: master
-    repo: Watson/watson-conversation-demo-redesign
+    repo: watson-developer-cloud/assistant-demo
   skip_cleanup: true
 - provider: script
-  script: BX_APP=watson-conversation-duo-test bx-blue-green-travis
-  on:
-    branch: dev
-    repo: Watson/watson-conversation-demo-redesign
   skip_cleanup: true
+  script: npx semantic-release

@@ -1,7 +1,7 @@
 ---
 applications:
 - name: watson-assistant-duo
-- path: .
   command: npm start
+  buildpack: sdk-for-nodejs
   env:
     NODE_ENV: production
