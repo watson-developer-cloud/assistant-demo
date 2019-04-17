@@ -2,9 +2,11 @@
 
 [![Build Status](https://travis-ci.org/watson-developer-cloud/assistant-demo.svg?branch=master)](https://travis-ci.org/watson-developer-cloud/assistant-demo)
 
-In this sample application, you're engaging with a banking virtual assistant. The assistant simulates a few scenarios, such as making a credit card payment, booking an appointment with a banker and choosing a credit card. Watson can understand your entries and respond accordingly.
+### In this sample application, you're engaging with a banking virtual assistant. The assistant simulates a few scenarios, such as making a credit card payment, booking an appointment with a banker and choosing a credit card. Watson can understand your entries and respond accordingly.
+
 
 This app demonstrates the Watson Assistant service via a complete, complex interface which engages in simulated banking tasks. It utilises features such as:
+
  * Cloud Functions
  * Actions and UI Actions
  * Slots
@@ -13,8 +15,6 @@ This app demonstrates the Watson Assistant service via a complete, complex inter
 
 
 [![Demo](./readme_images/demo.gif)](https://watson-assistant-demo.ng.bluemix.net)
-
-
 
 ## Prerequisites
 
