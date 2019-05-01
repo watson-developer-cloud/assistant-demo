@@ -43,7 +43,9 @@
     "watson-developer-cloud": "^3.18.4",
     "webpack": "^3.12.0",
     "webpack-dev-middleware": "^1.12.2",
-    "webpack-hot-middleware": "^2.24.3"
+    "webpack-hot-middleware": "^2.24.3",
+    "uuid": "^3.3.2",
+    "node-cache": "4.2.0"
   },
   "devDependencies": {
     "@ibm/grid": "^0.2.3",

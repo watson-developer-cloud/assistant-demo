@@ -7,6 +7,7 @@ import AgentCard from '../AgentCard/AgentCard';
 import StatementCard from '../StatementCard/StatementCard';
 import { IN_PROGRESS } from '../../constants';
 import ImageOption from '../ImageOption/ImageOption';
+import SearchResultsList from '../SearchResults/SearchResultsList';
 
 function lastBotMessage(i, messages) {
   let isLastBotMessage = true;
@@ -88,6 +89,12 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
             return (
               <ImageOption
                 url={message.content}
+              />
+            );
+            case 'search':
+            return (
+              <SearchResultsList
+                res={message.content}
               />
             );
           default:

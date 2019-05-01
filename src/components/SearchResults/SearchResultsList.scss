@@ -1,0 +1,26 @@
+.search-item {
+  background-color: $duo-gray-80;
+  border-radius: 10px;
+  padding-bottom: 4px;
+  padding-top: 4px;
+  padding-left: 6px;
+  padding-right: 6px;
+  margin: 3px;
+  width: 70%;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  display: inline-block;
+}
+
+div#search-div a:link { 
+  color: $duo-blue-60;
+}
+div#search-div a:visited {
+  color: $duo-blue-70;
+}
+div#search-div a:hover {
+  color: $duo-blue-50;
+}
+div#search-div a:active {
+  color: $duo-blue-60;
+}

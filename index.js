@@ -20,6 +20,10 @@ const app = express();
 require('./config/express')(app);
 const AssistantV2 = require('watson-developer-cloud/assistant/v2');
 const bank = require('./lib/bankFunctions');
+const uuidV1 = require('uuid/v1');
+const NodeCache = require('node-cache');
+// stdTTL time in seconds (15 mins)
+const searchCache = new NodeCache({ stdTTL: 900 });
 
 // declare Watson Assistant service
 const assistant = new AssistantV2({
@@ -49,6 +53,34 @@ const newContext = {
     },
   },
 };
+
+function setSearchItems(data) {
+  if (data.output !== undefined && data.output.generic !== undefined) {
+    const genericObj = data.output.generic;
+    const items = [];
+    genericObj.forEach((response) => {
+      if (response.response_type === 'search') {
+        response.results.forEach((item) => {
+          items.push(item);
+        });
+      }
+    });
+
+    for (let i = 0; i < items.length && i < 3; i += 1) {
+      const item = items[i];
+      let id = searchCache.get(item.title);
+      if (id === undefined) {
+        id = uuidV1();
+        item.id = id;
+        searchCache.set(item.title, id);
+        searchCache.set(`header_${id}`, item.title);
+        searchCache.set(`body_${id}`, item.body);
+      } else {
+        item.id = id;
+      }
+    }
+  }
+}
 
 app.get('/', (req, res) => {
   res.render('./dist/index.html');
@@ -95,11 +127,9 @@ app.post('/api/message', (req, res) => {
   assistant.message(payload, (err, data) => {
     if (err) {
       console.log(err);
-      // TODO: return error from service, currently service returns non-legal
-      // status code
       return res.status(err.code || 500).json(err);
     }
-
+    setSearchItems(data);
     return res.json(data);
   });
 });
@@ -138,6 +168,20 @@ app.get('/api/session', (req, res) => {
     }
     return res.send(response);
   });
+});
+
+app.get('/search', (req, res) => {
+  const id = req.query.id;
+
+  const header = searchCache.get(`header_${id}`) || 'The search result session has expired. Please restart the conversation in the main window.';
+  const body = searchCache.get(`body_${id}`) || '';
+
+  const doc = '<html><head><meta charset="UTF-8" /><title>Document</title></head>'
+    + '<style>body {background-color: #252525;}div {color: white;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;}</style>'
+    + `<body><div style="width: 70%; padding: 10px;"><p><strong>${header}</strong></p>`
+    + `<p>${body}</p></div></body></html>`;
+
+  return res.send(doc);
 });
 
 module.exports = app;
