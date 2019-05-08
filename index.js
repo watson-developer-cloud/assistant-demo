@@ -18,7 +18,7 @@ const express = require('express');
 
 const app = express();
 require('./config/express')(app);
-const AssistantV2 = require('watson-developer-cloud/assistant/v2');
+const AssistantV2 = require('ibm-watson/assistant/v2');
 const bank = require('./lib/bankFunctions');
 const uuidV1 = require('uuid/v1');
 const NodeCache = require('node-cache');
@@ -27,7 +27,7 @@ const searchCache = new NodeCache({ stdTTL: 900 });
 
 // declare Watson Assistant service
 const assistant = new AssistantV2({
-  version: '2019-01-01',
+  version: '2019-02-28',
 });
 
 const date = new Date();
@@ -137,6 +137,7 @@ app.post('/api/message', (req, res) => {
 app.get('/bank/validate', (req, res) => {
   const value = req.query.value;
   const isAccValid = bank.validateAcc(Number(value));
+  res.setHeader('Content-Type', 'application/json');
   // if accountNum is in list of valid accounts
   if (isAccValid === true) {
     res.send({ result: 'acc123valid' });
@@ -164,6 +165,7 @@ app.get('/api/session', (req, res) => {
     assistant_id: process.env.ASSISTANT_ID || '{assistant_id}',
   }, (error, response) => {
     if (error) {
+      console.log(error);
       return res.status(error.code || 500).send(error);
     }
     return res.send(response);
