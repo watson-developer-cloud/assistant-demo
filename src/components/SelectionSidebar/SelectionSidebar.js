@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import DemoButton from '../DemoButton/DemoButton';
 import PathSelectionOverlay from '../PathSelectionOverlay/PathSelectionOverlay';
 
+const TERMS_OF_USE_URL = 'https://watson-developer-cloud.github.io/terms?name=Watson%20Assistant%20Demo';
 class SelectionSidebar extends React.Component {
   constructor(props) {
     super(props);
@@ -55,6 +56,12 @@ class SelectionSidebar extends React.Component {
             onClick={() => { this.onEnter(); }}
           />
           <p className="ibm-type-a">See all features</p>
+        </div>
+        <div className="path-selection__terms-of-use">
+          By using this application, you agree to the&nbsp;
+          <a target="_blank" rel="noreferrer noopener" href={TERMS_OF_USE_URL}>
+                Terms of Use
+          </a>
         </div>
         <PathSelectionOverlay
           isOverlayVisible={this.state.isOverlayVisible}
