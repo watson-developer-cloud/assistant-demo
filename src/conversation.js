@@ -1,12 +1,12 @@
 let sessionId = null;
 
-function getMessage(text, context, callback) {
+function getMessage(text, context, firstCallVal, callback) {
   const payload = {
     session_id: sessionId,
     input: { text },
     context,
+    isFirstCall: firstCallVal,
   };
-
   fetch('/api/message', {
     method: 'POST',
     headers: {
@@ -55,18 +55,19 @@ function getSessionId(callback) {
  *
  * @param {String} text - the inputted text from the user
  * @param {Object} context - the current context object for the conversation
+ * @param {boolean} firstCallVal - determines whether context is to be sent with payload
  */
-const fetchMessage = (text, context, callback) => {
+const fetchMessage = (text, context, firstCallVal, callback) => {
   if (sessionId === null) {
     getSessionId((err) => {
       if (err) {
         console.log(`ERROR ${JSON.stringify(err)}`);
         callback(err);
       }
-      getMessage(text, context, callback);
+      getMessage(text, context, firstCallVal, callback);
     });
   } else {
-    getMessage(text, context, callback);
+    getMessage(text, context, firstCallVal, callback);
   }
 };
 
