@@ -91,7 +91,7 @@ const ChatList = ({ messages, onUserInput, botMessageStatus }) => {
                 url={message.content}
               />
             );
-            case 'search':
+          case 'search':
             return (
               <SearchResultsList
                 res={message.content}

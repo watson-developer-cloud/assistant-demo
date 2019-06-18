@@ -4,8 +4,11 @@ import Icon from '../Icon/Icon';
 
 const PathSelectionCard = ({ label, path, onClick }) => (
   <button
+    type="button"
     className="path-selection-card ibm-type-c"
-    onClick={() => { onClick(path); }}
+    onClick={() => {
+      onClick(path);
+    }}
   >
     <p className="ibm-type-c">{label}</p>
     <Icon type="circle-arrow-right" size={32} />

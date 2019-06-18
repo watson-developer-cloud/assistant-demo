@@ -39,7 +39,7 @@ class OptionsSidebar extends React.Component {
   }
 
   render() {
-    const currentPath = this.props.currentPath;
+    const { currentPath } = this.props;
     return (
       <div className="ibm-col-lg-4 options-sidebar">
         <div className="options-sidebar-container">

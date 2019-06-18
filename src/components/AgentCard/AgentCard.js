@@ -11,8 +11,10 @@ const AgentCard = ({ time }) => (
       <div />
     </div>
     <div className="image-card__content agent-card__content">
-      <p className="ibm-type-c">Your chat history, started at {time},
-        has been transferred to Emma Banker.
+      <p className="ibm-type-c">
+        Your chat history, started at
+        {time}
+, has been transferred to Emma Banker.
       </p>
     </div>
   </div>

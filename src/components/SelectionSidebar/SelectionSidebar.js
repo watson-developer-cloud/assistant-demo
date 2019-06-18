@@ -45,7 +45,7 @@ class SelectionSidebar extends React.Component {
   }
 
   render() {
-    const currentPath = this.props.currentPath;
+    const { currentPath } = this.props;
     const validPaths = this.setValidPaths(currentPath);
 
     return (
@@ -71,7 +71,11 @@ class SelectionSidebar extends React.Component {
           onPathSelect={(path) => { this.onPathSelect(path); }}
         />
         <div className="path-selection__description">
-          <p className="ibm-type-c">{this.props.currentPath}/{this.props.paths.length}</p>
+          <p className="ibm-type-c">
+            {this.props.currentPath}
+/
+            {this.props.paths.length}
+          </p>
           <p className="ibm-type-c duo-gray-20">
             {this.props.paths[this.props.currentPath - 1].label}
           </p>

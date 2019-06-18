@@ -19,9 +19,9 @@ const express = require('express');
 const app = express();
 require('./config/express')(app);
 const AssistantV2 = require('ibm-watson/assistant/v2');
-const bank = require('./lib/bankFunctions');
 const uuidV1 = require('uuid/v1');
 const NodeCache = require('node-cache');
+const bank = require('./lib/bankFunctions');
 // stdTTL time in seconds (15 mins)
 const searchCache = new NodeCache({ stdTTL: 900 });
 
@@ -124,7 +124,7 @@ app.post('/api/message', (req, res) => {
   };
 
   // send payload to Conversation and return result
-  assistant.message(payload, (err, data) => {
+  return assistant.message(payload, (err, data) => {
     if (err) {
       console.log(err);
       return res.status(err.code || 500).json(err);
@@ -135,7 +135,7 @@ app.post('/api/message', (req, res) => {
 });
 
 app.get('/bank/validate', (req, res) => {
-  const value = req.query.value;
+  const { value } = req.query;
   const isAccValid = bank.validateAcc(Number(value));
   res.setHeader('Content-Type', 'application/json');
   // if accountNum is in list of valid accounts
@@ -173,7 +173,7 @@ app.get('/api/session', (req, res) => {
 });
 
 app.get('/search', (req, res) => {
-  const id = req.query.id;
+  const { id } = req.query;
 
   const header = searchCache.get(`header_${id}`) || 'The search result session has expired. Please restart the conversation in the main window.';
   const body = searchCache.get(`body_${id}`) || '';

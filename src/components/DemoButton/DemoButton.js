@@ -4,8 +4,11 @@ import Icon from '../Icon/Icon';
 
 const DemoButton = ({ icon, onClick }) => (
   <button
+    type="button"
     className="demo-button"
-    onClick={() => { onClick(); }}
+    onClick={() => {
+      onClick();
+    }}
   >
     <Icon type={icon} size={20} />
   </button>

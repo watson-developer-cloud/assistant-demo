@@ -7,11 +7,10 @@ function getIcon(url) {
   if (url.includes('map-bank.png')) {
     return MapBank;
   }
+  return '';
 }
 
-const ImageOption = ({ url }) => (
-  <img src={getIcon(url)} width="300" alt={url} />
-);
+const ImageOption = ({ url }) => <img src={getIcon(url)} width="300" alt={url} />;
 
 ImageOption.propTypes = {
   url: PropTypes.object.isRequired,

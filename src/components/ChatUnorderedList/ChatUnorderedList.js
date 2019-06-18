@@ -19,9 +19,10 @@ const ChatUnorderedList = ({ options, onUserInput, isSelected }) => {
           className="chat-option-item"
           role="presentation"
           onClick={() => { onUserInput(option); }}
-        >{option.label}
+        >
+          {option.label}
         </li>
-        ))}
+      ))}
     </ul>
   );
 };

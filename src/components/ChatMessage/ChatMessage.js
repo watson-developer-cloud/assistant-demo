@@ -5,30 +5,32 @@ const ChatMessage = ({ type, text }) => {
   if (type === 'bot') {
     return (
       <div className="chat-message chat-message--bot">
-        <p className="ibm-type-c">
-          {text}
-        </p>
+        <p className="ibm-type-c">{text}</p>
       </div>
     );
-  } else if (type === 'user') {
+  }
+  if (type === 'user') {
     return (
       <div className="chat-message chat-message--anchor-right">
-        <p className="chat-message--user ibm-type-b">
-          {text}
-        </p>
+        <p className="chat-message--user ibm-type-b">{text}</p>
       </div>
     );
-  } else if (type === 'option') {
+  }
+  if (type === 'option') {
     return (
       <div className="chat-option">
         <button
+          type="button"
           className="chat-option__button chat-option__button--selected"
           disabled
-        >{text}
+        >
+          {text}
         </button>
       </div>
     );
   }
+
+  return null;
 };
 
 ChatMessage.propTypes = {

@@ -23,9 +23,7 @@ class ChatOptionList extends React.Component {
   }
 
   render() {
-    const options = (this.props.isLastMessage || this.state.options[0].isSelected)
-      ? this.state.options
-      : [];
+    const options = this.props.isLastMessage || this.state.options[0].isSelected ? this.state.options : []; // eslint-disable-line
 
     if (this.props.type === 'creditCard') {
       return (
@@ -34,35 +32,44 @@ class ChatOptionList extends React.Component {
             <CreditCardOption
               cardName={option.cardName}
               description={option.description}
-              onUserInput={(value) => { this.onUserInput(value); }}
+              onUserInput={(value) => {
+                this.onUserInput(value);
+              }}
             />
           ))}
         </div>
       );
-    } else if (this.props.type === 'button') {
+    }
+    if (this.props.type === 'button') {
       return (
         <div className="chat-option-list">
           {options.map(option => (
             <ChatOption
               key={option.value.input.text}
               option={option}
-              onUserInput={(selectedOption) => { this.optionSelect(selectedOption); }}
+              onUserInput={(selectedOption) => {
+                this.optionSelect(selectedOption);
+              }}
               isSelected={option.isSelected}
             />
           ))}
         </div>
       );
-    } else if (this.props.type === 'list') {
+    }
+    if (this.props.type === 'list') {
       return (
         <div className="chat-option-list">
           <ChatUnorderedList
             options={options}
-            onUserInput={(selectedOption) => { this.optionSelect(selectedOption); }}
+            onUserInput={(selectedOption) => {
+              this.optionSelect(selectedOption);
+            }}
             isSelected={this.state.options[0].isSelected}
           />
         </div>
       );
     }
+    return null;
   }
 }
 
