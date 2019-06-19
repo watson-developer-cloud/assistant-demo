@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import Icon from '../Icon/Icon';
 
 const CreditCardOption = ({
-  onUserInput,
-  cardName,
-  description,
-  isSelected,
+  onUserInput, cardName, description, isSelected,
 }) => {
-  const isSelectedClass = (isSelected) ? 'image-card--selected credit-card-option--selected' : '';
+  const isSelectedClass = isSelected ? 'image-card--selected credit-card-option--selected' : '';
   const classes = `credit-card-option image-card ${isSelectedClass}`;
 
   return (
     <button
+      type="button"
       className={classes}
-      onClick={() => { onUserInput(cardName); }}
+      onClick={() => {
+        onUserInput(cardName);
+      }}
     >
       <div className="credit-card-option__image">
         <Icon size={120} type="credit-card" />

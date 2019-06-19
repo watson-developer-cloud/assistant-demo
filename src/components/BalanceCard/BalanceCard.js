@@ -27,7 +27,10 @@ const BalanceCard = ({
       </div>
       <div className="balance-card__content">
         <div className="balance-card__item">
-          <p>Account ending in {accountId}</p>
+          <p>
+Account ending in
+            {accountId}
+          </p>
         </div>
         <div className="balance-card__item">
           <p>Minimum payment due</p>

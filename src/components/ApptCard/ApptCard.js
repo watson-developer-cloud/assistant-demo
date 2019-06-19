@@ -8,7 +8,10 @@ const ApptCard = ({ zip, apptDate, apptTime }) => (
       <div className="appt-card__address">
         <p>Local Bank</p>
         <p>132 14th Ave.</p>
-        <p>Local Town{zip}</p>
+        <p>
+Local Town
+          {zip}
+        </p>
       </div>
       <Icon type="calendar" size={24} />
     </div>
@@ -27,4 +30,3 @@ ApptCard.propTypes = {
 };
 
 export default ApptCard;
-

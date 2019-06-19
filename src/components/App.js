@@ -3,7 +3,9 @@ import ChatContainer from './ChatContainer/ChatContainer';
 import SelectionSidebar from './SelectionSidebar/SelectionSidebar';
 import OptionsSidebar from './OptionsSidebar/OptionsSidebar';
 import { fetchMessage, executeClientAction, executeWorkspaceAction } from '../conversation';
-import { IDLE, IN_PROGRESS, COMPLETED, FAILED } from '../constants';
+import {
+  IDLE, IN_PROGRESS, COMPLETED, FAILED,
+} from '../constants';
 import trackEvent from '../utils';
 
 require('smoothscroll-polyfill').polyfill();
@@ -177,7 +179,7 @@ class App extends React.Component {
     if (outputObj.output.actions
       && outputObj.output.actions.length > 0) {
       console.log(JSON.stringify(outputObj.actions, null, 2));
-      const actions = outputObj.output.actions;
+      const { actions } = outputObj.output;
       actions.forEach((act) => {
         executeClientAction(act)
           .then((result) => {
