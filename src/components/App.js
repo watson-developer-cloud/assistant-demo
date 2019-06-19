@@ -110,8 +110,9 @@ class App extends React.Component {
     // TODO: wrap in a settimeout of 0
     // this puts it within the event loop
     // so that rendering
+    const firstCallVal = true;
     setTimeout(() => {
-      this.routeToPath(this.state.paths[0]);
+      this.routeToPath(this.state.paths[0], firstCallVal);
     }, 0);
   }
 
@@ -183,8 +184,8 @@ class App extends React.Component {
       actions.forEach((act) => {
         executeClientAction(act)
           .then((result) => {
-            if (!outputObj.context.skip_user_input) {
-              this.sendMessageToConversation(result.result, this.state.lastMessageContext);
+            if (outputObj.context === undefined) {
+              this.sendMessageToConversation(result.result);
             } else if (result.result === 'statement') {
               const action = executeWorkspaceAction({ statement_display: result.dates });
               responses.push(action);
@@ -246,7 +247,7 @@ class App extends React.Component {
     }
   }
 
-  routeToPath(path) {
+  routeToPath(path, firstCallVal) {
     trackEvent('Navigated to Panel', 'Button', 'NavButton');
     this.setState({ messages: [] });
     this.setState({ currentPath: path.id });
@@ -255,7 +256,7 @@ class App extends React.Component {
     // the fetchMessage call clears the existing context
     // the sendMessageToConversation call sets the context to the selected
     // path
-    fetchMessage('', null, (err, data) => {
+    fetchMessage('', null, firstCallVal, (err, data) => {
       if (data) {
         this.updateConversationContext(data.context);
         this.sendMessageToConversation(path.path, this.state.lastMessageContext);
@@ -267,7 +268,7 @@ class App extends React.Component {
   sendMessageToConversation(text, context = null) {
     this.updateMessageStatus(IN_PROGRESS);
 
-    fetchMessage(text, context, (err, data) => {
+    fetchMessage(text, context, false, (err, data) => {
       // data.code is set for an error response
       if (err || data.code !== undefined) {
         this.updateMessageStatus(FAILED);

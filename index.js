@@ -32,12 +32,7 @@ const assistant = new AssistantV2({
 
 const date = new Date();
 date.setMonth(date.getMonth() + 1);
-const newContext = {
-  global: {
-    system: {
-      turn_count: 1,
-    },
-  },
+const initContext = {
   skills: {
     'main skill': {
       user_defined: {
@@ -97,12 +92,6 @@ app.post('/api/message', (req, res) => {
     });
   }
 
-  const contextWithAcc = (req.body.context) ? req.body.context : newContext;
-
-  if (req.body.context) {
-    contextWithAcc.global.system.turn_count += 1;
-  }
-
   let textIn = '';
 
   if (req.body.input) {
@@ -113,15 +102,15 @@ app.post('/api/message', (req, res) => {
   const payload = {
     assistant_id: assistantId,
     session_id: req.body.session_id,
-    context: contextWithAcc,
     input: {
       message_type: 'text',
       text: textIn,
-      options: {
-        return_context: true,
-      },
     },
   };
+
+  if (req.body.isFirstCall || req.body.context) {
+    payload.context = req.body.context || initContext;
+  }
 
   // send payload to Conversation and return result
   return assistant.message(payload, (err, data) => {
