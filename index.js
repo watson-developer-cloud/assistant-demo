@@ -21,6 +21,7 @@ require('./config/express')(app);
 const AssistantV2 = require('ibm-watson/assistant/v2');
 const uuidV1 = require('uuid/v1');
 const NodeCache = require('node-cache');
+const { IamAuthenticator } = require('ibm-watson/auth');
 const bank = require('./lib/bankFunctions');
 // stdTTL time in seconds (15 mins)
 const searchCache = new NodeCache({ stdTTL: 900 });
@@ -28,6 +29,10 @@ const searchCache = new NodeCache({ stdTTL: 900 });
 // declare Watson Assistant service
 const assistant = new AssistantV2({
   version: '2019-02-28',
+  authenticator: new IamAuthenticator({
+    apikey: process.env.ASSISTANT_IAM_APIKEY,
+  }),
+  url: process.env.ASSISTANT_IAM_URL,
 });
 
 const date = new Date();
@@ -100,8 +105,8 @@ app.post('/api/message', (req, res) => {
 
   // assemble assistant payload
   const payload = {
-    assistant_id: assistantId,
-    session_id: req.body.session_id,
+    assistantId,
+    sessionId: req.body.session_id,
     input: {
       message_type: 'text',
       text: textIn,
@@ -151,7 +156,7 @@ app.get('/bank/statement', (req, res) => {
 
 app.get('/api/session', (req, res) => {
   assistant.createSession({
-    assistant_id: process.env.ASSISTANT_ID || '{assistant_id}',
+    assistantId: process.env.ASSISTANT_ID || '{assistant_id}',
   }, (error, response) => {
     if (error) {
       console.log(error);

@@ -5,11 +5,13 @@ import PropTypes from 'prop-types';
 const JsonPane = ({ json, isVisible }) => {
   const isHiddenClass = isVisible ? '' : 'json-pane--hidden';
   const jsonOverlayClasses = `json-pane ${isHiddenClass}`;
+  const newjson = JSON.parse(json.replace('\\', ''));
+  const jsonNew = newjson.result;
 
   return (
     <div className={jsonOverlayClasses}>
       <JsonLinkInline
-        json={json}
+        json={jsonNew}
         showJson={isVisible}
         onExit={null}
         onShow={null}
