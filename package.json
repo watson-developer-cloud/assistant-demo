@@ -38,8 +38,8 @@
     "dotenv": "^6.2.0",
     "express": "^4.17.1",
     "express-rate-limit": "^3.4.0",
-    "helmet": "^3.18.0",
-    "ibm-watson": "^4.2.1",
+    "helmet": "^3.21.2",
+    "ibm-watson": "^5.1.0",
     "node-cache": "^4.2.0",
     "uuid": "^3.3.2",
     "webpack": "^3.12.0",
@@ -104,5 +104,13 @@
     "lint",
     "validate",
     "test"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/watson-developer-cloud/assistant-demo/issues"
+  },
+  "homepage": "https://github.com/watson-developer-cloud/assistant-demo#readme",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  }
 }

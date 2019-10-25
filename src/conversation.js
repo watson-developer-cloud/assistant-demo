@@ -40,7 +40,7 @@ function getSessionId(callback) {
           if (json.code) {
             callback(json);
           } else {
-            sessionId = json.session_id;
+            sessionId = json.result.session_id;
             callback(null);
           }
         });
@@ -57,7 +57,10 @@ function getSessionId(callback) {
  * @param {Object} context - the current context object for the conversation
  * @param {boolean} firstCallVal - determines whether context is to be sent with payload
  */
-const fetchMessage = (text, context, firstCallVal, callback) => {
+const fetchMessage = (text, context, firstCallVal, clearSession, callback) => {
+  if (clearSession) {
+    sessionId = null;
+  }
   if (sessionId === null) {
     getSessionId((err) => {
       if (err) {

@@ -75,6 +75,8 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.firstCallVal = null;
+
     this.state = {
       messages: [],
       lastMessageJson: JSON.stringify({ test: 'hi' }),
@@ -110,9 +112,9 @@ class App extends React.Component {
     // TODO: wrap in a settimeout of 0
     // this puts it within the event loop
     // so that rendering
-    const firstCallVal = true;
+    this.firstCallVal = true;
     setTimeout(() => {
-      this.routeToPath(this.state.paths[0], firstCallVal);
+      this.routeToPath(this.state.paths[0], this.firstCallVal);
     }, 0);
   }
 
@@ -168,7 +170,8 @@ class App extends React.Component {
     this.setState({ botMessageStatus });
   }
 
-  botMessageHandler(outputObj) {
+  botMessageHandler(fullOutputObj) {
+    const outputObj = fullOutputObj.result;
     let isNotificationPresent = false;
     let responses = [];
     // check for chat options in generic options object
@@ -252,11 +255,16 @@ class App extends React.Component {
     this.setState({ messages: [] });
     this.setState({ currentPath: path.id });
     this.setState({ lastMessageContext: {} });
+    if (!firstCallVal) {
+      this.firstCallVal = true;
+    }
     // send two requests to conversation chained together
     // the fetchMessage call clears the existing context
     // the sendMessageToConversation call sets the context to the selected
-    // path
-    fetchMessage('', null, firstCallVal, (err, data) => {
+    // path.
+    // fetchMessage is called with clearSession = true to generate a new session
+    // and prevent issues with the conversations
+    fetchMessage('', null, this.firstCallVal, true, (err, data) => {
       if (data) {
         this.updateConversationContext(data.context);
         this.sendMessageToConversation(path.path, this.state.lastMessageContext);
@@ -264,11 +272,10 @@ class App extends React.Component {
     });
   }
 
-
   sendMessageToConversation(text, context = null) {
     this.updateMessageStatus(IN_PROGRESS);
 
-    fetchMessage(text, context, false, (err, data) => {
+    fetchMessage(text, context, this.firstCallVal, false, (err, data) => {
       // data.code is set for an error response
       if (err || data.code !== undefined) {
         this.updateMessageStatus(FAILED);
@@ -292,7 +299,7 @@ class App extends React.Component {
       this.updateOptionsSidebar(JSON.stringify(data));
 
       // update context
-      this.updateConversationContext(data.context);
+      this.updateConversationContext(data.result.context);
     });
   }
 
