@@ -32,7 +32,7 @@ const assistant = new AssistantV2({
   authenticator: new IamAuthenticator({
     apikey: process.env.ASSISTANT_IAM_APIKEY,
   }),
-  url: process.env.ASSISTANT_IAM_URL,
+  url: process.env.ASSISTANT_URL,
 });
 
 const date = new Date();
@@ -44,11 +44,7 @@ const initContext = {
         acc_minamt: 50,
         acc_currbal: 430,
         acc_paydue: `${date.getFullYear()}-${date.getMonth() + 1}-26 12:00:00`,
-        accnames: [
-          5624,
-          5893,
-          9225,
-        ],
+        accnames: [5624, 5893, 9225],
       },
     },
   },
@@ -151,25 +147,32 @@ app.get('/bank/statement', (req, res) => {
   const startingDateString = startingDate.toLocaleDateString();
   const endingDateString = endingDate.toLocaleDateString();
 
-  res.send({ result: 'statement', dates: { startingDate: startingDateString, endingDate: endingDateString } });
+  res.send({
+    result: 'statement',
+    dates: { startingDate: startingDateString, endingDate: endingDateString },
+  });
 });
 
 app.get('/api/session', (req, res) => {
-  assistant.createSession({
-    assistantId: process.env.ASSISTANT_ID || '{assistant_id}',
-  }, (error, response) => {
-    if (error) {
-      console.log(error);
-      return res.status(error.code || 500).send(error);
-    }
-    return res.send(response);
-  });
+  assistant.createSession(
+    {
+      assistantId: process.env.ASSISTANT_ID || '{assistant_id}',
+    },
+    (error, response) => {
+      if (error) {
+        console.log(error);
+        return res.status(error.code || 500).send(error);
+      }
+      return res.send(response);
+    },
+  );
 });
 
 app.get('/search', (req, res) => {
   const { id } = req.query;
 
-  const header = searchCache.get(`header_${id}`) || 'The search result session has expired. Please restart the conversation in the main window.';
+  const header = searchCache.get(`header_${id}`)
+    || 'The search result session has expired. Please restart the conversation in the main window.';
   const body = searchCache.get(`body_${id}`) || '';
 
   const doc = '<html><head><meta charset="UTF-8" /><title>Document</title></head>'
