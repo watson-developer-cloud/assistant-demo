@@ -3,13 +3,14 @@ const request = require('supertest');
 const { expect } = require('chai');
 require('dotenv').config({ silent: true });
 
-const testIfCredentials = process.env.ASSISTANT_USERNAME || process.env.ASSISTANT_IAM_APIKEY
-  ? describe : describe.skip;
+const testIfCredentials = process.env.ASSISTANT_IAM_APIKEY ? describe : describe.skip;
 
 testIfCredentials('express', () => {
   const app = require('../../index');
   it('should load home page when GET /', (done) => {
-    request(app).get('/').expect(200, done);
+    request(app)
+      .get('/')
+      .expect(200, done);
   });
 
   it('should return a valid result for account 5893', (done) => {
