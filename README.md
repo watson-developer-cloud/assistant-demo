@@ -54,7 +54,7 @@ This app demonstrates the Watson Assistant service via a complete, complex inter
 
    ```
    ASSISTANT_IAM_APIKEY=X4rbi8vwZmKpXfowaS3GAsA7vdy17Qh7km5D6EzKLHL2
-   ASSISTANT_URL=https://gateway-wdc.watsonplatform.net/assistant/api
+   ASSISTANT_URL=https://api.us-east.assistant.watson.cloud.ibm.com
    ```
 
 1. Add the `ASSISTANT_ID` to the previous properties
