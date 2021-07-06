@@ -60,7 +60,7 @@ class SelectionSidebar extends React.Component {
         <div className="path-selection__terms-of-use">
           By using this application, you agree to the&nbsp;
           <a target="_blank" rel="noreferrer noopener" href={TERMS_OF_USE_URL}>
-                Terms of Use
+            Terms of Use
           </a>
         </div>
         <PathSelectionOverlay
@@ -73,7 +73,7 @@ class SelectionSidebar extends React.Component {
         <div className="path-selection__description">
           <p className="ibm-type-c">
             {this.props.currentPath}
-/
+            /
             {this.props.paths.length}
           </p>
           <p className="ibm-type-c duo-gray-20">

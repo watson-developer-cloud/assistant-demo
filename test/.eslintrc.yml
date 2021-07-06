@@ -1,16 +1,17 @@
 env:
-  es6: true
-  node: true
+  browser: true
+  es2021: true
   jest: true
-extends: airbnb
-globals:
-  Atomics: readonly
-  SharedArrayBuffer: readonly
+extends:
+  - 'plugin:react/recommended'
+  - airbnb
+  - prettier
+
 parserOptions:
   ecmaFeatures:
     jsx: true
-  ecmaVersion: 2018
-  sourceType: script
+  ecmaVersion: 12
+  sourceType: module
 plugins:
   - react
 rules:

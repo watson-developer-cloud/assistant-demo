@@ -11,16 +11,15 @@ class OptionsSidebar extends React.Component {
 
     this.state = {
       isJsonVisible: false,
-      isNotificationVisible: false,
+      isNotificationVisible: false
     };
   }
 
-  componentWillUpdate(newProps) {
+  UNSAFE_componentWillUpdate(newProps) {
     if (newProps.notificationText !== this.props.notificationText) {
       this.updateNotificationVisibility(true);
     }
   }
-
 
   updateNotificationVisibility(status) {
     this.setState({ isNotificationVisible: status });
@@ -48,19 +47,27 @@ class OptionsSidebar extends React.Component {
               isToggled={this.state.isJsonVisible}
               icon="code"
               alt="json-button"
-              onClick={() => { this.toggleJson(); }}
+              onClick={() => {
+                this.toggleJson();
+              }}
             />
             <DemoButton
               icon="restart"
-              onClick={() => { this.props.onPathSelect(this.props.paths[currentPath - 1]); }}
+              onClick={() => {
+                this.props.onPathSelect(this.props.paths[currentPath - 1]);
+              }}
             />
           </div>
           <DemoNotification
             message={this.props.notificationText}
             link={this.props.notificationLink}
             isVisible={this.state.isNotificationVisible}
-            onEnter={() => { this.openNotification(); }}
-            onExit={() => { this.closeNotification(); }}
+            onEnter={() => {
+              this.openNotification();
+            }}
+            onExit={() => {
+              this.closeNotification();
+            }}
           />
           <JsonPane
             json={this.props.json}
@@ -78,11 +85,11 @@ OptionsSidebar.propTypes = {
   currentPath: PropTypes.number.isRequired,
   onPathSelect: PropTypes.func.isRequired,
   notificationText: PropTypes.string.isRequired,
-  notificationLink: PropTypes.string,
+  notificationLink: PropTypes.string
 };
 
 OptionsSidebar.defaultProps = {
-  notificationLink: null,
+  notificationLink: null
 };
 
 export default OptionsSidebar;

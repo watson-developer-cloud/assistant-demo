@@ -1,16 +1,15 @@
 env:
   browser: true
-  es6: true
+  es2021: true
   jest: true
-extends: airbnb
-globals:
-  Atomics: readonly
-  SharedArrayBuffer: readonly
-parser: babel-eslint
+extends:
+  - 'plugin:react/recommended'
+  - airbnb
+  - prettier
 parserOptions:
   ecmaFeatures:
     jsx: true
-  ecmaVersion: 2018
+  ecmaVersion: 12
   sourceType: module
 plugins:
   - react
@@ -18,7 +17,9 @@ rules:
   global-require: 0
   import/no-extraneous-dependencies: 0
   react/jsx-filename-extension: 0
-  prefer-destructuring: 0
   react/destructuring-assignment: 0
   react/no-access-state-in-setstate: 0
   react/forbid-prop-types: 0
+  react/no-will-update-set-state: 0
+  prefer-destructuring: 0
+  camelcase: 0

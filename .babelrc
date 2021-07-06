@@ -1,6 +1,12 @@
 {
+  "plugins": ["@babel/syntax-dynamic-import"],
   "presets": [
-    "react",
-    "es2015"
+    [
+      "@babel/preset-env",
+      {
+        "modules": false
+      }
+    ],
+    ["@babel/preset-react"]
   ]
 }

@@ -7,7 +7,7 @@ const StatementCard = ({ startDate, endDate }) => (
       <p className="ibm-type-c ibm-type-semibold">Statement Period:</p>
       <p className="ibm-type-c ibm-type-semibold">
         {startDate}
--
+        -
         {endDate}
       </p>
     </div>

@@ -19,7 +19,7 @@ const express = require('express');
 const app = express();
 require('./config/express')(app);
 const AssistantV2 = require('ibm-watson/assistant/v2');
-const uuidV1 = require('uuid/v1');
+const { v1: uuidV1 } = require('uuid');
 const NodeCache = require('node-cache');
 const { IamAuthenticator } = require('ibm-watson/auth');
 const bank = require('./lib/bankFunctions');
@@ -28,11 +28,11 @@ const searchCache = new NodeCache({ stdTTL: 900 });
 
 // declare Watson Assistant service
 const assistant = new AssistantV2({
-  version: '2019-02-28',
+  version: '2020-04-01',
   authenticator: new IamAuthenticator({
-    apikey: process.env.ASSISTANT_IAM_APIKEY,
+    apikey: process.env.ASSISTANT_IAM_APIKEY
   }),
-  url: process.env.ASSISTANT_URL,
+  serviceUrl: process.env.ASSISTANT_URL
 });
 
 const date = new Date();
@@ -44,19 +44,19 @@ const initContext = {
         acc_minamt: 50,
         acc_currbal: 430,
         acc_paydue: `${date.getFullYear()}-${date.getMonth() + 1}-26 12:00:00`,
-        accnames: [5624, 5893, 9225],
-      },
-    },
-  },
+        accnames: [5624, 5893, 9225]
+      }
+    }
+  }
 };
 
 function setSearchItems(data) {
   if (data.output !== undefined && data.output.generic !== undefined) {
     const genericObj = data.output.generic;
     const items = [];
-    genericObj.forEach((response) => {
+    genericObj.forEach(response => {
       if (response.response_type === 'search') {
-        response.results.forEach((item) => {
+        response.results.forEach(item => {
           items.push(item);
         });
       }
@@ -82,14 +82,14 @@ app.get('/', (req, res) => {
   res.render('./dist/index.html');
 });
 
-app.post('/api/message', (req, res) => {
+app.post('/api/message', async (req, res) => {
   // check for assistant id and handle null assistant env variable
   const assistantId = process.env.ASSISTANT_ID || '<assistant-id>';
   if (!assistantId || assistantId === '<assistant-id>') {
     return res.json({
       output: {
-        text: 'The app has not been configured with a ASSISTANT_ID environment variable.',
-      },
+        text: 'The app has not been configured with a ASSISTANT_ID environment variable.'
+      }
     });
   }
 
@@ -105,23 +105,23 @@ app.post('/api/message', (req, res) => {
     sessionId: req.body.session_id,
     input: {
       message_type: 'text',
-      text: textIn,
-    },
+      text: textIn
+    }
   };
 
   if (req.body.isFirstCall || req.body.context) {
     payload.context = req.body.context || initContext;
   }
 
-  // send payload to Conversation and return result
-  return assistant.message(payload, (err, data) => {
-    if (err) {
-      console.log(err);
-      return res.status(err.code || 500).json(err);
-    }
-    setSearchItems(data);
-    return res.json(data);
-  });
+  try {
+    // send payload to Conversation and return result
+    const response = await assistant.message(payload);
+    setSearchItems(response);
+    return res.json(response);
+  } catch (error) {
+    console.error(error);
+    return res.status(error.code || 500).json(error);
+  }
 });
 
 app.get('/bank/validate', (req, res) => {
@@ -143,42 +143,45 @@ app.get('/bank/locate', (req, res) => {
 
 app.get('/bank/statement', (req, res) => {
   const startingDate = new Date(req.query.value);
-  const endingDate = new Date(startingDate.getFullYear(), startingDate.getMonth() + 1, 0);
+  const endingDate = new Date(
+    startingDate.getFullYear(),
+    startingDate.getMonth() + 1,
+    0
+  );
   const startingDateString = startingDate.toLocaleDateString();
   const endingDateString = endingDate.toLocaleDateString();
 
   res.send({
     result: 'statement',
-    dates: { startingDate: startingDateString, endingDate: endingDateString },
+    dates: { startingDate: startingDateString, endingDate: endingDateString }
   });
 });
 
-app.get('/api/session', (req, res) => {
-  assistant.createSession(
-    {
-      assistantId: process.env.ASSISTANT_ID || '{assistant_id}',
-    },
-    (error, response) => {
-      if (error) {
-        console.log(error);
-        return res.status(error.code || 500).send(error);
-      }
-      return res.send(response);
-    },
-  );
+app.get('/api/session', async (req, res) => {
+  try {
+    const session = await assistant.createSession({
+      assistantId: process.env.ASSISTANT_ID || '{assistant_id}'
+    });
+    return res.send(session);
+  } catch (error) {
+    console.error(error);
+    return res.status(error.code || 500).send(error);
+  }
 });
 
 app.get('/search', (req, res) => {
   const { id } = req.query;
 
-  const header = searchCache.get(`header_${id}`)
-    || 'The search result session has expired. Please restart the conversation in the main window.';
+  const header =
+    searchCache.get(`header_${id}`) ||
+    'The search result session has expired. Please restart the conversation in the main window.';
   const body = searchCache.get(`body_${id}`) || '';
 
-  const doc = '<html><head><meta charset="UTF-8" /><title>Document</title></head>'
-    + '<style>body {background-color: #252525;}div {color: white;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;}</style>'
-    + `<body><div style="width: 70%; padding: 10px;"><p><strong>${header}</strong></p>`
-    + `<p>${body}</p></div></body></html>`;
+  const doc =
+    '<html><head><meta charset="UTF-8" /><title>Document</title></head>' +
+    '<style>body {background-color: #252525;}div {color: white;font-family: Helvetica Neue, Helvetica, Arial, sans-serif;}</style>' +
+    `<body><div style="width: 70%; padding: 10px;"><p><strong>${header}</strong></p>` +
+    `<p>${body}</p></div></body></html>`;
 
   return res.send(doc);
 });

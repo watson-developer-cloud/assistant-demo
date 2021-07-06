@@ -9,7 +9,7 @@ const ApptCard = ({ zip, apptDate, apptTime }) => (
         <p>Local Bank</p>
         <p>132 14th Ave.</p>
         <p>
-Local Town
+          Local Town
           {zip}
         </p>
       </div>

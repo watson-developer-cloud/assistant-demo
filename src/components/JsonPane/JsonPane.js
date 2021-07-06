@@ -11,7 +11,7 @@ const JsonPane = ({ json, isVisible }) => {
   return (
     <div className={jsonOverlayClasses}>
       <JsonLinkInline
-        json={jsonNew}
+        json={jsonNew || '{}'}
         showJson={isVisible}
         onExit={null}
         onShow={null}
@@ -24,7 +24,7 @@ const JsonPane = ({ json, isVisible }) => {
 
 JsonPane.propTypes = {
   json: PropTypes.string.isRequired,
-  isVisible: PropTypes.bool.isRequired,
+  isVisible: PropTypes.bool.isRequired
 };
 
 export default JsonPane;

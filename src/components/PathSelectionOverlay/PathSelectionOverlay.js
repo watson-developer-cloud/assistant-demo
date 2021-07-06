@@ -20,15 +20,15 @@ const PathSelectionOverlay = ({
         <div className="path-selection-overlay__card-group">
           <div className="path-selection-card__card-intro">
             <p className="ibm-type-c">
-In this demo, Watson Assistant has been trained
+              In this demo, Watson Assistant has been trained
               on specific banking capabilities.
               Choose one of the
               {paths.length}
               {' '}
-scenarios to explore.
+              scenarios to explore.
             </p>
           </div>
-          {paths.map(path => (
+          {paths.map((path) => (
             <PathSelectionCard
               key={path.id}
               pathNode={path.id}

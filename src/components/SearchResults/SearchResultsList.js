@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const SearchResultsList = ({ res }) => (
   <div>
-    {res.slice(0, 3).map(value => (
+    {res.slice(0, 3).map((value) => (
       <div id="search-div" className="search-item">
         <strong>{value.title}</strong>
         <br />

@@ -5,23 +5,22 @@ function getMessage(text, context, firstCallVal, callback) {
     session_id: sessionId,
     input: { text },
     context,
-    isFirstCall: firstCallVal,
+    isFirstCall: firstCallVal
   };
   fetch('/api/message', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json'
     },
-    body: JSON.stringify(payload),
+    body: JSON.stringify(payload)
   })
-    .then((data) => {
-      data.json()
-        .then((json) => {
-          callback(null, json);
-        });
+    .then(data => {
+      data.json().then(json => {
+        callback(null, json);
+      });
     })
-    .catch((err) => {
+    .catch(err => {
       callback(err);
     });
 }
@@ -31,25 +30,23 @@ function getSessionId(callback) {
     method: 'GET',
     headers: {
       Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
+      'Content-Type': 'application/json'
+    }
   })
-    .then((data) => {
-      data.json()
-        .then((json) => {
-          if (json.code) {
-            callback(json);
-          } else {
-            sessionId = json.result.session_id;
-            callback(null);
-          }
-        });
+    .then(data => {
+      data.json().then(json => {
+        if (json.code) {
+          callback(json);
+        } else {
+          sessionId = json.result.session_id;
+          callback(null);
+        }
+      });
     })
-    .catch((err) => {
+    .catch(err => {
       callback(err);
     });
 }
-
 
 /* makes a POST request to the message endpoint on the backend
  *
@@ -62,9 +59,9 @@ const fetchMessage = (text, context, firstCallVal, clearSession, callback) => {
     sessionId = null;
   }
   if (sessionId === null) {
-    getSessionId((err) => {
+    getSessionId(err => {
       if (err) {
-        console.log(`ERROR ${JSON.stringify(err)}`);
+        console.error(`ERROR ${JSON.stringify(err)}`);
         callback(err);
       }
       getMessage(text, context, firstCallVal, callback);
@@ -74,7 +71,6 @@ const fetchMessage = (text, context, firstCallVal, clearSession, callback) => {
   }
 };
 
-
 /* executes programmatic calls to the backend
  *
  * @param {Object} actionObj - an object containing details about the
@@ -83,7 +79,7 @@ const fetchMessage = (text, context, firstCallVal, clearSession, callback) => {
  * @return {Promise} - promise that resolves into an object which contains the
  * response to send to conversation
  */
-const executeClientAction = (actionObj) => {
+const executeClientAction = actionObj => {
   let endpoint;
   let value;
 
@@ -111,16 +107,15 @@ const executeClientAction = (actionObj) => {
     fetch(parameterizedEndpoint, {
       method: 'GET',
       headers: {
-        Accept: 'application/json',
-      },
+        Accept: 'application/json'
+      }
     })
-      .then((data) => {
-        data.json()
-          .then((json) => {
-            resolve(json);
-          });
+      .then(data => {
+        data.json().then(json => {
+          resolve(json);
+        });
       })
-      .catch((err) => {
+      .catch(err => {
         reject(new Error(err));
       });
   });
@@ -134,25 +129,25 @@ const executeClientAction = (actionObj) => {
  * @return {Object} - an object containing the type of response, and the
  * content of the response to be added to the ChatList
  */
-const executeWorkspaceAction = (actionObj) => {
-  const actionResponseArray = Object.keys(actionObj).map((action) => {
+const executeWorkspaceAction = actionObj => {
+  const actionResponseArray = Object.keys(actionObj).map(action => {
     switch (action) {
       case 'cc_displaystatement': {
         return {
           type: 'balance',
-          content: actionObj.cc_displaystatement,
+          content: actionObj.cc_displaystatement
         };
       }
       case 'appointment_display': {
         return {
           type: 'appointment',
-          content: actionObj.appointment_display,
+          content: actionObj.appointment_display
         };
       }
       case 'connect_agent': {
         return {
           type: 'agent',
-          content: new Date().toLocaleTimeString('en-US'),
+          content: new Date().toLocaleTimeString('en-US')
         };
       }
       case 'cc_selecteddisplay': {
@@ -162,52 +157,54 @@ const executeWorkspaceAction = (actionObj) => {
             id: 0,
             value: 'Travel Rewards',
             cardName: 'Travel Rewards',
-            description: '$150 online cash rewards bonus offer',
+            description: '$150 online cash rewards bonus offer'
           },
           {
             id: 1,
             value: 'Saving',
             cardName: 'The Mega Saver',
-            description: 'Save on interest to help pay down your balance faster',
+            description: 'Save on interest to help pay down your balance faster'
           },
           {
             id: 2,
             value: 'Credit Level',
             cardName: 'Mega Credit Card',
-            description: 'For users with good credit.',
+            description: 'For users with good credit.'
           },
           {
             id: 3,
             value: 'Cash Rewards',
             cardName: 'The Ultimate Cash Back Card',
-            description: 'Get the most cash back for your purchases',
+            description: 'Get the most cash back for your purchases'
           },
           {
             id: 4,
             value: 'General Rewards',
             cardName: 'The Balanced Rewards Card',
-            description: 'Just the right amount of all rewards',
-          },
+            description: 'Just the right amount of all rewards'
+          }
         ];
-        const displayCards = cards.filter(card => triggeredCards.includes(card.value));
+        const displayCards = cards.filter(card =>
+          triggeredCards.includes(card.value)
+        );
         return {
           type: 'creditCard',
-          content: displayCards,
+          content: displayCards
         };
       }
       case 'statement_display': {
         return {
           type: 'statement',
-          content: actionObj.statement_display,
+          content: actionObj.statement_display
         };
       }
       case 'notification_display': {
         return {
           type: 'notification',
           text: actionObj.notification_display.DisplayText,
-          link: (actionObj.notification_display.DisplayURL)
+          link: actionObj.notification_display.DisplayURL
             ? actionObj.notification_display.DisplayURL
-            : null,
+            : null
         };
       }
       default:
