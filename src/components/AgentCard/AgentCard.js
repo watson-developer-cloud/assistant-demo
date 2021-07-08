@@ -14,7 +14,7 @@ const AgentCard = ({ time }) => (
       <p className="ibm-type-c">
         Your chat history, started at
         {time}
-, has been transferred to Emma Banker.
+        , has been transferred to Emma Banker.
       </p>
     </div>
   </div>

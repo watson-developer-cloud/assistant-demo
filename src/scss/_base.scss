@@ -45,6 +45,7 @@ button {
   &:focus {
     outline: none;
   }
+
   &:active {
     &:not(.modal--x) {
       background-image: linear-gradient(to right, rgba(0, 108, 252, 0) 0%, rgba(0, 108, 252, 0) 16.6667%, rgb(0, 108, 252) 33.3333%, rgb(0, 108, 252) 66.6667%, rgba(0, 108, 252, 0) 83.3333%, rgba(0, 108, 252, 0) 100%);
@@ -53,23 +54,20 @@ button {
       background-size: 600% 100%;
     }
   }
+
+  svg {
+    fill: $duo-gray-20;
+  }
+
   &:hover {
     cursor: pointer;
+
     svg {
-      #Icon {
-        fill: $duo-white;
-      }
+      fill: $duo-white;
     }
   }
 }
 
-svg {
-  fill: none;
-
-  #Icon {
-    fill: $duo-gray-20;
-  }
-}
 
 // global container styles
 
@@ -85,28 +83,34 @@ svg {
   opacity: 0;
   margin-top: 0rem;
   z-index: 10000;
+
   &.show {
     opacity: 1;
     visibility: visible;
   }
+
   .modal {
     position: absolute;
     top: 0;
     left: 0;
     background: $duo-gray-100;
     width: 100vw;
+
     .modal--x {
       position: absolute;
       top: 2rem;
       left: 2rem;
       background: transparent;
+
       &:hover {
         cursor: pointer;
       }
+
       svg {
         fill: white;
         width: 28px;
         height: 28px;
+
         path {
           display: none;
         }
@@ -124,15 +128,18 @@ svg {
   width: 75%;
   background: $duo-gray-10;
   padding: 0;
+
   @include respond-to-max($breakpoint--md) {
     width: 100%;
   }
+
   .image-card__image {
     position: relative;
     width: 33%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+
     &:before {
       content: "";
       position: absolute;
@@ -141,17 +148,18 @@ svg {
       padding-top: 100%;
     }
   }
+
   .image-card__content {
     color: $duo-gray-70;
     text-align: left;
     padding: 1.51515vw;
     width: 66%;
+
     .ibm-type-semibold {
       color: $duo-gray-100;
       margin: 0;
     }
   }
-  &.image-card--selected {
 
-  }
+  &.image-card--selected {}
 }

@@ -9,11 +9,11 @@ class ChatOptionList extends React.Component {
     super(props);
 
     this.state = {
-      options: [],
+      options: []
     };
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.setState({ options: this.props.options });
   }
 
@@ -23,7 +23,10 @@ class ChatOptionList extends React.Component {
   }
 
   render() {
-    const options = this.props.isLastMessage || this.state.options[0].isSelected ? this.state.options : []; // eslint-disable-line
+    const options =
+      this.props.isLastMessage || this.state.options[0].isSelected
+        ? this.state.options
+        : []; // eslint-disable-line
 
     if (this.props.type === 'creditCard') {
       return (
@@ -32,7 +35,7 @@ class ChatOptionList extends React.Component {
             <CreditCardOption
               cardName={option.cardName}
               description={option.description}
-              onUserInput={(value) => {
+              onUserInput={value => {
                 this.onUserInput(value);
               }}
             />
@@ -47,7 +50,7 @@ class ChatOptionList extends React.Component {
             <ChatOption
               key={option.value.input.text}
               option={option}
-              onUserInput={(selectedOption) => {
+              onUserInput={selectedOption => {
                 this.optionSelect(selectedOption);
               }}
               isSelected={option.isSelected}
@@ -61,7 +64,7 @@ class ChatOptionList extends React.Component {
         <div className="chat-option-list">
           <ChatUnorderedList
             options={options}
-            onUserInput={(selectedOption) => {
+            onUserInput={selectedOption => {
               this.optionSelect(selectedOption);
             }}
             isSelected={this.state.options[0].isSelected}
@@ -77,7 +80,7 @@ ChatOptionList.propTypes = {
   type: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
   onUserInput: PropTypes.func.isRequired,
-  isLastMessage: PropTypes.bool.isRequired,
+  isLastMessage: PropTypes.bool.isRequired
 };
 
 export default ChatOptionList;

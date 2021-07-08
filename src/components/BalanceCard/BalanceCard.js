@@ -28,7 +28,7 @@ const BalanceCard = ({
       <div className="balance-card__content">
         <div className="balance-card__item">
           <p>
-Account ending in
+            Account ending in
             {accountId}
           </p>
         </div>
