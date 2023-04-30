@@ -44,7 +44,7 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.3.0",
     "helmet": "^4.6.0",
-    "ibm-watson": "^6.1.1",
+    "ibm-watson": "^8.0.0",
     "node-cache": "^5.1.2",
     "uuid": "^8.3.2",
     "webpack": "^5.43.0",
